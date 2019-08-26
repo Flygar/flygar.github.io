@@ -68,94 +68,6 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
-                                    <a href="https://flygar.github.io/quote/blog-backup/" title="Blog Backup" >Blog Backup</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年8月25日
-                            </date>
-                            
-                            <div class="post-content">
-                                Github pages Back up 操作系统：ubuntu16.04 安装Hexo # 更新源并升级 apt update &amp;&amp; apt upgrade # 安装git apt install git -y # 安装nvm wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh # 通过nvm安装Node.js nvm install stable # 安装hexo部署到git page的deployer npm install hexo-deployer-git --save &amp;&amp; npm audit fix # 安装hexo并初始化 npm install -g hexo-cli &amp;&amp; hexo init blog &amp;&amp; cd blog &amp;&amp; npm install  同步Github # 创建密钥并将id_rsa.pub内容添加至github ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot; # 测试 ssh -T git@github.……
-                            </div>
-                            <p class="readmore"><a href="https://flygar.github.io/quote/blog-backup/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://flygar.github.io/quote/docker/" title="Docker" >Docker</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年8月25日
-                            </date>
-                            
-                            <div class="post-content">
-                                <blockquote>
-<p>镜像仓库-镜像库-镜像-容器实例
-容器(container)实例的运行依赖image文件
-一个image文件可以生成多个容器(container)实例
-命令中的container可以去掉</p>
-</blockquote>……
-                            </div>
-                            <p class="readmore"><a href="https://flygar.github.io/quote/docker/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://flygar.github.io/quote/git/" title="Git" >Git</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年8月25日
-                            </date>
-                            
-                            <div class="post-content">
-                                add：追踪并添加到暂存区
-commit：提交到git仓库(用来保存项目的元数据和对象数据库) 配置信息 # 查看用户信息 cat ~/.gitconfig # 查看配置 git config --list  获取git仓库 # 获取远程git仓库并在本地将仓库命名为blog git clone git@github.com:Flygar/Flygar.github.io.git blog  文件比较 # 查看工作目录与暂存区的文件差异(尚未暂存的文件更新内容) git diff # 查看暂存区文件更新的内容与上次提交的内容差异 git diff --staged # 跳过使用暂存区域，自动把所有已经跟踪过(add提交过)的文件暂存起来一并提交，从而跳过 git add 步骤 git commit -a -m '...'  删除 # 删除git仓库及本地文件 git rm file.log # 从Git仓库中删除,保留本地文件(常用于将已跟踪文件添加至.gitingore) git rm --cached file.log  撤销 git commit -m 'initial commit' git add forgotten_file git commit --amend # 将forgotten_file提交信息为&quot;initial commit&quot; git reset HEAD file.……
-                            </div>
-                            <p class="readmore"><a href="https://flygar.github.io/quote/git/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://flygar.github.io/quote/linux/" title="Linux" >Linux</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年8月25日
-                            </date>
-                            
-                            <div class="post-content">
-                                -- Linux 别名快捷登录 vim /etc/ssh/ssh_config添加如下配置
-Host dv HostName example.com User domainuser  终端里执行ssh dv,相当于ssh domainuser@example.com
-Linux history # ~/.bashrc # HISTSIZE 定义了 history 命令输出的记录数. HISTSIZE=10000 # HISTFILESIZE 定义了在 ~/.bash_history 中保存命令的记录总数. HISTFILESIZE=10000 # 记录空格开头的命，并且去除重复行 HISTCONTROL=ignoredups # 由于bash的history文件默认是覆盖，如果存在多个终端，最后退出的会覆盖以前历史记录，改为追加形式 shopt -s histappend # 当前终端的命令实时追加至 ~/.bash_history PROMPT_COMMAND=&quot;history -a&quot; # 记录时间 HISTTIMEFORMAT='%F %T ' # 执行上一条命令 !! # 执行上一条命令 !-2 # 找出最近一次以go开头的命令,并执行 !&lt;go&gt; # 使用history的编号重复执行先前的命令 !&lt;ID&gt; # 将第&lt;ID&gt;条命令中的第一个&lt;string1&gt;替换成&lt;string2&gt;，并执行 !&lt;ID&gt;:s/&lt;string1&gt;/&lt;string2&gt;/ # 全部替换 !&lt;ID&gt;:gs/&lt;string1&gt;/&lt;string2&gt;/ # 利用 ctrl + r 进行模糊搜索使用过的命令，优先显示最近的结果,再次 ctrl + r 向&lt;ID&gt;小的方向搜索(向后搜索) ctrl+r  Linux screen # screen待补充 # 终端1新建服务 screen -S test # 终端2同步终端1 screen -x test  Linux 默认本地化设置 echo &quot;export LC_ALL=C&quot;&gt;&gt;~/.……
-                            </div>
-                            <p class="readmore"><a href="https://flygar.github.io/quote/linux/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://flygar.github.io/posts/temple/" title="My first Post temple" >My first Post temple</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年8月25日
-                            </date>
-                            
-                            <div class="post-content">
-                                <p>自定义摘要</p>……
-                            </div>
-                            <p class="readmore"><a href="https://flygar.github.io/posts/temple/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
                                     <a href="https://flygar.github.io/about/" title="关于" >关于</a>
                                 </h1>
                             </header>
@@ -164,7 +76,7 @@ Linux history # ~/.bashrc # HISTSIZE 定义了 history 命令输出的记录数.
                             </date>
                             
                             <div class="post-content">
-                                 Do one thing and do it well Done is better than perfect Make it work, right and fast  ……
+                                ……
                             </div>
                             <p class="readmore"><a href="https://flygar.github.io/about/">阅读全文</a></p>
                         </article>
@@ -185,79 +97,9 @@ Linux history # ~/.bashrc # HISTSIZE 定义了 history 命令输出的记录数.
                             <p class="readmore"><a href="https://flygar.github.io/archives/">阅读全文</a></p>
                         </article>
                     
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://flygar.github.io/posts/golang-magic/" title="Golang Magic" >Golang Magic</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年8月12日
-                            </date>
-                            
-                            <div class="post-content">
-                                诡异的操作
-a:=&quot;hello&quot; b:=123 //%后的副词[n]告诉Print函数使用第n个操作数 fmt.Printf(&quot;%[2]d, %[1]s, %[1]T, %[2]T, %[1]q&quot;,a,b)  ……
-                            </div>
-                            <p class="readmore"><a href="https://flygar.github.io/posts/golang-magic/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://flygar.github.io/posts/golang-bit-operation/" title="Golang Bit Operation" >Golang Bit Operation</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年8月12日
-                            </date>
-                            
-                            <div class="post-content">
-                                Bool类型的零值“false” &ldquo;&amp;&amp;&rdquo;:有假则假;&ldquo;||&rdquo;:有真则真; 当运算符左边表达式的值已经能够决定整个表达式的值的时候(&amp;&amp; 左边的值为 false，|| 左边的值为 true)，运算符右边的表达式将不会被执行。利用这个性 质，如果有多个条件判断，应当将计算过程较为复杂的表达式放在运算符的右侧以减少不必要的运算。
- bit位运算 ax := 1 &lt;&lt; 1 // 00000010 bx := 1 &lt;&lt; 5 // 00100000 // 按位或 | : 有1则1 cx := ax | bx // 00100010 fmt.Printf(&quot;ax(%d)的二进制: %08b\nbx(%d)的二进制: %08b\ncx(%d)的二进制: %08b\n&quot;, ax, ax, bx, bx, cx, cx) ay := 4 &gt;&gt; 1 // 00000010 by := 7 &gt;&gt; 1 // 00000011 // 按位与 &amp; : 有0则0 cy := ay &amp; by // 00000010 fmt.……
-                            </div>
-                            <p class="readmore"><a href="https://flygar.github.io/posts/golang-bit-operation/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://flygar.github.io/posts/golang-slice/" title="Golang Slice" >Golang Slice</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                1年1月1日
-                            </date>
-                            
-                            <div class="post-content">
-                                Golang入门计划 //slice「easySlice1」的slice. [1:3]左闭右开. cap 为[1:]. len 为2. 引用传递 easySlice1 := [][]int{{1, 2}, {3, 4}, {5, 6, 7, 8}, {9, 10}, {99, 100}}[1:3] fmt.Println(easySlice1) fmt.Println(cap(easySlice1)) //change easySlice1 easySlice1[0][1] = int(44) easySlice1[1] = []int{1, 2, 3, 4} fmt.Println(easySlice1) //将数组转为切片 //报错：slice of unaddressable value; 需要先赋值给一个变量 easyArray = [5][5]int{{1, 2}, {3, 4, 5, 6, 7}}[:] //正确操作 easyArray := [5][5]int{{1, 2}, {3, 4, 5, 6, 7}} easySlice2 := easyArray[:] fmt.Println(easySlice2) //slice and map mapResults := make(map[int]string) // var arrResults [][]string arrResults := make([][]string, 0) const LOOPCOUNT = 3 for i := 0; i &lt; LOOPCOUNT; i++ { valueStr := fmt.……
-                            </div>
-                            <p class="readmore"><a href="https://flygar.github.io/posts/golang-slice/">阅读全文</a></p>
-                        </article>
-                    
                     
 
 
-
-<ol class="page-navigator">
-    
-
-    
-    <li  class="current">
-        <a href="https://flygar.github.io/">1</a>
-    </li>
-    
-    <li >
-        <a href="https://flygar.github.io/page/2/">2</a>
-    </li>
-    
-
-    
-    <li class="next">
-        <a href="https://flygar.github.io/page/2/">下一页</a>
-    </li>
-    
-</ol>
 
 
 
@@ -277,30 +119,6 @@ a:=&quot;hello&quot; b:=123 //%后的副词[n]告诉Print函数使用第n个操�
     <section class="widget">
         <h3 class="widget-title">最近文章</h3>
 <ul class="widget-list">
-    
-    <li>
-        <a href="https://flygar.github.io/posts/temple/" title="My first Post temple">My first Post temple</a>
-    </li>
-    
-    <li>
-        <a href="https://flygar.github.io/posts/golang-magic/" title="Golang Magic">Golang Magic</a>
-    </li>
-    
-    <li>
-        <a href="https://flygar.github.io/posts/golang-bit-operation/" title="Golang Bit Operation">Golang Bit Operation</a>
-    </li>
-    
-    <li>
-        <a href="https://flygar.github.io/posts/golang-slice/" title="Golang Slice">Golang Slice</a>
-    </li>
-    
-    <li>
-        <a href="https://flygar.github.io/posts/golang-rune/" title="Golang rune and byte">Golang rune and byte</a>
-    </li>
-    
-    <li>
-        <a href="https://flygar.github.io/posts/map-and-reduce/" title="Map and Reduce">Map and Reduce</a>
-    </li>
     
 </ul>
     </section>
@@ -348,10 +166,6 @@ a:=&quot;hello&quot; b:=123 //%后的副词[n]告诉Print函数使用第n个操�
     <section class="widget">
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
-    
-    <a href="https://flygar.github.io/tags/go/">go</a>
-    
-    <a href="https://flygar.github.io/tags/temples/">temples</a>
     
 </div>
     </section>
