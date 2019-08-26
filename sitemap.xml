@@ -3,8 +3,96 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://flygar.github.io/categories/</loc>
+    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/tags/centos/</loc>
+    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/tags/createrepo/</loc>
+    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/tags/docker/</loc>
+    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/tags/elasticsearch/</loc>
+    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://flygar.github.io/</loc>
-    <lastmod>2019-06-17T22:52:07+08:00</lastmod>
+    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/tags/linux/</loc>
+    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/tags/operation/</loc>
+    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/posts/</loc>
+    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/tags/</loc>
+    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/posts/install-es/</loc>
+    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/tags/go/</loc>
+    <lastmod>2019-06-17T23:06:41+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/categories/go/</loc>
+    <lastmod>2019-06-17T23:06:41+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/posts/go-proverbs/</loc>
+    <lastmod>2019-06-17T23:06:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/tags/proverbs/</loc>
+    <lastmod>2019-06-17T23:06:41+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -19,13 +107,8 @@
   </url>
   
   <url>
-    <loc>https://flygar.github.io/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://flygar.github.io/tags/</loc>
-    <priority>0</priority>
+    <loc>https://flygar.github.io/posts/go-magic/</loc>
+    <lastmod>2019-06-17T19:44:53+08:00</lastmod>
   </url>
   
 </urlset>

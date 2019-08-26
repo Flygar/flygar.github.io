@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.56.3" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>离线安装docker并部署elasticsearch组成集群 | Flygar&#39;s Blog</title>
+    <meta property="og:title" content="离线安装docker并部署elasticsearch组成集群 - Flygar&#39;s Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2019-08-26T10:18:11&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2019-08-26T10:18:11&#43;08:00">
+        
+    <meta name="Keywords" content="golang,go语言,go语言笔记">
+    <meta name="description" content="离线安装docker并部署elasticsearch组成集群">
+        
+    <meta name="author" content="猪一头">
+    <meta property="og:url" content="https://flygar.github.io/posts/install-es/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://flygar.github.io/">
+                        Flygar&#39;s Blog
+                    </a>
+                
+                <p class="description">猪一头</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://flygar.github.io/">首页</a>
+                    
+                    <a  href="https://flygar.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://flygar.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        <div id="virtual_toc_list" style="display: none">
+            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-离线安装docker">1. 离线安装docker</a>
+<ul>
+<li><a href="#1-1-制作docker本地安装源">1.1 制作docker本地安装源</a></li>
+<li><a href="#1-2-安装并验证">1.2 安装并验证</a></li>
+</ul></li>
+<li><a href="#2-加载elasticsearch和kibana镜像">2. 加载elasticsearch和kibana镜像</a></li>
+<li><a href="#3-拉起container">3. 拉起container</a>
+<ul>
+<li><a href="#3-1-配置">3.1 配置</a>
+<ul>
+<li><a href="#3-1-1-离线机器node1">3.1.1 离线机器node1</a></li>
+<li><a href="#3-1-2-离线机器node2">3.1.2 离线机器node2</a></li>
+<li><a href="#3-1-3-离线机器node3">3.1.3 离线机器node3</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#3-1-集群验证">3.1 集群验证</a></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+        <div id="float_toc_div" style="margin: 10px;border: 1px solid gray;z-index:99999;display: none;">
+            <header style="background-color: #f3f3f3;color: black;border-bottom: 1px solid gray;padding: 10px 10px 10px 10px;">
+                <strong id="toc_btn_open" style="color: black;font-size: large;">目录</strong>
+                <strong id="toc_btn_close" style="color: black;font-size: large;float: right">╳</strong>
+            </header>
+            <div id="toc_list" style="background-color: #f3f3f3;color: black;padding: 10px;">
+        
+            </div>
+        </div>
+        <style type="text/css">
+            #float_toc_div {
+                position: fixed;
+                display: none;
+                 
+                height: auto;
+                font-size: 13px;
+            }
+        
+            #toc_list a:hover,
+            #toc_list a:active {
+                color: #ba3925;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                let tocNavElem = document.getElementById("TableOfContents");
+                let floatTocDivElem = document.getElementById("float_toc_div");
+                let tocListElem = floatTocDivElem.getElementsByTagName('div')[0];
+                let colGroupElem = document.getElementById("body").getElementsByClassName("col-group")[0]
+                let floatTocWidth = (document.body.clientWidth - colGroupElem.offsetWidth) / 2 - 16;
+                var useFloatToc = false;
+
+                if (floatTocWidth >= 100) {
+                    useFloatToc = true;
+                    document.getElementById("toc_list").appendChild(tocNavElem);
+                    floatTocDivElem.style.display = 'block';
+                    floatTocDivElem.style.width = floatTocWidth + 'px';
+                    top();
+                    floatTocDivElem.style.left = '0px';
+
+                    function top() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.top = window.innerHeight / 9 + 'px';
+                        }
+                    }
+
+                    function ishide() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.display = 'block';
+                        }
+                    }
+
+                    window.onscroll = function () {
+                        ishide();
+                        if ((document.documentElement.scrollTop != 0) && (floatTocDivElem.style.display == 'block')) {
+                            top();
+                        }
+                    };
+
+                    window.onresize = function () {
+                        ishide();
+                    }
+
+                    document.getElementById("toc_btn_open").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "none":
+                                document.getElementById("toc_btn_close").style.display = "";
+                                tocListElem.style.display = "";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "1px solid gray";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+
+                    document.getElementById("toc_btn_close").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "":
+                                document.getElementById("toc_btn_close").style.display = "none";
+                                tocListElem.style.display = "none";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+                } else {
+                    let fixedTocElem = document.getElementsByClassName("toc-article")[0];
+                    fixedTocElem.appendChild(tocNavElem);
+                    fixedTocElem.parentElement.style.display = "";
+                }
+                document.getElementById("virtual_toc_list").remove();
+            };   
+        </script>
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">离线安装docker并部署elasticsearch组成集群</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2019年8月26日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://flygar.github.io/categories/%E6%8A%80%E6%9C%AF">技术</a></span>
+                            
+                        </div>
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        <div class="clear" style="display: none">
+                            <div class="toc-article">
+                                <div class="toc-title">文章目录</div>
+                            </div>
+                        </div>
+                        
+                        <div class="post-content">
+                            <p>在3台CentOS上离线安装Docker并部署Elasticsearch组成集群</p>
+
+<ul>
+<li>在每台CentOS上离线安装docker</li>
+<li>在每台CentOS上拉起ES官方镜像的Container</li>
+<li>将3台CentOS上的Container组成ES集群</li>
+</ul>
+
+<p>最终效果
+<img src="https://i.loli.net/2019/08/26/yW3KPqBtos412Ve.png" alt="image.png" /></p>
+
+<h2 id="1-离线安装docker">1. 离线安装docker</h2>
+
+<h3 id="1-1-制作docker本地安装源">1.1 制作docker本地安装源</h3>
+
+<blockquote>
+<p>createrepo 命令用于创建yum源（软件仓库），即为存放于本地特定位置的众多rpm包建立索引，描述各包所需依赖信息，并形成元数据</p>
+</blockquote>
+
+<p>在线机器执行</p>
+
+<pre><code class="language-bash"># 更新并升级
+yum update
+yum upgrade
+
+# 卸载老版本docker
+sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+
+# 创建离线包存放目录,并赋予读写权限
+mkdir -p /home/docker/local 
+chmod -R 777 /home/docker/local
+
+# 仅下载离线包到指定目录
+sudo yum install --downloadonly --downloaddir=/home/docker/local yum-utils \
+  device-mapper-persistent-data \
+  lvm2 \
+  createrepo
+# Install using the repository and createrepo
+sudo yum install -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2 \
+  createrepo
+
+# set up the stable repository.
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+# 跟新yum源索引 （官方没做，为啥要做？验证下）
+# yum makecache fast
+
+# 下载离线docker-ce包
+sudo yum install --downloadonly --downloaddir=/home/docker/local docker-ce docker-ce-cli containerd.io
+
+# 下载密钥文件
+more /etc/yum.repos.d/docker-ce.repo
+cd /home/docker/local
+wget https://download.docker.com/linux/centos/gpg
+
+# 初始化安装源repodata库
+createrepo -pdo /home/docker/local /home/docker/local
+createrepo --update /home/docker/local
+
+# 打包导出安装源,docker-local.tar.gz这个文件，就是我们制作好的离线安装源。其他CentOS下的安装源一样的方法制作
+cd /home/docker/local
+tar -zcvf docker-local.tar.gz *
+
+</code></pre>
+
+<h3 id="1-2-安装并验证">1.2 安装并验证</h3>
+
+<p>每台离线机器上执行</p>
+
+<pre><code class="language-bash"># 创建目录上传 docker-local.tar.gz 并解压 
+mkdir -p /home/docker/local
+cd /home/docker/local
+tar -zxvf docker-local.tar.gz
+
+# 安装createrepo; 如果报错需要依赖则安装,都在/home/docker/local/目录下
+# rpm -ivh deltarpm-3.6-3.el7.x86_64.rpm
+# rpm -ivh libxml2-python-2.9.1-6.el7_2.3.x86_64.rpm
+# rpm -ivh python-deltarpm-3.6-3.el7.x86_64.rpm
+cd /home/docker/local
+rpm -ivh createrepo-0.9.9-28.el7.noarch.rpm
+
+# 备份安装源
+cd /etc/yum.repos.d/
+mkdir repobak
+mv * repobak/
+
+# 配置离线安装源
+# enabled=1 开启该仓库; gpgcheck=0 不做gpg检查; gpgkey 可以去掉;
+cat &lt;&lt; EOF &gt;&gt; /etc/yum.repos.d/docker-ce-local.repo
+[docker]
+name=docker local
+baseurl=file:///home/docker/local/
+gpgcheck=0
+enabled=1
+gpgkey=file:///home/docker/local/gpg&quot;
+EOF
+
+# 构建本地安装源
+createrepo -d /home/docker/local/repodata
+# yum clean all (清除缓存)
+# yum makecache (创建缓存)
+
+# 检查本地是否安装成功
+yum repolist
+# 安装docekr-ce
+yum install docker-ce docker-ce-cli containerd.io
+
+# 检查是否安装成功
+systemctl start docker
+docker version
+
+# 还原修改
+cd /etc/yum.repos.d/
+mv repobak/* ./
+mv docker-ce-local.repo repobak/
+
+# 创建docker用户组
+groupadd docker
+# 将指定用户（比如ittest）加入docker用户组
+usermod -aG docker  ittest
+# 重启docker
+systemctl restart docker
+</code></pre>
+
+<h2 id="2-加载elasticsearch和kibana镜像">2. 加载elasticsearch和kibana镜像</h2>
+
+<p>拉取官方es镜像或通过dockerfile构建es镜像</p>
+
+<p>在线机器执行</p>
+
+<pre><code class="language-bash"># 在线机器获取官方es和kibana镜像
+docker pull elasticsearch:6.7.0
+docker pull kibana:6.7.0
+
+# 查看镜像
+docker images
+
+# 保存至本地,镜像文件必须tar.gz结尾
+docker save elasticsearch:6.7.0 &gt; elasticsearch670.tar.gz
+docker save kibana:6.7.0 &gt; kibana670.tar.gz
+
+# The vm.max_map_count kernel setting needs to be set to at least 262144 for production use.
+echo 'vm.max_map_count=262144' &gt;&gt; /etc/sysctl.conf &amp;&amp; sysctl -p
+</code></pre>
+
+<p>每台离线机器执行</p>
+
+<pre><code class="language-bash"># 将elasticsearch670.tar.gz和kibana670.tar.gz镜像上传至离线机器并load镜像
+docker load &lt; elasticsearch670.tar.gz
+docker load &lt; kibana670.tar.gz
+
+# 查看镜像
+docker images ls
+</code></pre>
+
+<h2 id="3-拉起container">3. 拉起container</h2>
+
+<h3 id="3-1-配置">3.1 配置</h3>
+
+<p>到每台离线机器上创建指定目录下的 <code>es.yaml</code> , 并修改 <code>network.publish_host</code> 和 <code>discovery.zen.ping.unicast.hosts</code> 的值为设置了 <code>node.master: true</code> node 的IP:9300端口。</p>
+
+<h4 id="3-1-1-离线机器node1">3.1.1 离线机器node1</h4>
+
+<p>node1 机器上执行 <code>vim /home/soft/ES/config/es.yml</code>, 修改IP</p>
+
+<pre><code class="language-bash"># node1 
+cluster.name: elasticsearch-cluster
+node.name: es-node-01
+network.bind_host: 0.0.0.0
+network.publish_host: 192.168.0.126
+http.port: 9200
+transport.tcp.port: 9300
+http.cors.enabled: true
+http.cors.allow-origin: &quot;*&quot;
+node.master: true 
+node.data: true  
+discovery.zen.ping.unicast.hosts: [&quot;192.168.0.126:9300&quot;,&quot;192.168.0.127:9300&quot;,&quot;192.168.0.128:9300&quot;]
+discovery.zen.minimum_master_nodes: 2
+</code></pre>
+
+<p>数据目录映射</p>
+
+<pre><code class="language-bash">mkdir -p /home/soft/ES/data
+chmod g+rwx /home/soft/ES/data
+chown 1000:1000 /home/soft/ES/data
+</code></pre>
+
+<p>配置kibana</p>
+
+<pre><code class="language-bash"># mkdir -p /home/soft/Kibana/config/
+cat &lt;&lt;EOF &gt; /home/soft/Kibana/config/kibana.yml
+server.host: 0.0.0.0
+elasticsearch.hosts:
+  - http://elasticsearch:9200
+xpack.monitoring.enabled: false
+EOF
+</code></pre>
+
+<p>拉起container</p>
+
+<pre><code class="language-bash"># 执行docker命令后 ， 执行 `docker ps` 容器状态正常 
+docker run -e ES_JAVA_OPTS=&quot;-Xms4g -Xmx4g&quot; -d -p 9200:9200 -p 9300:9300 -v /home/soft/ES/config/es.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /home/soft/ES/data:/usr/share/elasticsearch/data --name ES01 elasticsearch-aws
+
+# 拉起kibana
+docker run -d --link &lt;es_containerID&gt;:elasticsearch -v /home/soft/Kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml -p 5601:5601 kibana:6.7.0
+</code></pre>
+
+<h4 id="3-1-2-离线机器node2">3.1.2 离线机器node2</h4>
+
+<p>node2 机器上执行 <code>vim /home/soft/ES/config/es.yml</code>, 修改IP</p>
+
+<pre><code class="language-bash"># node2
+cluster.name: elasticsearch-cluster
+node.name: es-node-02
+network.bind_host: 0.0.0.0
+network.publish_host: 192.168.0.127
+http.port: 9200
+transport.tcp.port: 9300
+http.cors.enabled: true
+http.cors.allow-origin: &quot;*&quot;
+node.master: true 
+node.data: true  
+discovery.zen.ping.unicast.hosts: [&quot;192.168.0.126:9300&quot;,&quot;192.168.0.127:9300&quot;,&quot;192.168.0.128:9300&quot;]
+discovery.zen.minimum_master_nodes: 2
+</code></pre>
+
+<p>数据目录映射</p>
+
+<pre><code class="language-bash">mkdir -p /home/soft/ES/data
+chmod g+rwx /home/soft/ES/data
+chown 1000:1000 /home/soft/ES/data
+</code></pre>
+
+<p>配置kibana</p>
+
+<pre><code class="language-bash"># mkdir -p /home/soft/Kibana/config/
+cat &lt;&lt;EOF &gt; /home/soft/Kibana/config/kibana.yml
+server.host: 0.0.0.0
+elasticsearch.hosts:
+  - http://elasticsearch:9200
+xpack.monitoring.enabled: false
+EOF
+</code></pre>
+
+<p>拉起container</p>
+
+<pre><code class="language-bash"># 执行docker命令后 ， 执行 `docker ps` 容器状态正常 
+docker run -e ES_JAVA_OPTS=&quot;-Xms4g -Xmx4g&quot; -d -p 9200:9200 -p 9300:9300 -v /home/soft/ES/config/es.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /home/soft/ES/data:/usr/share/elasticsearch/data --name ES02 elasticsearch-aws
+
+# 拉起kibana
+docker run -d --link &lt;es_containerID&gt;:elasticsearch -v /home/soft/Kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml -p 5601:5601 kibana:6.7.0
+</code></pre>
+
+<h4 id="3-1-3-离线机器node3">3.1.3 离线机器node3</h4>
+
+<p>node3 机器上执行 <code>vim /home/soft/ES/config/es.yml</code>, 修改IP</p>
+
+<pre><code class="language-bash"># node3
+cluster.name: elasticsearch-cluster
+node.name: es-node-03
+network.bind_host: 0.0.0.0
+network.publish_host: 192.168.0.128
+http.port: 9200
+transport.tcp.port: 9300
+http.cors.enabled: true
+http.cors.allow-origin: &quot;*&quot;
+node.master: true 
+node.data: true  
+discovery.zen.ping.unicast.hosts: [&quot;192.168.0.126:9300&quot;,&quot;192.168.0.127:9300&quot;,&quot;192.168.0.128:9300&quot;]
+discovery.zen.minimum_master_nodes: 2
+</code></pre>
+
+<p>数据目录映射</p>
+
+<pre><code class="language-bash">mkdir -p /home/soft/ES/data
+chmod g+rwx /home/soft/ES/data
+chown 1000:1000 /home/soft/ES/data
+</code></pre>
+
+<p>配置kibana</p>
+
+<pre><code class="language-bash"># mkdir -p /home/soft/Kibana/config/
+cat &lt;&lt;EOF &gt; /home/soft/Kibana/config/kibana.yml
+server.host: 0.0.0.0
+elasticsearch.hosts:
+  - http://elasticsearch:9200
+xpack.monitoring.enabled: false
+EOF
+</code></pre>
+
+<p>拉起container</p>
+
+<pre><code class="language-bash"># 执行docker命令后 ， 执行 `docker ps` 容器状态正常 
+docker run -e ES_JAVA_OPTS=&quot;-Xms4g -Xmx4g&quot; -d -p 9200:9200 -p 9300:9300 -v /home/soft/ES/config/es.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /home/soft/ES/data:/usr/share/elasticsearch/data --name ES03 elasticsearch-aws
+
+# 拉起kibana
+docker run -d --link &lt;es_containerID&gt;:elasticsearch -v /home/soft/Kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml -p 5601:5601 kibana:6.7.0
+</code></pre>
+
+<h2 id="3-1-集群验证">3.1 集群验证</h2>
+
+<p>任意一台机器上执行</p>
+
+<pre><code class="language-bash"># 节点数: 3个
+curl localhost:9200/_cat/nodes
+
+# 健康: green
+curl localhost:9200/_cat/health
+
+# kibana: 返回 302 found
+curl -I localhost:5601
+</code></pre>
+
+<p>参考连接：</p>
+
+<p><a href="https://docs.docker.com/install/linux/docker-ce/centos/">https://docs.docker.com/install/linux/docker-ce/centos/</a></p>
+
+<p><a href="https://blog.csdn.net/hello_junz/article/details/79882602">https://blog.csdn.net/hello_junz/article/details/79882602</a></p>
+                        </div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://flygar.github.io/">猪一头</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://flygar.github.io/posts/install-es/">https://flygar.github.io/posts/install-es/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/go-proverbs/">Go Proverbs</a></li>
+        
+        <li><a href="/about/">关于</a></li>
+        
+        <li><a href="/archives/">归档</a></li>
+        
+        <li><a href="/posts/go-magic/">Go Magic</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://flygar.github.io/tags/operation">Operation</a></li>
+                                
+                                <li><a href="https://flygar.github.io/tags/centos">CentOS</a></li>
+                                
+                                <li><a href="https://flygar.github.io/tags/elasticsearch">Elasticsearch</a></li>
+                                
+                                <li><a href="https://flygar.github.io/tags/docker">Docker</a></li>
+                                
+                                <li><a href="https://flygar.github.io/tags/linux">Linux</a></li>
+                                
+                                <li><a href="https://flygar.github.io/tags/createrepo">Createrepo</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "flygar/comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://flygar.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://flygar.github.io/posts/install-es/" title="离线安装docker并部署elasticsearch组成集群">离线安装docker并部署elasticsearch组成集群</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.github.io/posts/go-proverbs/" title="Go Proverbs">Go Proverbs</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.github.io/posts/go-magic/" title="Go Magic">Go Magic</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://flygar.github.io/categories/go/">go(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.github.io/categories/%E6%8A%80%E6%9C%AF/">技术(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://flygar.github.io/tags/centos/">centos</a>
+    
+    <a href="https://flygar.github.io/tags/createrepo/">createrepo</a>
+    
+    <a href="https://flygar.github.io/tags/docker/">docker</a>
+    
+    <a href="https://flygar.github.io/tags/elasticsearch/">elasticsearch</a>
+    
+    <a href="https://flygar.github.io/tags/go/">go</a>
+    
+    <a href="https://flygar.github.io/tags/linux/">linux</a>
+    
+    <a href="https://flygar.github.io/tags/operation/">operation</a>
+    
+    <a href="https://flygar.github.io/tags/proverbs/">proverbs</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://www.flysnow.org" title="flysnow">flysnow</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://flygar.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="https://flygar.github.io/">Flygar&#39;s Blog By 猪一头</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
+
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+</body>
+</html>

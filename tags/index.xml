@@ -6,9 +6,82 @@
     <description>Recent content in Tags on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
+    <lastBuildDate>Mon, 26 Aug 2019 10:18:11 +0800</lastBuildDate>
     
 	<atom:link href="https://flygar.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CentOS</title>
+      <link>https://flygar.github.io/tags/centos/</link>
+      <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
+      
+      <guid>https://flygar.github.io/tags/centos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Createrepo</title>
+      <link>https://flygar.github.io/tags/createrepo/</link>
+      <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
+      
+      <guid>https://flygar.github.io/tags/createrepo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://flygar.github.io/tags/docker/</link>
+      <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
+      
+      <guid>https://flygar.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Elasticsearch</title>
+      <link>https://flygar.github.io/tags/elasticsearch/</link>
+      <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
+      
+      <guid>https://flygar.github.io/tags/elasticsearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://flygar.github.io/tags/linux/</link>
+      <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
+      
+      <guid>https://flygar.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Operation</title>
+      <link>https://flygar.github.io/tags/operation/</link>
+      <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
+      
+      <guid>https://flygar.github.io/tags/operation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://flygar.github.io/tags/go/</link>
+      <pubDate>Mon, 17 Jun 2019 23:06:41 +0800</pubDate>
+      
+      <guid>https://flygar.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Proverbs</title>
+      <link>https://flygar.github.io/tags/proverbs/</link>
+      <pubDate>Mon, 17 Jun 2019 23:06:41 +0800</pubDate>
+      
+      <guid>https://flygar.github.io/tags/proverbs/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
