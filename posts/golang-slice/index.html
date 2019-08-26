@@ -7,22 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Tags | Flygar&#39;s Blog</title>
-    <meta property="og:title" content="Tags - Flygar&#39;s Blog">
+    <title>Golang Slice | Flygar&#39;s Blog</title>
+    <meta property="og:title" content="Golang Slice - Flygar&#39;s Blog">
     <meta property="og:type" content="article">
         
         
     <meta name="Keywords" content="golang,go语言,go语言笔记">
-    <meta name="description" content="Tags">
+    <meta name="description" content="Golang Slice">
         
     <meta name="author" content="猪一头">
-    <meta property="og:url" content="https://flygar.github.io/tags/">
+    <meta property="og:url" content="https://flygar.github.io/posts/golang-slice/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
     
+        <link rel="stylesheet" href="/css/prism.css">
+    
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="alternate" type="application/rss+xml+xml" href="https://flygar.github.io/tags/index.xml" title="Flygar's Blog" />
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -31,7 +32,6 @@
     
     
 </head>
-
 
 <body>
 <header id="header" class="clearfix">
@@ -61,41 +61,157 @@
 
 
 <div id="body">
+        
+        
     <div class="container">
         <div class="col-group">
 
             <div class="col-8" id="main">
-                <header>
-                    
-                        <h1>共有2个标签</h1>
-                    
-                </header>
-                <div class="post-archive">
-                    
-                    <h2><a href="https://flygar.github.io/tags/go">go</a> (1)</h2>
-                    <ul class="listing">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">Golang Slice</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            1年1月1日
+                        </date>
                         
-                        <li>
-                            <span class="date">2018/08/12</span>
-                            <a href="https://flygar.github.io/posts/golang-magic/" title="Golang Magic">Golang Magic</a>
-                        </li>
                         
-                    </ul>
-                    
-                    <h2><a href="https://flygar.github.io/tags/temples">temples</a> (1)</h2>
-                    <ul class="listing">
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
                         
-                        <li>
-                            <span class="date">2019/08/25</span>
-                            <a href="https://flygar.github.io/posts/temple/" title="My first Post temple">My first Post temple</a>
-                        </li>
                         
-                    </ul>
-                    
+                        <div class="post-content">
+                            <p>Golang入门计划
+<!-- more --></p>
 
+<pre><code class="language-go">//slice「easySlice1」的slice. [1:3]左闭右开. cap 为[1:]. len 为2. 引用传递
+easySlice1 := [][]int{{1, 2}, {3, 4}, {5, 6, 7, 8}, {9, 10}, {99, 100}}[1:3]
+fmt.Println(easySlice1)
+fmt.Println(cap(easySlice1))
+//change easySlice1
+easySlice1[0][1] = int(44)
+easySlice1[1] = []int{1, 2, 3, 4}
+fmt.Println(easySlice1)
+
+//将数组转为切片
+//报错：slice of unaddressable value; 需要先赋值给一个变量
+easyArray = [5][5]int{{1, 2}, {3, 4, 5, 6, 7}}[:]
+//正确操作
+easyArray := [5][5]int{{1, 2}, {3, 4, 5, 6, 7}}
+easySlice2 := easyArray[:]
+fmt.Println(easySlice2)
+
+//slice and map
+mapResults := make(map[int]string)
+// var arrResults [][]string
+arrResults := make([][]string, 0)
+const LOOPCOUNT = 3
+for i := 0; i &lt; LOOPCOUNT; i++ {
+	valueStr := fmt.Sprintf(&quot;this is %d\n&quot;, i)
+	mapResults[i] = valueStr
+	tmpArr := make([]string, 0)
+	for j := 0; j &lt; 5; j++ {
+		tmpArr = append(tmpArr, strconv.Itoa(j))
+	}
+	arrResults = append(arrResults, tmpArr)
+}
+//test
+sliceB := [][]string{{&quot;test11&quot;, &quot;test12&quot;, &quot;test13&quot;}, {&quot;test21&quot;}}
+// add slice
+arrResults = append(arrResults, sliceB...)
+arrResults = append(arrResults, []string{&quot;hello&quot;, &quot;world&quot;})
+// arrResults = append(arrResults[:1], sliceB...)
+arrResults = append(arrResults[:1], append([][]string{{&quot;hello&quot;, &quot;world&quot;}}, arrResults[1:]...)...)
+fmt.Println(mapResults)
+fmt.Println(arrResults)
+</code></pre>
+
+<p><strong>Slice的坑</strong>
+&gt;Slice作为引用类型，操作会直接影响到原slice</p>
+
+<pre><code class="language-go">// slice是引用类型，操作可能会影响原slice
+s := []int{1, 2, 3, 4, 5, 6}
+a := s[1:3]                      //  左闭右开 a返回[2 3]
+fmt.Println(&quot;s1: &quot;, s)           // [1 2 3 4 5 6]
+fmt.Println(&quot;a's len: &quot;, len(a)) // 长度 2
+fmt.Println(&quot;a's cap: &quot;, cap(a)) // 容量 5
+fmt.Println(&quot;a: &quot;, a[:cap(a)])   // 输出容量，返回[2 3 4 5 6]
+
+a[1] = 33                       //尝试改变a中的元素值，容量cap中的值不可修改
+fmt.Println(&quot;a[cap]: &quot;, a[2:5]) //查看容量cap目前存的什么值 [4 5 6]
+fmt.Println(&quot;ss: &quot;, s)          // 可以看到原s也做出了改变 [1 2 33 4 5 6] , 引用类型
+
+fmt.Println(&quot;----------------&quot;)
+b := append(a, s[1:3]...)      // 返回[2 33 2 33]
+fmt.Println(&quot;a: &quot;, a[:cap(a)]) // 输出容量，返回[2 33 2 33 6]
+fmt.Println(&quot;b: &quot;, b)          // 返回 [2 33 2 33]
+fmt.Println(&quot;s2: &quot;, s)         // slice s 变成 [1 2 33 2 33 6]
+
+c := append(s[1:3], 0)             // 返回 [1 2 0]
+fmt.Println(&quot;c-cap: &quot;, c[:cap(c)]) // 查看容量cap中目前存的什么值
+fmt.Println(&quot;s3: &quot;, s)             // 返回 [1 2 33 0 33 6]
+
+</code></pre>
+
+                        </div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://flygar.github.io/">猪一头</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://flygar.github.io/posts/golang-slice/">https://flygar.github.io/posts/golang-slice/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/quote/blog-backup/">Blog Backup</a></li>
+        
+        <li><a href="/quote/docker/">Docker</a></li>
+        
+        <li><a href="/quote/git/">Git</a></li>
+        
+        <li><a href="/quote/linux/">Linux</a></li>
+        
+        <li><a href="/posts/temple/">My first Post temple</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            没有标签
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "flygar/comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
                 </div>
             </div>
-
             <div id="secondary">
     <section class="widget">
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
@@ -225,6 +341,23 @@
 </footer>
 
 
+    
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
+
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
 
 <a id="rocket" href="#top"></a>
 <script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
@@ -232,7 +365,6 @@
 
 
     <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
-
 
 
 
