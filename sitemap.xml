@@ -3,17 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://flygar.github.io/</loc>
-    <lastmod>2019-08-25T22:52:07+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://flygar.github.io/about/</loc>
-    <lastmod>2019-08-25T22:52:07+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://flygar.github.io/quote/blog-backup/</loc>
     <lastmod>2019-08-25T22:38:18+08:00</lastmod>
   </url>
@@ -21,6 +10,12 @@
   <url>
     <loc>https://flygar.github.io/quote/docker/</loc>
     <lastmod>2019-08-25T22:38:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.github.io/</loc>
+    <lastmod>2019-08-25T22:38:18+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -63,8 +58,13 @@
   </url>
   
   <url>
+    <loc>https://flygar.github.io/about/</loc>
+    <lastmod>2019-06-17T22:52:07+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://flygar.github.io/archives/</loc>
-    <lastmod>2019-08-25T22:17:47+08:00</lastmod>
+    <lastmod>2019-06-17T22:17:47+08:00</lastmod>
   </url>
   
   <url>
