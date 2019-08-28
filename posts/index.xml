@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>离线安装docker并部署elasticsearch组成集群</title>
+      <title>离线部署elasticsearch集群</title>
       <link>https://flygar.github.io/posts/install-es/</link>
       <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
       
       <guid>https://flygar.github.io/posts/install-es/</guid>
-      <description>&lt;p&gt;在3台CentOS上离线安装Docker并部署Elasticsearch组成集群&lt;/p&gt;</description>
+      <description>&lt;p&gt;在3台CentOS上离线安装docker并通过docker-compose部署Elasticsearch集群&lt;/p&gt;</description>
     </item>
     
     <item>
