@@ -643,8 +643,11 @@ vim /home/soft/docker-compose/docker-compose.yml
 
 <p>重建container</p>
 
-<pre><code class="language-bash">cd /home/soft/docker-compose/
+<pre><code class="language-bash"># 重启docker
+docker restart $(docker ps -qa)
+cd /home/soft/docker-compose/
 docker-compose up -d
+
 
 # 验证这个节点插件是否安装
 curl localhost:9200/_cat/plugins
