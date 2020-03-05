@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 06 Mar 2020 00:46:30 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 06 Mar 2020 01:58:01 +0800</lastBuildDate>
     
 	<atom:link href="https://flygar.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>sb</title>
+      <link>https://flygar.org/tags/sb/</link>
+      <pubDate>Fri, 06 Mar 2020 01:58:01 +0800</pubDate>
+      
+      <guid>https://flygar.org/tags/sb/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Docker</title>
