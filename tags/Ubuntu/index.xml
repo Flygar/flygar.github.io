@@ -17,9 +17,8 @@
       <pubDate>Thu, 05 Mar 2020 20:32:34 +0800</pubDate>
       
       <guid>https://flygar.org/2020/03/05/vps-security.html</guid>
-      <description>以ubuntu系统为例,提升vps安全。
-保护小鸡,从我做起。
-1 2 3 4 5 6 7 8  # update list of available packages # upgrade the system by installing/upgrading packages apt update &amp;amp;&amp;amp; apt upgrade # who 或者 w 查看当前登陆的用户 # 检查日志和登陆记录 less /var/log/auth.log who /var/log/wtmp   设置一个足够复杂的密码  不推荐使用单词或短语: superstar, magicmaster, woshiMT 不推荐使用生日加姓名的组合方便记忆的密码: liergou1225, trump2016, jujingyi1994 不推荐使用很长的字母与数字的组合: ABC12345678, qwert9876543210 不推荐使用如下键盘布局的密码: 1qaz@WSX, 1qw2!</description>
+      <description>&lt;p&gt;以ubuntu系统为例,提升vps安全。&lt;br&gt;
+保护小鸡,从我做起。&lt;/p&gt;</description>
     </item>
     
     <item>
