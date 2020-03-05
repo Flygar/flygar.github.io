@@ -1,31 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Go on Flygar&#39;s Blog</title>
-    <link>https://flygar.github.io/categories/go/</link>
+    <link>https://flygar.org/categories/Go/</link>
     <description>Recent content in Go on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 17 Jun 2019 23:06:41 +0800</lastBuildDate>
     
-	<atom:link href="https://flygar.github.io/categories/go/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://flygar.org/categories/Go/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Go Proverbs</title>
-      <link>https://flygar.github.io/posts/go-proverbs/</link>
+      <link>https://flygar.org/post/go-proverbs/</link>
       <pubDate>Mon, 17 Jun 2019 23:06:41 +0800</pubDate>
       
-      <guid>https://flygar.github.io/posts/go-proverbs/</guid>
-      <description>see more: https://go-proverbs.github.io/ Simple, Poetic, Pithy  Don&amp;rsquo;t communicate by sharing memory, share memory by communicating. Concurrency is not parallelism. Channels orchestrate; mutexes serialize. The bigger the interface, the weaker the abstraction. Make the zero value useful. interface{} says nothing. Gofmt&amp;rsquo;s style is no one&amp;rsquo;s favorite, yet gofmt is everyone&amp;rsquo;s favorite. A little copying is better than a little dependency. Syscall must always be guarded with build tags. Cgo must always be guarded with build tags.</description>
+      <guid>https://flygar.org/post/go-proverbs/</guid>
+      <description>see more: https://go-proverbs.github.io/</description>
     </item>
     
     <item>
       <title>Go Magic</title>
-      <link>https://flygar.github.io/posts/go-magic/</link>
+      <link>https://flygar.org/post/go-magic/</link>
       <pubDate>Mon, 17 Jun 2019 19:44:53 +0800</pubDate>
       
-      <guid>https://flygar.github.io/posts/go-magic/</guid>
+      <guid>https://flygar.org/post/go-magic/</guid>
       <description>&lt;p&gt;Go Tips&lt;/p&gt;</description>
     </item>
     
