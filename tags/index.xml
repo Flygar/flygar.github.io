@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 26 Aug 2019 10:18:11 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 05 Mar 2020 20:32:34 +0800</lastBuildDate>
     
 	<atom:link href="https://flygar.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Linux</title>
+      <link>https://flygar.org/tags/Linux/</link>
+      <pubDate>Thu, 05 Mar 2020 20:32:34 +0800</pubDate>
+      
+      <guid>https://flygar.org/tags/Linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>https://flygar.org/tags/Ubuntu/</link>
+      <pubDate>Thu, 05 Mar 2020 20:32:34 +0800</pubDate>
+      
+      <guid>https://flygar.org/tags/Ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BBR</title>
+      <link>https://flygar.org/tags/BBR/</link>
+      <pubDate>Sun, 05 Jan 2020 20:32:34 +0800</pubDate>
+      
+      <guid>https://flygar.org/tags/BBR/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>CentOS</title>
@@ -44,24 +71,6 @@
       <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
       
       <guid>https://flygar.org/tags/Elasticsearch/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>https://flygar.org/tags/Linux/</link>
-      <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
-      
-      <guid>https://flygar.org/tags/Linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Operation</title>
-      <link>https://flygar.org/tags/Operation/</link>
-      <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
-      
-      <guid>https://flygar.org/tags/Operation/</guid>
       <description></description>
     </item>
     

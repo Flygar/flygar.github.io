@@ -13,20 +13,20 @@
     
     <item>
       <title>Go Proverbs</title>
-      <link>https://flygar.org/post/go-proverbs/</link>
+      <link>https://flygar.org/2019/06/17/go-proverbs.html</link>
       <pubDate>Mon, 17 Jun 2019 23:06:41 +0800</pubDate>
       
-      <guid>https://flygar.org/post/go-proverbs/</guid>
+      <guid>https://flygar.org/2019/06/17/go-proverbs.html</guid>
       <description>see more: https://go-proverbs.github.io/</description>
     </item>
     
     <item>
       <title>Go Magic</title>
-      <link>https://flygar.org/post/go-magic/</link>
+      <link>https://flygar.org/2019/06/17/go-tips.html</link>
       <pubDate>Mon, 17 Jun 2019 19:44:53 +0800</pubDate>
       
-      <guid>https://flygar.org/post/go-magic/</guid>
-      <description>&lt;p&gt;Go Tips&lt;/p&gt;</description>
+      <guid>https://flygar.org/2019/06/17/go-tips.html</guid>
+      <description>&lt;p&gt;Golang Tips and Tricks&lt;/p&gt;</description>
     </item>
     
   </channel>

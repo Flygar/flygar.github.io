@@ -13,10 +13,10 @@
     
     <item>
       <title>离线部署elasticsearch集群</title>
-      <link>https://flygar.org/post/install-es/</link>
+      <link>https://flygar.org/2019/08/26/deploy-elasticsearch-offline.html</link>
       <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
       
-      <guid>https://flygar.org/post/install-es/</guid>
+      <guid>https://flygar.org/2019/08/26/deploy-elasticsearch-offline.html</guid>
       <description>&lt;p&gt;在3台CentOS上离线安装docker并通过docker-compose部署Elasticsearch集群&lt;/p&gt;</description>
     </item>
     

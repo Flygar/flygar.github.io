@@ -3,18 +3,53 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://flygar.org/post/</loc>
-    <lastmod>2020-02-29T17:02:39+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/2018/02/24/golang-function-parameters-passed-by-value.html</loc>
-    <lastmod>2020-02-29T17:02:39+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://flygar.org/categories/</loc>
-    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
+    <lastmod>2020-03-05T20:32:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/tags/Linux/</loc>
+    <lastmod>2020-03-05T20:32:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/categories/Linux/</loc>
+    <lastmod>2020-03-05T20:32:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/post/</loc>
+    <lastmod>2020-03-05T20:32:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/tags/</loc>
+    <lastmod>2020-03-05T20:32:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/tags/Ubuntu/</loc>
+    <lastmod>2020-03-05T20:32:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/2020/03/05/vps-security.html</loc>
+    <lastmod>2020-03-05T20:32:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/2020/02/01/linux-tips.html</loc>
+    <lastmod>2020-02-01T20:32:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/tags/BBR/</loc>
+    <lastmod>2020-01-05T20:32:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/2020/01/05/linux-bbr.html</loc>
+    <lastmod>2020-01-05T20:32:34+08:00</lastmod>
   </url>
   
   <url>
@@ -38,27 +73,7 @@
   </url>
   
   <url>
-    <loc>https://flygar.org/tags/Linux/</loc>
-    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/tags/Operation/</loc>
-    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/tags/</loc>
-    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/post/install-es/</loc>
+    <loc>https://flygar.org/2019/08/26/deploy-elasticsearch-offline.html</loc>
     <lastmod>2019-08-26T10:18:11+08:00</lastmod>
   </url>
   
@@ -73,7 +88,7 @@
   </url>
   
   <url>
-    <loc>https://flygar.org/post/go-proverbs/</loc>
+    <loc>https://flygar.org/2019/06/17/go-proverbs.html</loc>
     <lastmod>2019-06-17T23:06:41+08:00</lastmod>
   </url>
   
@@ -98,7 +113,7 @@
   </url>
   
   <url>
-    <loc>https://flygar.org/post/go-magic/</loc>
+    <loc>https://flygar.org/2019/06/17/go-tips.html</loc>
     <lastmod>2019-06-17T19:44:53+08:00</lastmod>
   </url>
   
