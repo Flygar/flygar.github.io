@@ -86,69 +86,34 @@
         </div>
         
         
-        <div class="post-meta">
-            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
-                    阅读</span></span>
-        </div>
-        
         
         <div class="post-content">
-            <h3 id="为-ubuntu-1604-安装-410--新内核">为 Ubuntu 16.04 安装 4.10 + 新内核</h3>
-<p>BBR 只能配合 Linux Kernel 4.10 以上内核才能使用
-推荐使用 HWE 版本的内核，它就在官方源里。HWE，即: HareWare Enablement，是专门为在老的系统上支持新的硬件而推出的内核。</p>
-<p>不推荐手动下载安装的新内核，无法保证后续能得到及时的安全更新。</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 像安装其他软件包一样在 Ubuntu 16.04 里安装HWE</span>
+            <p>BBR 只能配合 Linux Kernel 4.10 以上内核才能使用</p>
+<h2 id="为-ubuntu-1604-安装-410--新内核">为 Ubuntu 16.04 安装 4.10 + 新内核</h2>
+<p>推荐使用 HWE 版本的内核，它就在官方源里。<br>
+HWE，即: HareWare Enablement，是专门为在老的系统上支持新的硬件而推出的内核。<br>
+不推荐手动下载安装的新内核，无法保证后续能得到及时的安全更新。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># 像安装其他软件包一样在 Ubuntu 16.04 里安装HWE</span>
 sudo apt-get install linux-generic-hwe-16.04
 
-<span style="color:#6272a4"># sudo reboot 重启vps应用内核更新</span>
+<span style="color:#998;font-style:italic"># sudo reboot 重启vps应用内核更新</span>
 uname -r
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="启用bbr">启用bbr</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 装载bbr模块</span>
+</code></pre></div><h2 id="启用bbr">启用bbr</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># 装载bbr模块</span>
 modprobe tcp_bbr
-<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;tcp_bbr&#34;</span> | tee --append /etc/modules-load.d/modules.conf
+<span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;tcp_bbr&#34;</span> | tee --append /etc/modules-load.d/modules.conf
 
-<span style="color:#6272a4"># 查看当前 Linux 内核可以使用的 TCP 拥堵控制算法 | 验证是否装载成功</span>
+<span style="color:#998;font-style:italic"># 查看当前 Linux 内核可以使用的 TCP 拥堵控制算法 | 验证是否装载成功</span>
 sysctl net.ipv4.tcp_available_congestion_control
 
-<span style="color:#6272a4"># 正式启用bbr</span>
-<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;net.core.default_qdisc=fq&#34;</span> | tee --append /etc/sysctl.conf
-<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;net.ipv4.tcp_congestion_control=bbr&#34;</span> | tee --append /etc/sysctl.conf
+<span style="color:#998;font-style:italic"># 正式启用bbr</span>
+<span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;net.core.default_qdisc=fq&#34;</span> | tee --append /etc/sysctl.conf
+<span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;net.ipv4.tcp_congestion_control=bbr&#34;</span> | tee --append /etc/sysctl.conf
 sysctl -p
 
-<span style="color:#6272a4"># 确认当前使用的控制算法为bbr</span>
+<span style="color:#998;font-style:italic"># 确认当前使用的控制算法为bbr</span>
 sysctl net.ipv4.tcp_congestion_control
-</code></pre></td></tr></table>
-</div>
-</div>
+</code></pre></div>
         </div>
 
         
@@ -169,6 +134,8 @@ sysctl net.ipv4.tcp_congestion_control
     <h2>See Also</h2>
     <ul class="listing">
         
+        <li><a href="/2020/02/01/linux-tips.html">linux tips</a></li>
+        
         <li><a href="/2019/08/26/deploy-elasticsearch-offline.html">离线环境下利用 docker 部署 Elasticsearch 集群</a></li>
         
         <li><a href="/2019/06/17/go-proverbs.html">Go Proverbs</a></li>
@@ -176,8 +143,6 @@ sysctl net.ipv4.tcp_congestion_control
         <li><a href="/about/">关于</a></li>
         
         <li><a href="/archives/">归档</a></li>
-        
-        <li><a href="/search/">搜索</a></li>
         
     </ul>
 </div>
@@ -231,11 +196,7 @@ sysctl net.ipv4.tcp_congestion_control
 <ul class="widget-list">
     
     <li>
-        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps安全指北">vps安全指北</a>
-    </li>
-    
-    <li>
-        <a href="https://flygar.org/2020/02/01/linux-tips.html" title="linux tips">linux tips</a>
+        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps 安全指北">vps 安全指北</a>
     </li>
     
     <li>
@@ -248,6 +209,10 @@ sysctl net.ipv4.tcp_congestion_control
     
     <li>
         <a href="https://flygar.org/2019/06/17/go-proverbs.html" title="Go Proverbs">Go Proverbs</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/02/01/linux-tips.html" title="linux tips">linux tips</a>
     </li>
     
 </ul>
@@ -355,8 +320,6 @@ sysctl net.ipv4.tcp_congestion_control
 <script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
 
 
-
-    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 

@@ -86,11 +86,6 @@
         </div>
         
         
-        <div class="post-meta">
-            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
-                    阅读</span></span>
-        </div>
-        
         
         <div class="post-content">
             <p>在3台CentOS上离线安装docker并通过docker-compose部署Elasticsearch集群</p>
@@ -106,418 +101,181 @@
 <p>createrepo 命令用于创建yum源（软件仓库），即为存放于本地特定位置的众多rpm包建立索引，描述各包所需依赖信息，并形成元数据</p>
 </blockquote>
 <p>在线机器执行</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># 创建离线包存放目录,并赋予读写权限</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># 创建离线包存放目录,并赋予读写权限</span>
 sudo mkdir -p /home/docker/local 
-sudo chmod -R <span style="color:#bd93f9">777</span> /home/docker/local
+sudo chmod -R <span style="color:#099">777</span> /home/docker/local
 
-<span style="color:#6272a4"># 仅下载需要用到的离线包</span>
-sudo yum install --downloadonly --downloaddir<span style="color:#ff79c6">=</span>/home/docker/local <span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  yum-utils <span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  device-mapper-persistent-data <span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  lvm2 <span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  createrepo
+<span style="color:#998;font-style:italic"># 仅下载需要用到的离线包</span>
+sudo yum install --downloadonly --downloaddir<span style="color:#000;font-weight:bold">=</span>/home/docker/local <span style="color:#d14">\
+</span><span style="color:#d14"></span>  yum-utils <span style="color:#d14">\
+</span><span style="color:#d14"></span>  device-mapper-persistent-data <span style="color:#d14">\
+</span><span style="color:#d14"></span>  lvm2 <span style="color:#d14">\
+</span><span style="color:#d14"></span>  createrepo
 
-<span style="color:#6272a4"># Install using the repository and createrepo</span>
-sudo yum install -y <span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  yum-utils <span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  device-mapper-persistent-data <span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  lvm2 <span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  createrepo
+<span style="color:#998;font-style:italic"># Install using the repository and createrepo</span>
+sudo yum install -y <span style="color:#d14">\
+</span><span style="color:#d14"></span>  yum-utils <span style="color:#d14">\
+</span><span style="color:#d14"></span>  device-mapper-persistent-data <span style="color:#d14">\
+</span><span style="color:#d14"></span>  lvm2 <span style="color:#d14">\
+</span><span style="color:#d14"></span>  createrepo
 
-<span style="color:#6272a4"># set up the stable repository.</span>
-sudo yum-config-manager <span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>    --add-repo <span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>    https://download.docker.com/linux/centos/docker-ce.repo
+<span style="color:#998;font-style:italic"># set up the stable repository.</span>
+sudo yum-config-manager <span style="color:#d14">\
+</span><span style="color:#d14"></span>    --add-repo <span style="color:#d14">\
+</span><span style="color:#d14"></span>    https://download.docker.com/linux/centos/docker-ce.repo
 
-<span style="color:#6272a4"># cache data to the /var/cache/yum directory</span>
+<span style="color:#998;font-style:italic"># cache data to the /var/cache/yum directory</span>
 sudo yum clean all
 sudo yum makecache
 
-<span style="color:#6272a4"># 下载离线docker-ce包</span>
-sudo yumdownloader --resolve --destdir<span style="color:#ff79c6">=</span>/home/docker/local <span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  docker-ce <span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  docker-ce-cli <span style="color:#f1fa8c">\
-</span><span style="color:#f1fa8c"></span>  containerd.io
+<span style="color:#998;font-style:italic"># 下载离线docker-ce包</span>
+sudo yumdownloader --resolve --destdir<span style="color:#000;font-weight:bold">=</span>/home/docker/local <span style="color:#d14">\
+</span><span style="color:#d14"></span>  docker-ce <span style="color:#d14">\
+</span><span style="color:#d14"></span>  docker-ce-cli <span style="color:#d14">\
+</span><span style="color:#d14"></span>  containerd.io
 
-<span style="color:#6272a4"># 初始化安装源repodata库</span>
+<span style="color:#998;font-style:italic"># 初始化安装源repodata库</span>
 createrepo /home/docker/local 
-<span style="color:#6272a4"># createrepo --update /home/docker/local</span>
+<span style="color:#998;font-style:italic"># createrepo --update /home/docker/local</span>
 
-<span style="color:#6272a4"># 打包导出安装源,docker-local.tar.gz这个文件，就是我们制作好的离线安装源。其他CentOS下的安装源一样的方法制作</span>
-<span style="color:#8be9fd;font-style:italic">cd</span> /home/docker/local
+<span style="color:#998;font-style:italic"># 打包导出安装源,docker-local.tar.gz这个文件，就是我们制作好的离线安装源。其他CentOS下的安装源一样的方法制作</span>
+<span style="color:#0086b3">cd</span> /home/docker/local
 tar -zcvf docker-local.tar.gz *
 
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="12-安装并验证">1.2 安装并验证</h3>
+</code></pre></div><h3 id="12-安装并验证">1.2 安装并验证</h3>
 <p>每台离线机器上执行</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># 创建目录上传 docker-local.tar.gz 并解压</span> 
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># 创建目录上传 docker-local.tar.gz 并解压</span> 
 mkdir -p /home/docker/local
 tar -zxvf docker-local.tar.gz -C /home/docker/local
-<span style="color:#8be9fd;font-style:italic">cd</span> /home/docker/local
+<span style="color:#0086b3">cd</span> /home/docker/local
 
-<span style="color:#6272a4"># 安装createrepo; 如果报错需要依赖则安装,都在/home/docker/local/目录下</span>
-<span style="color:#6272a4"># rpm -ivh deltarpm-3.6-3.el7.x86_64.rpm</span>
-<span style="color:#6272a4"># rpm -ivh libxml2-python-2.9.1-6.el7_2.3.x86_64.rpm</span>
-<span style="color:#6272a4"># rpm -ivh python-deltarpm-3.6-3.el7.x86_64.rpm</span>
+<span style="color:#998;font-style:italic"># 安装createrepo; 如果报错需要依赖则安装,都在/home/docker/local/目录下</span>
+<span style="color:#998;font-style:italic"># rpm -ivh deltarpm-3.6-3.el7.x86_64.rpm</span>
+<span style="color:#998;font-style:italic"># rpm -ivh libxml2-python-2.9.1-6.el7_2.3.x86_64.rpm</span>
+<span style="color:#998;font-style:italic"># rpm -ivh python-deltarpm-3.6-3.el7.x86_64.rpm</span>
 rpm -ivh createrepo-0.9.9-28.el7.noarch.rpm
 
-<span style="color:#6272a4"># Backup repository folder.</span>
+<span style="color:#998;font-style:italic"># Backup repository folder.</span>
 cp -rv /etc/yum.repos.d /etc/yum.repos.d-bak
-<span style="color:#6272a4"># Delete all online repository files.</span>
+<span style="color:#998;font-style:italic"># Delete all online repository files.</span>
 rm -rf /etc/yum.repos.d/*
-<span style="color:#6272a4"># Create locate repository file.</span>
-<span style="color:#6272a4"># enabled=1 开启该仓库; gpgcheck=0 不做gpg检查;</span>
-cat <span style="color:#f1fa8c">&lt;&lt; EOF &gt; /etc/yum.repos.d/docker-ce-local.repo
-</span><span style="color:#f1fa8c">[docker]
-</span><span style="color:#f1fa8c">name=docker local
-</span><span style="color:#f1fa8c">baseurl=file:///home/docker/local/
-</span><span style="color:#f1fa8c">enabled=1
-</span><span style="color:#f1fa8c">gpgcheck=0
-</span><span style="color:#f1fa8c">EOF</span>
+<span style="color:#998;font-style:italic"># Create locate repository file.</span>
+<span style="color:#998;font-style:italic"># enabled=1 开启该仓库; gpgcheck=0 不做gpg检查;</span>
+cat <span style="color:#d14">&lt;&lt; EOF &gt; /etc/yum.repos.d/docker-ce-local.repo
+</span><span style="color:#d14">[docker]
+</span><span style="color:#d14">name=docker local
+</span><span style="color:#d14">baseurl=file:///home/docker/local/
+</span><span style="color:#d14">enabled=1
+</span><span style="color:#d14">gpgcheck=0
+</span><span style="color:#d14">EOF</span>
 
-<span style="color:#6272a4"># Now update the local repository.</span>
+<span style="color:#998;font-style:italic"># Now update the local repository.</span>
 createrepo /home/docker/local/
-<span style="color:#6272a4"># Now enable the local repository.</span>
+<span style="color:#998;font-style:italic"># Now enable the local repository.</span>
 yum clean all
 yum makecache
 
-<span style="color:#6272a4"># List repository</span>
+<span style="color:#998;font-style:italic"># List repository</span>
 yum repolist
 
-<span style="color:#6272a4"># 安装docekr-ce, 如果之前装过docker，则执行 `yum update` 来更新docker</span>
+<span style="color:#998;font-style:italic"># 安装docekr-ce, 如果之前装过docker，则执行 `yum update` 来更新docker</span>
 yum install -y docker-ce docker-ce-cli containerd.io
 
-<span style="color:#6272a4"># ----------------------------------------------</span>
-<span style="color:#6272a4"># 检查是否安装成功</span>
+<span style="color:#998;font-style:italic"># ----------------------------------------------</span>
+<span style="color:#998;font-style:italic"># 检查是否安装成功</span>
 systemctl start docker
 docker version
 
-<span style="color:#6272a4"># 还原repo修改</span>
+<span style="color:#998;font-style:italic"># 还原repo修改</span>
 rm -rf /etc/yum.repos.d
 mv /etc/yum.repos.d-bak /etc/yum.repos.d
 
-<span style="color:#6272a4"># 创建docker用户组</span>
+<span style="color:#998;font-style:italic"># 创建docker用户组</span>
 groupadd docker
-<span style="color:#6272a4"># 将指定用户（比如ittest）加入docker用户组</span>
+<span style="color:#998;font-style:italic"># 将指定用户（比如ittest）加入docker用户组</span>
 usermod -aG docker  ittest
-<span style="color:#6272a4"># 重启docker</span>
+<span style="color:#998;font-style:italic"># 重启docker</span>
 systemctl restart docker
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="2-加载elasticsearch和kibana镜像">2. 加载elasticsearch和kibana镜像</h2>
+</code></pre></div><h2 id="2-加载elasticsearch和kibana镜像">2. 加载elasticsearch和kibana镜像</h2>
 <p>拉取官方es镜像或通过dockerfile构建es镜像</p>
 <p>在线机器执行</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># 在线机器获取官方es和kibana镜像</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># 在线机器获取官方es和kibana镜像</span>
 docker pull elasticsearch:6.7.0
 docker pull kibana:6.7.0
 
-<span style="color:#6272a4"># 查看镜像</span>
+<span style="color:#998;font-style:italic"># 查看镜像</span>
 docker images
 
-<span style="color:#6272a4"># 保存至本地,镜像文件必须tar.gz结尾</span>
+<span style="color:#998;font-style:italic"># 保存至本地,镜像文件必须tar.gz结尾</span>
 docker save elasticsearch:6.7.0 &gt; elasticsearch670.tar.gz
 docker save kibana:6.7.0 &gt; kibana670.tar.gz
 
-<span style="color:#6272a4"># 下载docker-compose</span>
-sudo curl -L <span style="color:#f1fa8c">&#34;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-</span><span style="color:#ff79c6">$(</span>uname -s<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">-</span><span style="color:#ff79c6">$(</span>uname -m<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span> -o /usr/local/bin/docker-compose
+<span style="color:#998;font-style:italic"># 下载docker-compose</span>
+sudo curl -L <span style="color:#d14">&#34;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-</span><span style="color:#000;font-weight:bold">$(</span>uname -s<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">-</span><span style="color:#000;font-weight:bold">$(</span>uname -m<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">&#34;</span> -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-</code></pre></td></tr></table>
-</div>
-</div><p>每台离线机器执行</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># 将elasticsearch670.tar.gz, kibana670.tar.gz镜像上传至离线机器并load镜像</span>
+</code></pre></div><p>每台离线机器执行</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># 将elasticsearch670.tar.gz, kibana670.tar.gz镜像上传至离线机器并load镜像</span>
 docker load &lt; elasticsearch670.tar.gz
 docker load &lt; kibana670.tar.gzd
 
-<span style="color:#6272a4"># 打tag</span>
-<span style="color:#6272a4"># docker tag a19f604cdxxx elasticsearch:6.7.0</span>
-<span style="color:#6272a4"># docker tag a19f604cdxxx kibana:6.7.0</span>
+<span style="color:#998;font-style:italic"># 打tag</span>
+<span style="color:#998;font-style:italic"># docker tag a19f604cdxxx elasticsearch:6.7.0</span>
+<span style="color:#998;font-style:italic"># docker tag a19f604cdxxx kibana:6.7.0</span>
 
-<span style="color:#6272a4"># 查看镜像</span>
+<span style="color:#998;font-style:italic"># 查看镜像</span>
 docker images ls
 
-<span style="color:#6272a4"># The vm.max_map_count kernel setting needs to be set to at least 262144 for production use.</span>
-<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;vm.max_map_count=262144&#39;</span> &gt;&gt; /etc/sysctl.conf <span style="color:#ff79c6">&amp;&amp;</span> sysctl -p
+<span style="color:#998;font-style:italic"># The vm.max_map_count kernel setting needs to be set to at least 262144 for production use.</span>
+<span style="color:#0086b3">echo</span> <span style="color:#d14">&#39;vm.max_map_count=262144&#39;</span> &gt;&gt; /etc/sysctl.conf <span style="color:#000;font-weight:bold">&amp;&amp;</span> sysctl -p
 
-<span style="color:#6272a4"># 安装docker-compose</span>
-<span style="color:#6272a4"># 将docker-compose上传为/usr/local/bin/docker-compose文件，检查是否可用</span>
+<span style="color:#998;font-style:italic"># 安装docker-compose</span>
+<span style="color:#998;font-style:italic"># 将docker-compose上传为/usr/local/bin/docker-compose文件，检查是否可用</span>
 docker-compose --version
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="3-拉起container">3. 拉起container</h2>
+</code></pre></div><h2 id="3-拉起container">3. 拉起container</h2>
 <h3 id="31-配置">3.1 配置</h3>
 <p>到每台离线机器上创建指定目录下的 <code>es.yaml</code> , 并修改 <code>network.publish_host</code> 和 <code>discovery.zen.ping.unicast.hosts</code> 的值为设置了 <code>node.master: true</code> node 的IP:9300端口。</p>
 <h4 id="311-离线机器node-01">3.1.1 离线机器node-01</h4>
 <p>node1 机器上执行 <code>vim /home/soft/elasticsearch/config/elasticsearch.yml</code>, 修改IP</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># node1</span> 
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># node1</span> 
 cluster.name: elasticsearch-cluster
 node.name: es-node-01
 network.bind_host: 0.0.0.0
 network.publish_host: 192.168.0.126
-http.port: <span style="color:#bd93f9">9200</span>
-transport.tcp.port: <span style="color:#bd93f9">9300</span>
-http.cors.enabled: <span style="color:#8be9fd;font-style:italic">true</span>
-http.cors.allow-origin: <span style="color:#f1fa8c">&#34;*&#34;</span>
-node.master: <span style="color:#8be9fd;font-style:italic">true</span> 
-node.data: <span style="color:#8be9fd;font-style:italic">true</span>  
-discovery.zen.ping.unicast.hosts: <span style="color:#ff79c6">[</span><span style="color:#f1fa8c">&#34;192.168.0.126:9300&#34;</span>,<span style="color:#f1fa8c">&#34;192.168.0.127:9300&#34;</span>,<span style="color:#f1fa8c">&#34;192.168.0.128:9300&#34;</span><span style="color:#ff79c6">]</span>
-discovery.zen.minimum_master_nodes: <span style="color:#bd93f9">2</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>data目录映射: 数据持久化</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p /home/soft/elasticsearch/data
+http.port: <span style="color:#099">9200</span>
+transport.tcp.port: <span style="color:#099">9300</span>
+http.cors.enabled: <span style="color:#0086b3">true</span>
+http.cors.allow-origin: <span style="color:#d14">&#34;*&#34;</span>
+node.master: <span style="color:#0086b3">true</span> 
+node.data: <span style="color:#0086b3">true</span>  
+discovery.zen.ping.unicast.hosts: <span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#34;192.168.0.126:9300&#34;</span>,<span style="color:#d14">&#34;192.168.0.127:9300&#34;</span>,<span style="color:#d14">&#34;192.168.0.128:9300&#34;</span><span style="color:#000;font-weight:bold">]</span>
+discovery.zen.minimum_master_nodes: <span style="color:#099">2</span>
+</code></pre></div><p>data目录映射: 数据持久化</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p /home/soft/elasticsearch/data
 chmod g+rwx /home/soft/elasticsearch/data
 chown 1000:1000 /home/soft/elasticsearch/data
-</code></pre></td></tr></table>
-</div>
-</div><p>插件目录映射: 1. 避免进入docker安装插件 2. 预防 docker recreate</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir -p /home/soft/elasticsearch/plugins
-</code></pre></td></tr></table>
-</div>
-</div><p>安装 kibana</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># mkdir -p /home/soft/Kibana/config/</span>
-cat <span style="color:#f1fa8c">&lt;&lt;EOF &gt; /home/soft/Kibana/config/kibana.yml
-</span><span style="color:#f1fa8c">server.host: 0.0.0.0
-</span><span style="color:#f1fa8c">elasticsearch.hosts:
-</span><span style="color:#f1fa8c">  - http://elasticsearch:9200
-</span><span style="color:#f1fa8c">xpack.monitoring.enabled: false
-</span><span style="color:#f1fa8c">EOF</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>通过 <code>docker-compose</code> 拉起container</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># mkdir -p /home/soft/docker-compose</span>
-<span style="color:#6272a4"># cd /home/soft/docker-compose &amp;&amp; vim /home/soft/docker-compose/docker-compose.yml</span>
+</code></pre></div><p>插件目录映射: 1. 避免进入docker安装插件 2. 预防 docker recreate</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir -p /home/soft/elasticsearch/plugins
+</code></pre></div><p>安装 kibana</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># mkdir -p /home/soft/Kibana/config/</span>
+cat <span style="color:#d14">&lt;&lt;EOF &gt; /home/soft/Kibana/config/kibana.yml
+</span><span style="color:#d14">server.host: 0.0.0.0
+</span><span style="color:#d14">elasticsearch.hosts:
+</span><span style="color:#d14">  - http://elasticsearch:9200
+</span><span style="color:#d14">xpack.monitoring.enabled: false
+</span><span style="color:#d14">EOF</span>
+</code></pre></div><p>通过 <code>docker-compose</code> 拉起container</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># mkdir -p /home/soft/docker-compose</span>
+<span style="color:#998;font-style:italic"># cd /home/soft/docker-compose &amp;&amp; vim /home/soft/docker-compose/docker-compose.yml</span>
 
-<span style="color:#6272a4"># 内容如下</span>
-version: <span style="color:#f1fa8c">&#34;2.2&#34;</span>
+<span style="color:#998;font-style:italic"># 内容如下</span>
+version: <span style="color:#d14">&#34;2.2&#34;</span>
 services:
   elasticsearch:
     image: elasticsearch:6.7.0
     container_name: es-01
     environment:
-      - bootstrap.memory_lock<span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">true</span>
-      - <span style="color:#f1fa8c">&#34;ES_JAVA_OPTS=-Xms4g -Xmx4g&#34;</span>
+      - bootstrap.memory_lock<span style="color:#000;font-weight:bold">=</span><span style="color:#0086b3">true</span>
+      - <span style="color:#d14">&#34;ES_JAVA_OPTS=-Xms4g -Xmx4g&#34;</span>
     ulimits:
       memlock:
         soft: -1
@@ -543,102 +301,40 @@ services:
 
 networks:
   esnet:
-</code></pre></td></tr></table>
-</div>
-</div><p>执行 <code>docker-compose up -d</code> 拉起 container，可以看到es和kibana容器。</p>
+</code></pre></div><p>执行 <code>docker-compose up -d</code> 拉起 container，可以看到es和kibana容器。</p>
 <p>执行 <code>docker ps</code> 容器正常运行不退出。</p>
 <h4 id="312-离线机器node-02">3.1.2 离线机器node-02</h4>
 <p>node2 机器上执行 <code>vim /home/soft/elasticsearch/config/elasticsearch.yml</code> , 修改IP</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># node2</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># node2</span>
 cluster.name: elasticsearch-cluster
 node.name: es-node-02
 network.bind_host: 0.0.0.0
 network.publish_host: 192.168.0.127
-http.port: <span style="color:#bd93f9">9200</span>
-transport.tcp.port: <span style="color:#bd93f9">9300</span>
-http.cors.enabled: <span style="color:#8be9fd;font-style:italic">true</span>
-http.cors.allow-origin: <span style="color:#f1fa8c">&#34;*&#34;</span>
-node.master: <span style="color:#8be9fd;font-style:italic">true</span> 
-node.data: <span style="color:#8be9fd;font-style:italic">true</span>  
-discovery.zen.ping.unicast.hosts: <span style="color:#ff79c6">[</span><span style="color:#f1fa8c">&#34;192.168.0.126:9300&#34;</span>,<span style="color:#f1fa8c">&#34;192.168.0.127:9300&#34;</span>,<span style="color:#f1fa8c">&#34;192.168.0.128:9300&#34;</span><span style="color:#ff79c6">]</span>
-discovery.zen.minimum_master_nodes: <span style="color:#bd93f9">2</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>数据目录映射, 插件目录映射</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p /home/soft/elasticsearch/<span style="color:#ff79c6">{</span>data,plugins<span style="color:#ff79c6">}</span>
+http.port: <span style="color:#099">9200</span>
+transport.tcp.port: <span style="color:#099">9300</span>
+http.cors.enabled: <span style="color:#0086b3">true</span>
+http.cors.allow-origin: <span style="color:#d14">&#34;*&#34;</span>
+node.master: <span style="color:#0086b3">true</span> 
+node.data: <span style="color:#0086b3">true</span>  
+discovery.zen.ping.unicast.hosts: <span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#34;192.168.0.126:9300&#34;</span>,<span style="color:#d14">&#34;192.168.0.127:9300&#34;</span>,<span style="color:#d14">&#34;192.168.0.128:9300&#34;</span><span style="color:#000;font-weight:bold">]</span>
+discovery.zen.minimum_master_nodes: <span style="color:#099">2</span>
+</code></pre></div><p>数据目录映射, 插件目录映射</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p /home/soft/elasticsearch/<span style="color:#000;font-weight:bold">{</span>data,plugins<span style="color:#000;font-weight:bold">}</span>
 chmod g+rwx /home/soft/elasticsearch/data
 chown 1000:1000 /home/soft/elasticsearch/data
-</code></pre></td></tr></table>
-</div>
-</div><p>通过 <code>docker-compose</code> 拉起container</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># mkdir -p /home/soft/docker-compose</span>
-<span style="color:#6272a4"># cd /home/soft/docker-compose &amp;&amp; vim /home/soft/docker-compose/docker-compose.yml</span>
+</code></pre></div><p>通过 <code>docker-compose</code> 拉起container</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># mkdir -p /home/soft/docker-compose</span>
+<span style="color:#998;font-style:italic"># cd /home/soft/docker-compose &amp;&amp; vim /home/soft/docker-compose/docker-compose.yml</span>
 
-<span style="color:#6272a4"># 内容如下</span>
-version: <span style="color:#f1fa8c">&#34;2.2&#34;</span>
+<span style="color:#998;font-style:italic"># 内容如下</span>
+version: <span style="color:#d14">&#34;2.2&#34;</span>
 services:
   elasticsearch:
     image: elasticsearch:6.7.0
     container_name: es-02
     environment:
-      - bootstrap.memory_lock<span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">true</span>
-      - <span style="color:#f1fa8c">&#34;ES_JAVA_OPTS=-Xms4g -Xmx4g&#34;</span>
+      - bootstrap.memory_lock<span style="color:#000;font-weight:bold">=</span><span style="color:#0086b3">true</span>
+      - <span style="color:#d14">&#34;ES_JAVA_OPTS=-Xms4g -Xmx4g&#34;</span>
     ulimits:
       memlock:
         soft: -1
@@ -655,102 +351,40 @@ services:
 
 networks:
   esnet:
-</code></pre></td></tr></table>
-</div>
-</div><p>执行 <code>docker-compose up -d</code> 拉起 container，可以看到一个es容器.</p>
+</code></pre></div><p>执行 <code>docker-compose up -d</code> 拉起 container，可以看到一个es容器.</p>
 <p>执行 <code>docker ps</code> 容器正常运行不退出。</p>
 <h4 id="313-离线机器node-03">3.1.3 离线机器node-03</h4>
 <p>node3 机器上执行 <code>vim /home/soft/elasticsearch/config/elasticsearch.yml</code> , 修改IP</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># node3</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># node3</span>
 cluster.name: elasticsearch-cluster
 node.name: es-node-03
 network.bind_host: 0.0.0.0
 network.publish_host: 192.168.0.128
-http.port: <span style="color:#bd93f9">9200</span>
-transport.tcp.port: <span style="color:#bd93f9">9300</span>
-http.cors.enabled: <span style="color:#8be9fd;font-style:italic">true</span>
-http.cors.allow-origin: <span style="color:#f1fa8c">&#34;*&#34;</span>
-node.master: <span style="color:#8be9fd;font-style:italic">true</span> 
-node.data: <span style="color:#8be9fd;font-style:italic">true</span>  
-discovery.zen.ping.unicast.hosts: <span style="color:#ff79c6">[</span><span style="color:#f1fa8c">&#34;192.168.0.126:9300&#34;</span>,<span style="color:#f1fa8c">&#34;192.168.0.127:9300&#34;</span>,<span style="color:#f1fa8c">&#34;192.168.0.128:9300&#34;</span><span style="color:#ff79c6">]</span>
-discovery.zen.minimum_master_nodes: <span style="color:#bd93f9">2</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>数据目录映射,插件目录映射</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p /home/soft/elasticsearch/<span style="color:#ff79c6">{</span>data,plugins<span style="color:#ff79c6">}</span>
+http.port: <span style="color:#099">9200</span>
+transport.tcp.port: <span style="color:#099">9300</span>
+http.cors.enabled: <span style="color:#0086b3">true</span>
+http.cors.allow-origin: <span style="color:#d14">&#34;*&#34;</span>
+node.master: <span style="color:#0086b3">true</span> 
+node.data: <span style="color:#0086b3">true</span>  
+discovery.zen.ping.unicast.hosts: <span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#34;192.168.0.126:9300&#34;</span>,<span style="color:#d14">&#34;192.168.0.127:9300&#34;</span>,<span style="color:#d14">&#34;192.168.0.128:9300&#34;</span><span style="color:#000;font-weight:bold">]</span>
+discovery.zen.minimum_master_nodes: <span style="color:#099">2</span>
+</code></pre></div><p>数据目录映射,插件目录映射</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p /home/soft/elasticsearch/<span style="color:#000;font-weight:bold">{</span>data,plugins<span style="color:#000;font-weight:bold">}</span>
 chmod g+rwx /home/soft/elasticsearch/data
 chown 1000:1000 /home/soft/elasticsearch/data
-</code></pre></td></tr></table>
-</div>
-</div><p>通过 <code>docker-compose</code> 拉起container</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># mkdir -p /home/soft/docker-compose</span>
-<span style="color:#6272a4"># cd /home/soft/docker-compose &amp;&amp; vim /home/soft/docker-compose/docker-compose.yml</span>
+</code></pre></div><p>通过 <code>docker-compose</code> 拉起container</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># mkdir -p /home/soft/docker-compose</span>
+<span style="color:#998;font-style:italic"># cd /home/soft/docker-compose &amp;&amp; vim /home/soft/docker-compose/docker-compose.yml</span>
 
-<span style="color:#6272a4"># 内容如下</span>
-version: <span style="color:#f1fa8c">&#34;2.2&#34;</span>
+<span style="color:#998;font-style:italic"># 内容如下</span>
+version: <span style="color:#d14">&#34;2.2&#34;</span>
 services:
   elasticsearch:
     image: elasticsearch:6.7.0
     container_name: es-03
     environment:
-      - bootstrap.memory_lock<span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">true</span>
-      - <span style="color:#f1fa8c">&#34;ES_JAVA_OPTS=-Xms4g -Xmx4g&#34;</span>
+      - bootstrap.memory_lock<span style="color:#000;font-weight:bold">=</span><span style="color:#0086b3">true</span>
+      - <span style="color:#d14">&#34;ES_JAVA_OPTS=-Xms4g -Xmx4g&#34;</span>
     ulimits:
       memlock:
         soft: -1
@@ -767,95 +401,45 @@ services:
 
 networks:
   esnet:
-</code></pre></td></tr></table>
-</div>
-</div><p>执行 <code>docker-compose up -d</code> 拉起 container，可以看到一个es容器.</p>
+</code></pre></div><p>执行 <code>docker-compose up -d</code> 拉起 container，可以看到一个es容器.</p>
 <p>执行 <code>docker ps</code> 容器正常运行不退出。</p>
 <h3 id="32-集群验证">3.2 集群验证</h3>
 <p>任意一台机器上执行</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># 节点数: 3个</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># 节点数: 3个</span>
 curl localhost:9200/_cat/nodes
 
-<span style="color:#6272a4"># 健康: green</span>
+<span style="color:#998;font-style:italic"># 健康: green</span>
 curl localhost:9200/_cat/health
 
-<span style="color:#6272a4"># 查看存储</span> 
+<span style="color:#998;font-style:italic"># 查看存储</span> 
 curl localhost:9200/_cat/allocation?v
 
-<span style="color:#6272a4"># node-01机器上执行, 返回 302 found 正常</span>
+<span style="color:#998;font-style:italic"># node-01机器上执行, 返回 302 found 正常</span>
 curl -I localhost:5601
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="4-安装插件">4. 安装插件</h2>
+</code></pre></div><h2 id="4-安装插件">4. 安装插件</h2>
 <p>以安装ik分词插件为例，每台离线机器上操作</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># 解压到指定目录</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># 解压到指定目录</span>
 tar -zxvf plugins-ik.tgz -C /home/soft/elasticsearch/plugins/
 ll /home/soft/elasticsearch/plugins/ 
 
-<span style="color:#6272a4"># 拷贝配置做映射, 1. 便于修改 2. 让es识别解压后的插件</span>
+<span style="color:#998;font-style:italic"># 拷贝配置做映射, 1. 便于修改 2. 让es识别解压后的插件</span>
 mkdir /home/soft/elasticsearch/config/plugins-config
 mv /home/soft/elasticsearch/plugins/analysis-ik/config/ /home/soft/elasticsearch/config/plugins-config/analysis-ik
 
-<span style="color:#6272a4"># 新增映射</span>
+<span style="color:#998;font-style:italic"># 新增映射</span>
 vim /home/soft/docker-compose/docker-compose.yml
-<span style="color:#6272a4"># /home/soft/elasticsearch/config/plugins-config/analysis-ik:/usr/share/elasticsearch/config/analysis-ik</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img src="https://i.loli.net/2019/08/28/gmtLnsiAkTMyUfZ.png" alt="image.png"></p>
+<span style="color:#998;font-style:italic"># /home/soft/elasticsearch/config/plugins-config/analysis-ik:/usr/share/elasticsearch/config/analysis-ik</span>
+</code></pre></div><p><img src="https://i.loli.net/2019/08/28/gmtLnsiAkTMyUfZ.png" alt="image.png"></p>
 <p>重建container</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># 重启docker</span>
-docker restart <span style="color:#ff79c6">$(</span>docker ps -qa<span style="color:#ff79c6">)</span>
-<span style="color:#8be9fd;font-style:italic">cd</span> /home/soft/docker-compose/
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># 重启docker</span>
+docker restart <span style="color:#000;font-weight:bold">$(</span>docker ps -qa<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#0086b3">cd</span> /home/soft/docker-compose/
 docker-compose up -d
 
 
-<span style="color:#6272a4"># 验证这个节点插件是否安装</span>
+<span style="color:#998;font-style:italic"># 验证这个节点插件是否安装</span>
 curl localhost:9200/_cat/plugins
-</code></pre></td></tr></table>
-</div>
-</div><p><img src="https://i.loli.net/2019/08/28/g8Z3xKiMhoqjHNW.png" alt="image.png"></p>
+</code></pre></div><p><img src="https://i.loli.net/2019/08/28/g8Z3xKiMhoqjHNW.png" alt="image.png"></p>
 <p>参考连接：</p>
 <p><a href="https://docs.docker.com/install/linux/docker-ce/centos/">https://docs.docker.com/install/linux/docker-ce/centos/</a></p>
 <p><a href="https://blog.csdn.net/hello_junz/article/details/79882602">https://blog.csdn.net/hello_junz/article/details/79882602</a></p>
@@ -878,6 +462,8 @@ curl localhost:9200/_cat/plugins
 <div class="post-archive">
     <h2>See Also</h2>
     <ul class="listing">
+        
+        <li><a href="/2020/02/01/linux-tips.html">linux tips</a></li>
         
         <li><a href="/2019/06/17/go-proverbs.html">Go Proverbs</a></li>
         
@@ -943,11 +529,7 @@ curl localhost:9200/_cat/plugins
 <ul class="widget-list">
     
     <li>
-        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps安全指北">vps安全指北</a>
-    </li>
-    
-    <li>
-        <a href="https://flygar.org/2020/02/01/linux-tips.html" title="linux tips">linux tips</a>
+        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps 安全指北">vps 安全指北</a>
     </li>
     
     <li>
@@ -960,6 +542,10 @@ curl localhost:9200/_cat/plugins
     
     <li>
         <a href="https://flygar.org/2019/06/17/go-proverbs.html" title="Go Proverbs">Go Proverbs</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/02/01/linux-tips.html" title="linux tips">linux tips</a>
     </li>
     
 </ul>
@@ -1067,8 +653,6 @@ curl localhost:9200/_cat/plugins
 <script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
 
 
-
-    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 

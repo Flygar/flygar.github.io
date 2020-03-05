@@ -10,10 +10,10 @@
     <meta property="og:title" content="linux tips - Flygar&#39;s Blog">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2020-02-01T20:32:34&#43;08:00'>
+    <meta property="article:published_time" content='2019-05-01T20:32:34&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2020-02-01T20:32:34&#43;08:00'>
+    <meta property="article:modified_time" content='2019-05-01T20:32:34&#43;08:00'>
         
     <meta name="Keywords" content="golang,go语言,go,linux">
     <meta name="description" content="linux tips">
@@ -75,7 +75,7 @@
             <h1 class="post-title">linux tips</h1>
         </header>
         <date class="post-meta meta-date">
-            2020年2月1日
+            2019年5月1日
         </date>
         
         <div class="post-meta">
@@ -86,177 +86,77 @@
         </div>
         
         
-        <div class="post-meta">
-            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
-                    阅读</span></span>
-        </div>
-        
         
         <div class="post-content">
-            <h2 id="tools">tools</h2>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 测速</span> 
-brew install speedtest 
-bash &lt;<span style="color:#ff79c6">(</span>curl -Lso- https://git.io/superspeed<span style="color:#ff79c6">)</span> <span style="color:#6272a4"># github: https://github.com/ernisn/superspeed</span>
+            <p>有些命令不敲就容易忘了,记录下</p>
+<h2 id="端口传输测试">端口传输测试</h2>
+<p>Netcat 号称 TCP/IP 的瑞士军刀</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># -v: verbose</span>
+<span style="color:#998;font-style:italic"># -n: Suppress name/port resolutions 不解析域名，避免解析域名浪费时间</span>
+<span style="color:#998;font-style:italic"># -z: Zero-I/O mode [used for scanning] 不发送数据</span>
+<span style="color:#998;font-style:italic"># -w secs Timeout for connects and final net reads 设置超时时间</span>
+<span style="color:#998;font-style:italic"># -l: Listen mode, for inbound connects 开启监听</span>
+<span style="color:#998;font-style:italic"># -k: Keep inbound sockets open for multiple connects 监听不断，持续工作</span>
+<span style="color:#998;font-style:italic"># -u: UDP mode</span>
 
-<span style="color:#6272a4"># 官方docker一键部署脚本</span>
-wget -qO- get.docker.com | bash
-curl -fsSL https://get.docker.com -o get-docker.sh <span style="color:#ff79c6">&amp;&amp;</span> sh get-docker.sh
-systemctl list-unit-files --type<span style="color:#ff79c6">=</span>service | grep docker
-systemctl <span style="color:#8be9fd;font-style:italic">enable</span> docker
-service docker status
+<span style="color:#998;font-style:italic"># vps端开启监听(默认tcp, -u 指定UDP mode) 8080</span>
+nc -l -k <span style="color:#099">8080</span>
 
-# 
+<span style="color:#998;font-style:italic"># clinet连接测试，利用netcat代替telnet探测端口</span>
+nc -vzw5 104.168.94.186 <span style="color:#099">8080</span>
+<span style="color:#998;font-style:italic"># 两次 -v 是让它报告更详细的内容(结束时会统计接收和发送多少字节), 设置超时时间3s, 探测端口范围 8080-8083</span>
+nc -v -v -w3 -z 104.168.94.186 8080-8083
+</code></pre></div><h3 id="zsh">zsh</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># 安装zsh</span>
+apt update <span style="color:#000;font-weight:bold">&amp;&amp;</span> apt upgrade <span style="color:#000;font-weight:bold">&amp;&amp;</span> apt install zsh
+<span style="color:#998;font-style:italic"># 变更shell</span>
+chsh -s <span style="color:#000;font-weight:bold">$(</span>which zsh<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#998;font-style:italic"># 查看当前shell</span>
+<span style="color:#0086b3">echo</span> <span style="color:#008080">$SHELL</span>
 
-
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="linux-commands">linux commands</h2>
-<h3 id="zsh">zsh</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 安装zsh</span>
-apt update <span style="color:#ff79c6">&amp;&amp;</span> apt upgrade <span style="color:#ff79c6">&amp;&amp;</span> apt install zsh
-<span style="color:#6272a4"># 变更shell</span>
-chsh -s <span style="color:#ff79c6">$(</span>which zsh<span style="color:#ff79c6">)</span>
-<span style="color:#6272a4"># 查看当前shell</span>
-<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#8be9fd;font-style:italic">$SHELL</span>
-
-<span style="color:#6272a4"># git</span>
+<span style="color:#998;font-style:italic"># 安装 oh-my-zsh</span> 
+<span style="color:#998;font-style:italic"># git</span>
 apt install git
-<span style="color:#6272a4"># oh-my-zsh</span>
-sh -c <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
-<span style="color:#6272a4"># 安装插件</span>
+<span style="color:#998;font-style:italic"># oh-my-zsh</span>
+sh -c <span style="color:#d14">&#34;</span><span style="color:#000;font-weight:bold">$(</span>wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">&#34;</span>
+<span style="color:#998;font-style:italic"># 安装插件</span>
 apt install zsh-syntax-highlighting
 apt install zsh-autosuggestions
 
-<span style="color:#6272a4"># config, 选择适合自已的插件</span>
+<span style="color:#998;font-style:italic"># config, 选择适合自已的插件, 越多越卡</span>
 vim ~/.zshrc
-<span style="color:#6272a4"># HIST_STAMPS=&#34;yyyy-mm-dd&#34;</span>
-<span style="color:#6272a4"># plugins=(git z)</span>
-<span style="color:#6272a4"># export LANG=en_US.UTF-8</span>
-<span style="color:#6272a4"># source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</span>
-<span style="color:#6272a4"># source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="端口传输测试">端口传输测试</h3>
-<p>Netcat 号称 TCP/IP 的瑞士军刀</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># -v: verbose</span>
-<span style="color:#6272a4"># -n: Suppress name/port resolutions 不解析域名，避免解析域名浪费时间</span>
-<span style="color:#6272a4"># -z: Zero-I/O mode [used for scanning] 不发送数据</span>
-<span style="color:#6272a4"># -w secs Timeout for connects and final net reads 设置超时时间</span>
-<span style="color:#6272a4"># -l: Listen mode, for inbound connects 开启监听</span>
-<span style="color:#6272a4"># -k: Keep inbound sockets open for multiple connects 监听不断，持续工作</span>
-<span style="color:#6272a4"># -u: UDP mode</span>
+<span style="color:#998;font-style:italic"># HIST_STAMPS=&#34;yyyy-mm-dd&#34;</span>
+<span style="color:#998;font-style:italic"># plugins=(git z)</span>
+<span style="color:#998;font-style:italic"># export LANG=en_US.UTF-8</span>
+<span style="color:#998;font-style:italic"># source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</span>
+<span style="color:#998;font-style:italic"># source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh</span>
+</code></pre></div><h2 id="命令大全">命令大全</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># 测速</span> 
+<span style="color:#998;font-style:italic"># macOS</span>
+brew install speedtest 
+<span style="color:#998;font-style:italic"># linux</span>
+bash &lt;<span style="color:#000;font-weight:bold">(</span>curl -Lso- https://git.io/superspeed<span style="color:#000;font-weight:bold">)</span> <span style="color:#998;font-style:italic"># github: https://github.com/ernisn/superspeed</span>
+<span style="color:#998;font-style:italic"># 常用 server 列表</span>
+<span style="color:#998;font-style:italic"># 26352) China Telecom JiangSu 5G (Nanjing, China)</span> 
+<span style="color:#998;font-style:italic"># 27249) China Mobile jiangsu 5G (Nanjing, China) [</span>
+<span style="color:#998;font-style:italic"># 17320) China Mobile JiangSu 5G (ZhenJiang, China) [</span>
+<span style="color:#998;font-style:italic"># 21005) China Unicom (Shanghai, China)</span> 
+<span style="color:#998;font-style:italic"># 13704) China Unicom (Nanjing, China)</span> 
+<span style="color:#998;font-style:italic"># 4647) China Mobile Group Zhejiang Co.,Ltd (Hangzhou, China)</span> 
+<span style="color:#998;font-style:italic"># 7509) China Telecom ZheJiang Branch (Hangzhou, China)</span>
 
-<span style="color:#6272a4"># vps端开启监听(默认tcp, -u 指定UDP mode) 8080</span>
-nc -l -k <span style="color:#bd93f9">8080</span>
+<span style="color:#998;font-style:italic"># docker</span>
+<span style="color:#998;font-style:italic"># 官方docker一键部署脚本</span>
+wget -qO- get.docker.com | bash <span style="color:#998;font-style:italic"># curl -fsSL https://get.docker.com -o get-docker.sh &amp;&amp; sh get-docker.sh</span>
+<span style="color:#998;font-style:italic"># 设置开机自启</span>
+systemctl list-unit-files --type<span style="color:#000;font-weight:bold">=</span>service | grep docker
+systemctl <span style="color:#0086b3">enable</span> docker
+service docker status
 
-<span style="color:#6272a4"># clinet连接测试，利用netcat代替telnet探测端口</span>
-nc -vzw5 104.168.94.186 <span style="color:#bd93f9">8080</span>
-<span style="color:#6272a4"># 两次 -v 是让它报告更详细的内容(结束时会统计接收和发送多少字节), 设置超时时间3s, 探测端口范围 8080-8083</span>
-nc -v -v -w3 -z 104.168.94.186 8080-8083
-
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="nmap">nmap</h2>
-<h2 id="netstat">netstat</h2>
-<h2 id="dig">dig</h2>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">dig WWW.EXAMPLE.COM +nostats +nocomments +nocmd
+<span style="color:#998;font-style:italic"># dig</span>
+dig WWW.EXAMPLE.COM +nostats +nocomments +nocmd
 dig EXAMPLE.COM +noall +answer
-</code></pre></td></tr></table>
-</div>
-</div><ol start="26352">
-<li>
-<p>China Telecom JiangSu 5G (Nanjing, China) [76.73 km]</p>
-</li>
-<li>
-<p>China Mobile jiangsu 5G (Nanjing, China) [74.00 km]</p>
-</li>
-<li>
-<p>China Mobile JiangSu 5G (ZhenJiang, China) [26.16 km]</p>
-</li>
-<li>
-<p>China Unicom (Shanghai, China) [202.50 km]</p>
-</li>
-<li>
-<p>China Unicom (Nanjing, China) [74.00 km]</p>
-</li>
-<li>
-<p>China Mobile Group Zhejiang Co.,Ltd (Hangzhou, China) [202.35 km]</p>
-</li>
-<li>
-<p>China Telecom ZheJiang Branch (Hangzhou, China) [202.35 km]</p>
-</li>
-</ol>
-
+</code></pre></div>
         </div>
 
         
@@ -277,15 +177,9 @@ dig EXAMPLE.COM +noall +answer
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/2020/01/05/linux-bbr.html">Ubuntu 16.04 下启用 TCP BBR 拥塞控制算法</a></li>
-        
-        <li><a href="/2019/08/26/deploy-elasticsearch-offline.html">离线环境下利用 docker 部署 Elasticsearch 集群</a></li>
-        
-        <li><a href="/2019/06/17/go-proverbs.html">Go Proverbs</a></li>
-        
-        <li><a href="/about/">关于</a></li>
-        
         <li><a href="/archives/">归档</a></li>
+        
+        <li><a href="/search/">搜索</a></li>
         
     </ul>
 </div>
@@ -337,11 +231,7 @@ dig EXAMPLE.COM +noall +answer
 <ul class="widget-list">
     
     <li>
-        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps安全指北">vps安全指北</a>
-    </li>
-    
-    <li>
-        <a href="https://flygar.org/2020/02/01/linux-tips.html" title="linux tips">linux tips</a>
+        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps 安全指北">vps 安全指北</a>
     </li>
     
     <li>
@@ -354,6 +244,10 @@ dig EXAMPLE.COM +noall +answer
     
     <li>
         <a href="https://flygar.org/2019/06/17/go-proverbs.html" title="Go Proverbs">Go Proverbs</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/02/01/linux-tips.html" title="linux tips">linux tips</a>
     </li>
     
 </ul>
@@ -461,8 +355,6 @@ dig EXAMPLE.COM +noall +answer
 <script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
 
 
-
-    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 

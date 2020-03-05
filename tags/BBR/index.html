@@ -93,9 +93,7 @@
         </div>
         
         <div class="post-content">
-            为 Ubuntu 16.04 安装 4.10 + 新内核 BBR 只能配合 Linux Kernel 4.10 以上内核才能使用 推荐使用 HWE 版本的内核，它就在官方源里。HWE，即: HareWare Enablement，是专门为在老的系统上支持新的硬件而推出的内核。
-不推荐手动下载安装的新内核，无法保证后续能得到及时的安全更新。
-1 2 3 4 5  # 像安装其他软件包一样在 Ubuntu 16.04 里安装HWE sudo apt-get install linux-generic-hwe-16.04 # sudo reboot 重启vps应用内核更新 uname -r   启用bbr 1 2 3 4 5 6 7 8 9 10 11 12 13 14  # 装载bbr模块 modprobe tcp_bbr echo &#34;tcp_bbr&#34; | tee --append /etc/modules-load.……
+            <p>BBR 只能配合 Linux Kernel 4.10 以上内核才能使用</p>……
             <p class="readmore"><a href="https://flygar.org/2020/01/05/linux-bbr.html">阅读全文</a></p>
         </div>
     </article>
@@ -126,11 +124,7 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps安全指北">vps安全指北</a>
-    </li>
-    
-    <li>
-        <a href="https://flygar.org/2020/02/01/linux-tips.html" title="linux tips">linux tips</a>
+        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps 安全指北">vps 安全指北</a>
     </li>
     
     <li>
@@ -143,6 +137,10 @@
     
     <li>
         <a href="https://flygar.org/2019/06/17/go-proverbs.html" title="Go Proverbs">Go Proverbs</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/02/01/linux-tips.html" title="linux tips">linux tips</a>
     </li>
     
 </ul>
@@ -239,8 +237,6 @@
 <script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
 
 
-
-    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 

@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>vps安全指北 | Flygar&#39;s Blog</title>
-    <meta property="og:title" content="vps安全指北 - Flygar&#39;s Blog">
+    <title>vps 安全指北 | Flygar&#39;s Blog</title>
+    <meta property="og:title" content="vps 安全指北 - Flygar&#39;s Blog">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2020-03-05T20:32:34&#43;08:00'>
@@ -16,7 +16,7 @@
     <meta property="article:modified_time" content='2020-03-05T20:32:34&#43;08:00'>
         
     <meta name="Keywords" content="golang,go语言,go,linux">
-    <meta name="description" content="vps安全指北">
+    <meta name="description" content="vps 安全指北">
         
     <meta name="author" content="猪一头">
     <meta property="og:url" content="https://flygar.org/2020/03/05/vps-security.html">
@@ -72,7 +72,7 @@
     
     <article class="post">
         <header>
-            <h1 class="post-title">vps安全指北</h1>
+            <h1 class="post-title">vps 安全指北</h1>
         </header>
         <date class="post-meta meta-date">
             2020年3月5日
@@ -86,39 +86,20 @@
         </div>
         
         
-        <div class="post-meta">
-            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
-                    阅读</span></span>
-        </div>
-        
         
         <div class="post-content">
             <p>以ubuntu系统为例,提升vps安全。<br>
 保护小鸡,从我做起。</p>
 <p><img src="https://i.loli.net/2020/03/03/lHyQ1Bxij74qPaL.png" alt="image.png"></p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># update list of available packages</span> 
-<span style="color:#6272a4"># upgrade the system by installing/upgrading packages</span>
-apt update <span style="color:#ff79c6">&amp;&amp;</span> apt upgrade
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># update list of available packages</span> 
+<span style="color:#998;font-style:italic"># upgrade the system by installing/upgrading packages</span>
+apt update <span style="color:#000;font-weight:bold">&amp;&amp;</span> apt upgrade
 
-<span style="color:#6272a4"># who 或者 w 查看当前登陆的用户</span>
-<span style="color:#6272a4"># 检查日志和登陆记录</span>
+<span style="color:#998;font-style:italic"># who 或者 w 查看当前登陆的用户</span>
+<span style="color:#998;font-style:italic"># 检查日志和登陆记录</span>
 less /var/log/auth.log
 who /var/log/wtmp
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="设置一个足够复杂的密码">设置一个足够复杂的密码</h3>
+</code></pre></div><h3 id="设置一个足够复杂的密码">设置一个足够复杂的密码</h3>
 <ul>
 <li>不推荐使用单词或短语: superstar, magicmaster, woshiMT</li>
 <li>不推荐使用生日加姓名的组合方便记忆的密码: liergou1225, trump2016, jujingyi1994</li>
@@ -133,123 +114,57 @@ who /var/log/wtmp
 <li>推荐使用软件生成如下这种没有规律的密码: .ZHu87Yi$R</li>
 </ul>
 <h3 id="变更ssh端口为非22">变更ssh端口为非22</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># vim /etc/ssh/sshd_config</span>
-<span style="color:#6272a4"># 改为你想要的端口,最好在1-1024之间，防止与用户进程端口冲突</span>
-Port <span style="color:#bd93f9">998</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># vim /etc/ssh/sshd_config</span>
+<span style="color:#998;font-style:italic"># 改为你想要的端口,最好在1-1024之间，防止与用户进程端口冲突</span>
+Port <span style="color:#099">998</span>
 
-<span style="color:#6272a4"># 应用配置</span>
-service sshd restart <span style="color:#6272a4"># sudo /etc/init.d/ssh restart</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="禁止root用户登陆">禁止root用户登陆</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 在vps端创建其他用户flygar，最好不要用会被扫描命中的名字，例如：admin,test,testuser1, foobar</span>
-adduser flygar <span style="color:#6272a4"># adduser 比 useradd 命令更加友好，推荐使用</span>
+<span style="color:#998;font-style:italic"># 应用配置</span>
+service sshd restart <span style="color:#998;font-style:italic"># sudo /etc/init.d/ssh restart</span>
+</code></pre></div><h3 id="禁止root用户登陆">禁止root用户登陆</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># 在vps端创建其他用户flygar，最好不要用会被扫描命中的名字，例如：admin,test,testuser1, foobar</span>
+adduser flygar <span style="color:#998;font-style:italic"># adduser 比 useradd 命令更加友好，推荐使用</span>
 
-<span style="color:#6272a4"># 修改用户权限, 为了使用sudo切回root，毕竟谁会不喜欢用root用户呢</span>
+<span style="color:#998;font-style:italic"># 修改用户权限, 为了使用sudo切回root，毕竟谁会不喜欢用root用户呢</span>
 chmod +w /etc/sudoers
 vim /etc/sudoers
-<span style="color:#6272a4"># 添加下图的配置语句，并且保存修改</span>
-<span style="color:#6272a4"># flygar	ALL=(ALL:ALL) ALL</span>
+<span style="color:#998;font-style:italic"># 添加下图的配置语句，并且保存修改</span>
+<span style="color:#998;font-style:italic"># flygar	ALL=(ALL:ALL) ALL</span>
 chmod -w /etc/sudoers
 
-<span style="color:#6272a4"># 查看用户属性并验证是否创建成功</span>
-<span style="color:#6272a4"># 用户名:口令:用户标识号:组标识号:注释性描述:用户主目录:命令解释程序</span>
+<span style="color:#998;font-style:italic"># 查看用户属性并验证是否创建成功</span>
+<span style="color:#998;font-style:italic"># 用户名:口令:用户标识号:组标识号:注释性描述:用户主目录:命令解释程序</span>
 cat /etc/passwd
 su flygar
 
-<span style="color:#6272a4"># 删除用户</span>
+<span style="color:#998;font-style:italic"># 删除用户</span>
 deluser flygar
-vim /etc/sudoers <span style="color:#6272a4"># 删除用户权限</span>
+vim /etc/sudoers <span style="color:#998;font-style:italic"># 删除用户权限</span>
 
-<span style="color:#6272a4">#----------------------------------------------------</span>
-<span style="color:#6272a4"># vim /etc/ssh/sshd_config</span>
-<span style="color:#6272a4">#禁用root账户登录，非必要，但为了安全性，请配置</span>
+<span style="color:#998;font-style:italic">#----------------------------------------------------</span>
+<span style="color:#998;font-style:italic"># vim /etc/ssh/sshd_config</span>
+<span style="color:#998;font-style:italic">#禁用root账户登录，非必要，但为了安全性，请配置</span>
 PermitRootLogin no
 
-<span style="color:#6272a4"># 应用配置</span>
-service sshd restart <span style="color:#6272a4"># sudo /etc/init.d/ssh restart</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="设置只允许使用密钥登陆">设置只允许使用密钥登陆</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 在客户端生成密钥</span>
-ssh-keygen -b <span style="color:#bd93f9">4096</span> -t rsa
-<span style="color:#6272a4"># 将客户端的公钥发送给vps的自定义用户</span>
-ssh-copy-id -p <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">PORT</span><span style="color:#f1fa8c">}</span> <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">USERNAME</span><span style="color:#f1fa8c">}</span>@<span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">IP_address</span><span style="color:#f1fa8c">}</span>
+<span style="color:#998;font-style:italic"># 应用配置</span>
+service sshd restart <span style="color:#998;font-style:italic"># sudo /etc/init.d/ssh restart</span>
+</code></pre></div><h3 id="设置只允许使用密钥登陆">设置只允许使用密钥登陆</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># 在客户端生成密钥</span>
+ssh-keygen -b <span style="color:#099">4096</span> -t rsa
+<span style="color:#998;font-style:italic"># 将客户端的公钥发送给vps的自定义用户</span>
+ssh-copy-id -p <span style="color:#d14">${</span><span style="color:#008080">PORT</span><span style="color:#d14">}</span> <span style="color:#d14">${</span><span style="color:#008080">USERNAME</span><span style="color:#d14">}</span>@<span style="color:#d14">${</span><span style="color:#008080">IP_address</span><span style="color:#d14">}</span>
 
-<span style="color:#6272a4"># vps端配置config</span>
+<span style="color:#998;font-style:italic"># vps端配置config</span>
 vim /etc/ssh/sshd_config
 
-RSAAuthentication yes  <span style="color:#6272a4">#默认已经允许 RSA 密钥</span>
-PubkeyAuthentication yes    <span style="color:#6272a4">#默认已经启用公告密钥配对认证方式</span> 
-AuthorizedKeysFile  %h/.ssh/authorized_keys    <span style="color:#6272a4">#默认就设定PublicKey文件路径，不用动</span>
-PasswordAuthentication no <span style="color:#6272a4">#禁止密码验证登录。如果启用(yes)的话,RSA认证登录就没有意义了</span>
+RSAAuthentication yes  <span style="color:#998;font-style:italic">#默认已经允许 RSA 密钥</span>
+PubkeyAuthentication yes    <span style="color:#998;font-style:italic">#默认已经启用公告密钥配对认证方式</span> 
+AuthorizedKeysFile  %h/.ssh/authorized_keys    <span style="color:#998;font-style:italic">#默认就设定PublicKey文件路径，不用动</span>
+PasswordAuthentication no <span style="color:#998;font-style:italic">#禁止密码验证登录。如果启用(yes)的话,RSA认证登录就没有意义了</span>
 
-<span style="color:#6272a4"># 应用配置</span>
-service sshd restart <span style="color:#6272a4"># sudo /etc/init.d/ssh restart</span>
-<span style="color:#6272a4"># 如果哪天你本地的密钥丢了或重置了，那只能进入vps官网使用 VNC 的方式进入服务器上传你的公钥了</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>换了端口和认证方式，降低了被扫描、探测密码的请求
+<span style="color:#998;font-style:italic"># 应用配置</span>
+service sshd restart <span style="color:#998;font-style:italic"># sudo /etc/init.d/ssh restart</span>
+<span style="color:#998;font-style:italic"># 如果哪天你本地的密钥丢了或重置了，那只能进入vps官网使用 VNC 的方式进入服务器上传你的公钥了</span>
+</code></pre></div><p>换了端口和认证方式，降低了被扫描、探测密码的请求
 <img src="https://i.loli.net/2020/03/02/dxKW2rAg9CHynmf.png" alt="image.png"></p>
 <p>其实还不够安全，vps上可能还暴露了3306,9200这种端口,需要利用deyhosts实现自动屏蔽疯狂尝试请求的IP。</p>
 <h3 id="屏蔽扫描ip拒绝成为肉鸡">屏蔽扫描IP,拒绝成为肉鸡</h3>
@@ -257,205 +172,100 @@ service sshd restart <span style="color:#6272a4"># sudo /etc/init.d/ssh restart<
 <blockquote>
 <p>denyhosts是Python语言写的一个程序，它会分析sshd的日志文件，当发现重复的失败登录时就会记录IP到/etc/hosts.deny文件，从而达到自动屏IP的功能。</p>
 </blockquote>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># ssh vps</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># ssh vps</span>
 sudo su - 
 apt update
 apt install denyhosts
 
-<span style="color:#6272a4"># config</span>
+<span style="color:#998;font-style:italic"># config</span>
 vim /etc/denyhosts.conf
 
-<span style="color:#6272a4"># BLOCKPORT = 22 , 默认block所有端口，取消注释指定只 block 22 端口</span>
-<span style="color:#6272a4"># PURGE_DENY = 1w</span>
-<span style="color:#6272a4"># RESET_ON_SUCCESS = yes</span>
-<span style="color:#6272a4"># BLOCK_SERVICE  = sshd</span>
+<span style="color:#998;font-style:italic"># BLOCKPORT = 22 , 默认block所有端口，取消注释指定只 block 22 端口</span>
+<span style="color:#998;font-style:italic"># PURGE_DENY = 1w</span>
+<span style="color:#998;font-style:italic"># RESET_ON_SUCCESS = yes</span>
+<span style="color:#998;font-style:italic"># BLOCK_SERVICE  = sshd</span>
 
-<span style="color:#6272a4"># 应用配置</span>
-service denyhosts restart <span style="color:#6272a4"># /etc/init.d/denyhosts restart</span>
+<span style="color:#998;font-style:italic"># 应用配置</span>
+service denyhosts restart <span style="color:#998;font-style:italic"># /etc/init.d/denyhosts restart</span>
 
-<span style="color:#6272a4"># 恢复某个被阻止的IP</span>
-sed -i <span style="color:#f1fa8c">&#34;/</span><span style="color:#8be9fd;font-style:italic">$IP</span><span style="color:#f1fa8c">/d&#34;</span> /etc/hosts.deny
-sed -i <span style="color:#f1fa8c">&#34;/</span><span style="color:#8be9fd;font-style:italic">$IP</span><span style="color:#f1fa8c">/d&#34;</span> /var/lib/denyhosts/hosts-valid
-sed -i <span style="color:#f1fa8c">&#34;/</span><span style="color:#8be9fd;font-style:italic">$IP</span><span style="color:#f1fa8c">/d&#34;</span> /var/lib/denyhosts/users-hosts
-sed -i <span style="color:#f1fa8c">&#34;/</span><span style="color:#8be9fd;font-style:italic">$IP</span><span style="color:#f1fa8c">/d&#34;</span> /var/lib/denyhosts/hosts
-sed -i <span style="color:#f1fa8c">&#34;/</span><span style="color:#8be9fd;font-style:italic">$IP</span><span style="color:#f1fa8c">/d&#34;</span> /var/lib/denyhosts/hosts-root
-sed -i <span style="color:#f1fa8c">&#34;/</span><span style="color:#8be9fd;font-style:italic">$IP</span><span style="color:#f1fa8c">/d&#34;</span> /var/lib/denyhosts/hosts-restricted
-iptables -D INPUT -s <span style="color:#8be9fd;font-style:italic">$IP</span> -j DROP 
-<span style="color:#6272a4"># iptables -A INPUT -s $IP -j DROP , ban了某个IP的永久访问</span>
+<span style="color:#998;font-style:italic"># 恢复某个被阻止的IP</span>
+sed -i <span style="color:#d14">&#34;/</span><span style="color:#008080">$IP</span><span style="color:#d14">/d&#34;</span> /etc/hosts.deny
+sed -i <span style="color:#d14">&#34;/</span><span style="color:#008080">$IP</span><span style="color:#d14">/d&#34;</span> /var/lib/denyhosts/hosts-valid
+sed -i <span style="color:#d14">&#34;/</span><span style="color:#008080">$IP</span><span style="color:#d14">/d&#34;</span> /var/lib/denyhosts/users-hosts
+sed -i <span style="color:#d14">&#34;/</span><span style="color:#008080">$IP</span><span style="color:#d14">/d&#34;</span> /var/lib/denyhosts/hosts
+sed -i <span style="color:#d14">&#34;/</span><span style="color:#008080">$IP</span><span style="color:#d14">/d&#34;</span> /var/lib/denyhosts/hosts-root
+sed -i <span style="color:#d14">&#34;/</span><span style="color:#008080">$IP</span><span style="color:#d14">/d&#34;</span> /var/lib/denyhosts/hosts-restricted
+iptables -D INPUT -s <span style="color:#008080">$IP</span> -j DROP 
+<span style="color:#998;font-style:italic"># iptables -A INPUT -s $IP -j DROP , ban了某个IP的永久访问</span>
 
-<span style="color:#6272a4"># 还是不放心？还可以更无情的限制IP</span>
-<span style="color:#6272a4"># 首先修改/etc/hosts.allow文件，将可访问服务器ssh服务的客户IP加入其中，格式如下</span>
+<span style="color:#998;font-style:italic"># 还是不放心？还可以更无情的限制IP</span>
+<span style="color:#998;font-style:italic"># 首先修改/etc/hosts.allow文件，将可访问服务器ssh服务的客户IP加入其中，格式如下</span>
 sshd: 192.168.1.0/255.255.255.0
-sshd: 202.114.23.45 <span style="color:#6272a4"># 只允许访问ssh服务</span>
-ALL: 211.67.67.89 <span style="color:#6272a4"># 允许访问所有服务</span>
-<span style="color:#6272a4"># 然后修改/etc/hosts.deny文件，加入禁用其它客户连接ssh服务</span>
+sshd: 202.114.23.45 <span style="color:#998;font-style:italic"># 只允许访问ssh服务</span>
+ALL: 211.67.67.89 <span style="color:#998;font-style:italic"># 允许访问所有服务</span>
+<span style="color:#998;font-style:italic"># 然后修改/etc/hosts.deny文件，加入禁用其它客户连接ssh服务</span>
 sshd: ALL
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="开启安装防火墙">开启(安装)防火墙</h3>
+</code></pre></div><h3 id="开启安装防火墙">开启(安装)防火墙</h3>
 <p>关闭不必要的端口, 只开放所需端口。</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 使用netstat查看目前开放的端口及链接情况</span>
-<span style="color:#6272a4"># -n: don&#39;t resolve names</span> 
-<span style="color:#6272a4"># -t: tcp</span> 
-<span style="color:#6272a4"># -u: udp</span> 
-<span style="color:#6272a4"># -p: display PID/Program name for sockets</span>
-<span style="color:#6272a4"># -l: display listening server sockets</span>
-<span style="color:#6272a4"># -a: display all sockets</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#998;font-style:italic"># 使用netstat查看目前开放的端口及链接情况</span>
+<span style="color:#998;font-style:italic"># -n: don&#39;t resolve names</span> 
+<span style="color:#998;font-style:italic"># -t: tcp</span> 
+<span style="color:#998;font-style:italic"># -u: udp</span> 
+<span style="color:#998;font-style:italic"># -p: display PID/Program name for sockets</span>
+<span style="color:#998;font-style:italic"># -l: display listening server sockets</span>
+<span style="color:#998;font-style:italic"># -a: display all sockets</span>
 
-<span style="color:#6272a4"># display (default: connected)</span> 
-<span style="color:#6272a4"># sudo lsof -i -P -n | grep ESTABLISHED</span>
+<span style="color:#998;font-style:italic"># display (default: connected)</span> 
+<span style="color:#998;font-style:italic"># sudo lsof -i -P -n | grep ESTABLISHED</span>
 netstat -ntup 
 
-<span style="color:#6272a4"># sudo lsof -i -P -n | grep LISTEN</span>
+<span style="color:#998;font-style:italic"># sudo lsof -i -P -n | grep LISTEN</span>
 netstat -ntupl  
 
-<span style="color:#6272a4"># sudo lsof -i -P -n</span> 
+<span style="color:#998;font-style:italic"># sudo lsof -i -P -n</span> 
 netstat -ntupa
 
-<span style="color:#6272a4"># 端口扫描工具nmap或者netcat</span>
+<span style="color:#998;font-style:italic"># 端口扫描工具nmap或者netcat</span>
 apt install nmap
-<span style="color:#6272a4"># 扫描本地端口,禁止扫描他人vps，行为不友好导致banIP。</span>
+<span style="color:#998;font-style:italic"># 扫描本地端口,禁止扫描他人vps，行为不友好导致banIP。</span>
 nmap localhost
 
-<span style="color:#6272a4"># 查看端口进程</span> 
-<span style="color:#6272a4"># netstat -ntupa | grep ${port}</span>
-lsof -i:<span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">port</span><span style="color:#f1fa8c">}</span>
+<span style="color:#998;font-style:italic"># 查看端口进程</span> 
+<span style="color:#998;font-style:italic"># netstat -ntupa | grep ${port}</span>
+lsof -i:<span style="color:#d14">${</span><span style="color:#008080">port</span><span style="color:#d14">}</span>
 
 
-<span style="color:#6272a4"># apt update &amp;&amp; apt install ufw</span> 
-<span style="color:#6272a4"># 启用ufw(简化iptables命令)</span>
+<span style="color:#998;font-style:italic"># apt update &amp;&amp; apt install ufw</span> 
+<span style="color:#998;font-style:italic"># 启用ufw(简化iptables命令)</span>
 ufw status
-ufw <span style="color:#8be9fd;font-style:italic">enable</span> <span style="color:#6272a4"># 开启后默认关了所有端口</span>
+ufw <span style="color:#0086b3">enable</span> <span style="color:#998;font-style:italic"># 开启后默认关了所有端口</span>
 
-<span style="color:#6272a4"># 先查看vps那些端口在LISTEN,然后开放它(例如 22)</span>
+<span style="color:#998;font-style:italic"># 先查看vps那些端口在LISTEN,然后开放它(例如 22)</span>
 netstat -ntupl
-ufw allow <span style="color:#bd93f9">22</span>  <span style="color:#6272a4"># 开放ssh端口，默认的是22</span>
-ufw allow 2290:2300/tcp <span style="color:#6272a4"># 端口范围内只允许tcp协议使用</span>
-ufw allow 2290:2300/udp <span style="color:#6272a4"># 端口范围内只允许udp协议使用</span>
+ufw allow <span style="color:#099">22</span>  <span style="color:#998;font-style:italic"># 开放ssh端口，默认的是22</span>
+ufw allow 2290:2300/tcp <span style="color:#998;font-style:italic"># 端口范围内只允许tcp协议使用</span>
+ufw allow 2290:2300/udp <span style="color:#998;font-style:italic"># 端口范围内只允许udp协议使用</span>
 
-ufw allow from 192.168.0.104 <span style="color:#6272a4"># 基于IP地址的规则,我比较中意这个。 允许自已指定的IP访问vps上的所有服务(端口)</span>
-ufw allow form 192.168.0.0/24 <span style="color:#6272a4"># 也可以使用子网掩码来扩宽范围</span>
-ufw allow from 192.168.0.104 to any port <span style="color:#bd93f9">998</span> <span style="color:#6272a4"># 来自 192.168.0.104 的 IP 只能访问998端口</span>
-ufw allow from 192.168.0.104 proto tcp to any port <span style="color:#bd93f9">22</span> <span style="color:#6272a4"># 限制来自 192.168.0.104 的 IP 只能使用 tcp 协议和通过 22端口 来访问</span>
+ufw allow from 192.168.0.104 <span style="color:#998;font-style:italic"># 基于IP地址的规则,我比较中意这个。 允许自已指定的IP访问vps上的所有服务(端口)</span>
+ufw allow form 192.168.0.0/24 <span style="color:#998;font-style:italic"># 也可以使用子网掩码来扩宽范围</span>
+ufw allow from 192.168.0.104 to any port <span style="color:#099">998</span> <span style="color:#998;font-style:italic"># 来自 192.168.0.104 的 IP 只能访问998端口</span>
+ufw allow from 192.168.0.104 proto tcp to any port <span style="color:#099">22</span> <span style="color:#998;font-style:italic"># 限制来自 192.168.0.104 的 IP 只能使用 tcp 协议和通过 22端口 来访问</span>
 
-<span style="color:#6272a4"># update配置(将开放的端口禁用，例如禁用ftp)</span>
+<span style="color:#998;font-style:italic"># update配置(将开放的端口禁用，例如禁用ftp)</span>
 ufw deny ftp
-ufw delete allow <span style="color:#bd93f9">22</span> <span style="color:#6272a4"># 删除某个规则</span>
-ufw delete allow ftp <span style="color:#6272a4"># 删除某个规则</span>
-ufw reset  <span style="color:#6272a4"># 重置所有规则后需重新启用ufw</span>
+ufw delete allow <span style="color:#099">22</span> <span style="color:#998;font-style:italic"># 删除某个规则</span>
+ufw delete allow ftp <span style="color:#998;font-style:italic"># 删除某个规则</span>
+ufw reset  <span style="color:#998;font-style:italic"># 重置所有规则后需重新启用ufw</span>
 
-<span style="color:#6272a4"># 关闭ufw功能</span>
+<span style="color:#998;font-style:italic"># 关闭ufw功能</span>
 sudo ufw disable
 
-<span style="color:#6272a4"># ufw相当于简化了iptables命令.</span> 
-<span style="color:#6272a4"># 查看vps防火墙全部规则: iptables --list 为准</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img src="https://i.loli.net/2020/03/03/X1SBETgFPnc2bUd.png" alt="image.png">
+<span style="color:#998;font-style:italic"># ufw相当于简化了iptables命令.</span> 
+<span style="color:#998;font-style:italic"># 查看vps防火墙全部规则: iptables --list 为准</span>
+</code></pre></div><p><img src="https://i.loli.net/2020/03/03/X1SBETgFPnc2bUd.png" alt="image.png">
 先过ufw规则，再过hosts.allow规则, 需要都通过<br>
 实现: 只允许IP: 49.xxx.xxx.xxx 访问vps的服务(端口)<br>
-心里终于舒坦了很多。</p>
-<p>docker run -d &ndash;name gost-client<br>
--p 32098:32098<br>
-ginuerzh/gost<br>
--L &ldquo;ss://aes-256-gcm:Ss871546712@:32098&rdquo;<br>
--F &ldquo;http2://flygar:Go871546712@flygar.xyz:443&rdquo;</p>
+至此,心里终于舒坦了很多。</p>
         </div>
 
         
@@ -476,9 +286,9 @@ ginuerzh/gost<br>
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/2020/02/01/linux-tips.html">linux tips</a></li>
-        
         <li><a href="/2020/01/05/linux-bbr.html">Ubuntu 16.04 下启用 TCP BBR 拥塞控制算法</a></li>
+        
+        <li><a href="/2020/02/01/linux-tips.html">linux tips</a></li>
         
         <li><a href="/2019/08/26/deploy-elasticsearch-offline.html">离线环境下利用 docker 部署 Elasticsearch 集群</a></li>
         
@@ -536,11 +346,7 @@ ginuerzh/gost<br>
 <ul class="widget-list">
     
     <li>
-        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps安全指北">vps安全指北</a>
-    </li>
-    
-    <li>
-        <a href="https://flygar.org/2020/02/01/linux-tips.html" title="linux tips">linux tips</a>
+        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps 安全指北">vps 安全指北</a>
     </li>
     
     <li>
@@ -553,6 +359,10 @@ ginuerzh/gost<br>
     
     <li>
         <a href="https://flygar.org/2019/06/17/go-proverbs.html" title="Go Proverbs">Go Proverbs</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/02/01/linux-tips.html" title="linux tips">linux tips</a>
     </li>
     
 </ul>
@@ -660,8 +470,6 @@ ginuerzh/gost<br>
 <script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
 
 
-
-    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 
