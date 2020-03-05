@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>vps安全指北</title>
+      <link>https://flygar.org/2018/02/24/golang-function-parameters-passed-by-value.html</link>
+      <pubDate>Sat, 29 Feb 2020 17:02:39 +0800</pubDate>
+      
+      <guid>https://flygar.org/2018/02/24/golang-function-parameters-passed-by-value.html</guid>
+      <description>以ubuntu系统为例,提升vps安全
+1 2 3 4 5 6 7 8 9  # update list of available packages # upgrade the system by installing/upgrading packages apt update &amp;amp;&amp;amp; apt upgrade # who 或者 w 查看当前登陆的用户 # 检查登陆日志 less /var/log/auth.log who /var/log/wtmp   设置一个足够复杂的密码  不推荐使用单词或短语: superstar, magicmaster, woshiMT 不推荐使用生日加姓名的组合方便记忆的密码: liergou1225, trump2016, jujingyi1994 不推荐使用很长的字母与数字的组合: ABC12345678, qwert9876543210 不推荐使用如下键盘布局的密码: 1qaz@WSX, 1qw2!</description>
+    </item>
+    
+    <item>
       <title>离线部署elasticsearch集群</title>
       <link>https://flygar.org/post/install-es/</link>
       <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>

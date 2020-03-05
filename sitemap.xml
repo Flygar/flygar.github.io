@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://flygar.org/post/</loc>
+    <lastmod>2020-02-29T17:02:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/2018/02/24/golang-function-parameters-passed-by-value.html</loc>
+    <lastmod>2020-02-29T17:02:39+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://flygar.org/categories/</loc>
     <lastmod>2019-08-26T10:18:11+08:00</lastmod>
   </url>
@@ -34,11 +44,6 @@
   
   <url>
     <loc>https://flygar.org/tags/Operation/</loc>
-    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/post/</loc>
     <lastmod>2019-08-26T10:18:11+08:00</lastmod>
   </url>
   
