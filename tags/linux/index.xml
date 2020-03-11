@@ -6,19 +6,10 @@
     <description>Recent content in Linux on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 06 Mar 2020 00:46:30 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 05 Mar 2020 20:32:34 +0800</lastBuildDate>
     
 	<atom:link href="https://flygar.org/tags/Linux/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>上网</title>
-      <link>https://flygar.org/2019/03/06/break-wall.html</link>
-      <pubDate>Fri, 06 Mar 2020 00:46:30 +0800</pubDate>
-      
-      <guid>https://flygar.org/2019/03/06/break-wall.html</guid>
-      <description>&lt;p&gt;这篇文章可以写的更好，欢迎到 &lt;a href=&#34;https://github.com/haoel/haoel.github.io&#34;&gt;https://github.com/haoel/haoel.github.io&lt;/a&gt; 更新&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>vps 安全指北</title>
@@ -28,6 +19,15 @@
       <guid>https://flygar.org/2020/03/05/vps-security.html</guid>
       <description>&lt;p&gt;以ubuntu系统为例,提升vps安全。&lt;br&gt;
 保护小鸡,从我做起。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux 命令</title>
+      <link>https://flygar.org/2020/02/01/linux-tips.html</link>
+      <pubDate>Sat, 01 Feb 2020 20:32:34 +0800</pubDate>
+      
+      <guid>https://flygar.org/2020/02/01/linux-tips.html</guid>
+      <description>&lt;p&gt;linux 命令记录&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -46,15 +46,6 @@
       
       <guid>https://flygar.org/2019/08/26/deploy-elasticsearch-offline.html</guid>
       <description>&lt;p&gt;在3台CentOS上离线安装docker并通过docker-compose部署Elasticsearch集群&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>linux tips</title>
-      <link>https://flygar.org/2020/02/01/linux-tips.html</link>
-      <pubDate>Fri, 01 Feb 2019 20:32:34 +0800</pubDate>
-      
-      <guid>https://flygar.org/2020/02/01/linux-tips.html</guid>
-      <description>&lt;p&gt;有些命令不敲就容易忘了,记录下&lt;/p&gt;</description>
     </item>
     
   </channel>
