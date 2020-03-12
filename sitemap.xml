@@ -3,6 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://flygar.org/categories/</loc>
+    <lastmod>2020-03-12T12:14:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/post/</loc>
+    <lastmod>2020-03-12T12:14:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/tags/</loc>
+    <lastmod>2020-03-12T12:14:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/tags/%E6%A4%8D%E6%A0%91%E8%8A%82/</loc>
+    <lastmod>2020-03-12T12:14:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/2020/03/12/tree_day.html</loc>
+    <lastmod>2020-03-12T12:14:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</loc>
+    <lastmod>2020-03-12T12:14:35+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://flygar.org/</loc>
     <lastmod>2020-03-05T21:42:26+08:00</lastmod>
   </url>
@@ -13,27 +43,12 @@
   </url>
   
   <url>
-    <loc>https://flygar.org/categories/</loc>
-    <lastmod>2020-03-05T20:32:34+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://flygar.org/tags/Linux/</loc>
     <lastmod>2020-03-05T20:32:34+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://flygar.org/categories/Linux/</loc>
-    <lastmod>2020-03-05T20:32:34+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/post/</loc>
-    <lastmod>2020-03-05T20:32:34+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/tags/</loc>
     <lastmod>2020-03-05T20:32:34+08:00</lastmod>
   </url>
   

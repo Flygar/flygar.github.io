@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 05 Mar 2020 20:32:34 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2020 12:14:35 +0800</lastBuildDate>
     
 	<atom:link href="https://flygar.org/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>植树节</title>
+      <link>https://flygar.org/2020/03/12/tree_day.html</link>
+      <pubDate>Thu, 12 Mar 2020 12:14:35 +0800</pubDate>
+      
+      <guid>https://flygar.org/2020/03/12/tree_day.html</guid>
+      <description>&lt;p&gt;今天植树节没有去植树。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>vps 安全指北</title>
