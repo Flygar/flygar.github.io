@@ -6,17 +6,17 @@
     <description>Recent content in Tags on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 21 Mar 2020 19:21:26 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2020 01:11:02 +0800</lastBuildDate>
     
 	<atom:link href="https://flygar.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Go</title>
-      <link>https://flygar.org/tags/Go/</link>
-      <pubDate>Sat, 21 Mar 2020 19:21:26 +0800</pubDate>
+      <title>Leetcode</title>
+      <link>https://flygar.org/tags/Leetcode/</link>
+      <pubDate>Sun, 22 Mar 2020 01:11:02 +0800</pubDate>
       
-      <guid>https://flygar.org/tags/Go/</guid>
+      <guid>https://flygar.org/tags/Leetcode/</guid>
       <description></description>
     </item>
     
@@ -30,56 +30,11 @@
     </item>
     
     <item>
-      <title>摘录</title>
-      <link>https://flygar.org/tags/%E6%91%98%E5%BD%95/</link>
-      <pubDate>Thu, 19 Mar 2020 00:31:57 +0800</pubDate>
-      
-      <guid>https://flygar.org/tags/%E6%91%98%E5%BD%95/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>天黑之后</title>
       <link>https://flygar.org/tags/%E5%A4%A9%E9%BB%91%E4%B9%8B%E5%90%8E/</link>
       <pubDate>Wed, 18 Mar 2020 00:58:02 +0800</pubDate>
       
       <guid>https://flygar.org/tags/%E5%A4%A9%E9%BB%91%E4%B9%8B%E5%90%8E/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>植树节</title>
-      <link>https://flygar.org/tags/%E6%A4%8D%E6%A0%91%E8%8A%82/</link>
-      <pubDate>Thu, 12 Mar 2020 12:14:35 +0800</pubDate>
-      
-      <guid>https://flygar.org/tags/%E6%A4%8D%E6%A0%91%E8%8A%82/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ubuntu</title>
-      <link>https://flygar.org/tags/Ubuntu/</link>
-      <pubDate>Thu, 05 Mar 2020 20:32:34 +0800</pubDate>
-      
-      <guid>https://flygar.org/tags/Ubuntu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>BBR</title>
-      <link>https://flygar.org/tags/BBR/</link>
-      <pubDate>Sun, 05 Jan 2020 20:32:34 +0800</pubDate>
-      
-      <guid>https://flygar.org/tags/BBR/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Createrepo</title>
-      <link>https://flygar.org/tags/Createrepo/</link>
-      <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
-      
-      <guid>https://flygar.org/tags/Createrepo/</guid>
       <description></description>
     </item>
     
