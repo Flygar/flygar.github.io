@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Go on Flygar&#39;s Blog</title>
-    <link>https://flygar.org/tags/Go/</link>
-    <description>Recent content in Go on Flygar&#39;s Blog</description>
+    <title>数据结构和算法 on Flygar&#39;s Blog</title>
+    <link>https://flygar.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 数据结构和算法 on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sat, 21 Mar 2020 19:21:26 +0800</lastBuildDate>
     
-	<atom:link href="https://flygar.org/tags/Go/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://flygar.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -23,15 +23,6 @@
 &lt;li&gt;双向链表实现&lt;/li&gt;
 &lt;li&gt;双向链表增删改查&lt;/li&gt;
 &lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Go Proverbs</title>
-      <link>https://flygar.org/2019/06/17/go-proverbs.html</link>
-      <pubDate>Mon, 17 Jun 2019 23:06:41 +0800</pubDate>
-      
-      <guid>https://flygar.org/2019/06/17/go-proverbs.html</guid>
-      <description>see more: https://go-proverbs.github.io/</description>
     </item>
     
   </channel>

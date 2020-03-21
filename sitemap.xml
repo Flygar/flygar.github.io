@@ -4,17 +4,37 @@
   
   <url>
     <loc>https://flygar.org/categories/</loc>
-    <lastmod>2020-03-19T00:31:57+08:00</lastmod>
+    <lastmod>2020-03-21T19:21:26+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/tags/Go/</loc>
+    <lastmod>2020-03-21T19:21:26+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/categories/Golang/</loc>
+    <lastmod>2020-03-21T19:21:26+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/2020/03/21/golang-.html</loc>
+    <lastmod>2020-03-21T19:21:26+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://flygar.org/post/</loc>
-    <lastmod>2020-03-19T00:31:57+08:00</lastmod>
+    <lastmod>2020-03-21T19:21:26+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://flygar.org/tags/</loc>
-    <lastmod>2020-03-19T00:31:57+08:00</lastmod>
+    <lastmod>2020-03-21T19:21:26+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2020-03-21T19:21:26+08:00</lastmod>
   </url>
   
   <url>
@@ -73,11 +93,6 @@
   </url>
   
   <url>
-    <loc>https://flygar.org/tags/Linux/</loc>
-    <lastmod>2020-03-05T20:32:34+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://flygar.org/categories/Linux/</loc>
     <lastmod>2020-03-05T20:32:34+08:00</lastmod>
   </url>
@@ -108,11 +123,6 @@
   </url>
   
   <url>
-    <loc>https://flygar.org/tags/CentOS/</loc>
-    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://flygar.org/tags/Createrepo/</loc>
     <lastmod>2019-08-26T10:18:11+08:00</lastmod>
   </url>
@@ -133,17 +143,7 @@
   </url>
   
   <url>
-    <loc>https://flygar.org/tags/Go/</loc>
-    <lastmod>2019-06-17T23:06:41+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://flygar.org/2019/06/17/go-proverbs.html</loc>
-    <lastmod>2019-06-17T23:06:41+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/categories/Golang/</loc>
     <lastmod>2019-06-17T23:06:41+08:00</lastmod>
   </url>
   

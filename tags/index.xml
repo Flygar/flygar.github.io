@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 19 Mar 2020 00:31:57 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 21 Mar 2020 19:21:26 +0800</lastBuildDate>
     
 	<atom:link href="https://flygar.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go</title>
+      <link>https://flygar.org/tags/Go/</link>
+      <pubDate>Sat, 21 Mar 2020 19:21:26 +0800</pubDate>
+      
+      <guid>https://flygar.org/tags/Go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>数据结构和算法</title>
+      <link>https://flygar.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Sat, 21 Mar 2020 19:21:26 +0800</pubDate>
+      
+      <guid>https://flygar.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>摘录</title>
@@ -39,15 +57,6 @@
     </item>
     
     <item>
-      <title>Linux</title>
-      <link>https://flygar.org/tags/Linux/</link>
-      <pubDate>Thu, 05 Mar 2020 20:32:34 +0800</pubDate>
-      
-      <guid>https://flygar.org/tags/Linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Ubuntu</title>
       <link>https://flygar.org/tags/Ubuntu/</link>
       <pubDate>Thu, 05 Mar 2020 20:32:34 +0800</pubDate>
@@ -62,15 +71,6 @@
       <pubDate>Sun, 05 Jan 2020 20:32:34 +0800</pubDate>
       
       <guid>https://flygar.org/tags/BBR/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>CentOS</title>
-      <link>https://flygar.org/tags/CentOS/</link>
-      <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
-      
-      <guid>https://flygar.org/tags/CentOS/</guid>
       <description></description>
     </item>
     
@@ -98,15 +98,6 @@
       <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
       
       <guid>https://flygar.org/tags/Elasticsearch/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Go</title>
-      <link>https://flygar.org/tags/Go/</link>
-      <pubDate>Mon, 17 Jun 2019 23:06:41 +0800</pubDate>
-      
-      <guid>https://flygar.org/tags/Go/</guid>
       <description></description>
     </item>
     
