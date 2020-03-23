@@ -89,14 +89,14 @@
         
         <div class="post-content">
             <ul>
-<li>单链表实现</li>
-<li>单链表增删改查</li>
-<li>双向链表实现</li>
-<li>双向链表增删改查</li>
+<li>单链表实现及增删改查</li>
+<li>双向链表实现及增删改查</li>
+<li>单向环形链表实现及增删改查</li>
+<li>双向环形链表实现及增删改查</li>
 </ul>
 <p>链表是一个有序(FIFO)的列表</p>
 <h2 id="单链表">单链表</h2>
-<p>单链表: 带头节点的链表<br>
+<p>带头节点的单向链表<br>
 头节点的作用: 不存放数据，用来标识链表头，为了方便的对单链表进行增删改查</p>
 <h3 id="单链表实现">单链表实现</h3>
 <p>next指向下一个节点</p>
@@ -123,7 +123,7 @@
 	}
 
 }
-</code></pre></div><p>根据编号从小到大排列插入相应位置<br>
+</code></pre></div><p>根据编号从小到大排列插入指定位置<br>
 前提: 节点已是从小到大排列顺序<br>
 思路: 带插入节点<code>newHeroNode.number</code>编号小于<code>head.next.number</code>则找到位置</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">insertById</span>(head <span style="color:#ff79c6">*</span>heroNode, newHeroNode <span style="color:#ff79c6">*</span>heroNode) {
@@ -265,6 +265,208 @@
 </code></pre></div><p>运行结果如下：
 <img src="https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-22-0-47-32.png" alt="2020-3-22-0-47-32.png"></p>
 <h2 id="双向链表">双向链表</h2>
+<p>带头节点的双向链表</p>
+<h3 id="双向链表实现">双向链表实现</h3>
+<p>pre 指向前一个节点
+next 指向下一个节点</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">type</span> heroNode <span style="color:#8be9fd;font-style:italic">struct</span> {
+	number   <span style="color:#8be9fd">int</span>
+	name     <span style="color:#8be9fd">string</span>
+	nickname <span style="color:#8be9fd">string</span>
+	pre      <span style="color:#ff79c6">*</span>heroNode
+	next     <span style="color:#ff79c6">*</span>heroNode
+}
+</code></pre></div><h3 id="给双链表新增节点">给双链表新增节点</h3>
+<p>直接在双向链表尾部插入<br>
+思路: 找到链表的最后一个节点, 描述 head.next 和 newHeroNode.pre</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">insert</span>(head <span style="color:#ff79c6">*</span>heroNode, newHeroNode <span style="color:#ff79c6">*</span>heroNode) {
+
+	<span style="color:#ff79c6">for</span> {
+		<span style="color:#6272a4">// 如果 true 表示找到链表末尾; 并赋值
+</span><span style="color:#6272a4"></span>		<span style="color:#ff79c6">if</span> head.next <span style="color:#ff79c6">==</span> <span style="color:#ff79c6">nil</span> {
+			head.next = newHeroNode
+			newHeroNode.pre = head
+			<span style="color:#ff79c6">return</span>
+		} <span style="color:#ff79c6">else</span> {
+			<span style="color:#6272a4">// 当前node不是，则进入下一个node
+</span><span style="color:#6272a4"></span>			head = head.next
+		}
+
+	}
+
+}
+</code></pre></div><p>根据编号从小到大排列插入指定位置
+前提: 节点已是从小到大排列顺序
+思路: <code>head.next.number &gt; newHeroNode.number</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">insertById</span>(head <span style="color:#ff79c6">*</span>heroNode, newHeroNode <span style="color:#ff79c6">*</span>heroNode) {
+
+	<span style="color:#ff79c6">for</span> {
+		<span style="color:#6272a4">// 如果 true 表示找到链表末尾;
+</span><span style="color:#6272a4"></span>		<span style="color:#ff79c6">if</span> head.next <span style="color:#ff79c6">==</span> <span style="color:#ff79c6">nil</span> {
+			head.next = newHeroNode
+			newHeroNode.pre = head
+			<span style="color:#ff79c6">return</span>
+		} <span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span> newHeroNode.number <span style="color:#ff79c6">&lt;=</span> head.next.number {
+			head.next.pre = newHeroNode
+			newHeroNode.next = head.next
+			newHeroNode.pre = head
+			head.next = newHeroNode
+			<span style="color:#ff79c6">return</span>
+		} <span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span> newHeroNode.number <span style="color:#ff79c6">==</span> head.next.number {
+			fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;存在相同id，不允许插入&#34;</span>)
+			<span style="color:#ff79c6">return</span>
+		} <span style="color:#ff79c6">else</span> {
+			<span style="color:#6272a4">// 当前node不是，则进入下一个node
+</span><span style="color:#6272a4"></span>			head = head.next
+		}
+
+	}
+
+}
+</code></pre></div><h3 id="删除双链表中指定节点">删除双链表中指定节点</h3>
+<p>思路:</p>
+<p>当前所在节点在待删除节点前一位</p>
+<ol>
+<li>将待删除节点的下一个节点的pre指向当前节点</li>
+<li>将当前节点 <code>head.next</code> 指向待删除节点的下一个节点，即 <code>head.next.next</code></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">deleteById</span>(head <span style="color:#ff79c6">*</span>heroNode, number <span style="color:#8be9fd">int</span>) {
+	<span style="color:#ff79c6">for</span> {
+		<span style="color:#6272a4">// 没找到
+</span><span style="color:#6272a4"></span>		<span style="color:#ff79c6">if</span> head.next <span style="color:#ff79c6">==</span> <span style="color:#ff79c6">nil</span> {
+			fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;不存在de序号: &#34;</span>, number)
+			<span style="color:#ff79c6">return</span>
+		} <span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span> number <span style="color:#ff79c6">==</span> head.next.number {
+			<span style="color:#6272a4">// 实现
+</span><span style="color:#6272a4"></span>			<span style="color:#ff79c6">if</span> head.next.next <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nil</span> {
+				head.next.next.pre = head
+				head.next = head.next.next
+			} <span style="color:#ff79c6">else</span> {
+				head.next = <span style="color:#ff79c6">nil</span>
+			}
+			<span style="color:#ff79c6">return</span>
+		} <span style="color:#ff79c6">else</span> {
+			<span style="color:#6272a4">// 当前node不是，则进入下一个node
+</span><span style="color:#6272a4"></span>			head = head.next
+		}
+
+	}
+
+}
+</code></pre></div><h3 id="更新双链表中指定节点">更新双链表中指定节点</h3>
+<p>思路: 找到符合条件的节点 <code>newHeroNode.number == head.next.number</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">update</span>(head <span style="color:#ff79c6">*</span>heroNode, newHeroNode <span style="color:#ff79c6">*</span>heroNode) {
+	<span style="color:#ff79c6">for</span> {
+		<span style="color:#6272a4">// 没找到
+</span><span style="color:#6272a4"></span>		<span style="color:#ff79c6">if</span> head.next <span style="color:#ff79c6">==</span> <span style="color:#ff79c6">nil</span> {
+			fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;不存在de序号: &#34;</span>, newHeroNode.number)
+			<span style="color:#ff79c6">return</span>
+		} <span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span> newHeroNode.number <span style="color:#ff79c6">==</span> head.next.number {
+			<span style="color:#6272a4">// 实现4步关联
+</span><span style="color:#6272a4"></span>			<span style="color:#6272a4">// 修改待更新节点的下个节点的pre
+</span><span style="color:#6272a4"></span>			head.next.next.pre = newHeroNode
+			<span style="color:#6272a4">// 更新节点
+</span><span style="color:#6272a4"></span>			newHeroNode.pre = head
+			newHeroNode.next = head.next.next
+			<span style="color:#6272a4">// 修改当前节点的next
+</span><span style="color:#6272a4"></span>			head.next = newHeroNode
+			<span style="color:#ff79c6">return</span>
+		} <span style="color:#ff79c6">else</span> {
+			head = head.next
+		}
+
+	}
+
+}
+</code></pre></div><h3 id="查询双链表中所有节点信息">查询双链表中所有节点信息</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">listHeroNode</span>(head <span style="color:#ff79c6">*</span>heroNode) {
+	<span style="color:#ff79c6">for</span> {
+		<span style="color:#6272a4">// 1. 判断当前 node 是否为末尾 node ( 当前 node 的 next 的值是否是空指针 nil)
+</span><span style="color:#6272a4"></span>		<span style="color:#ff79c6">if</span> head.next <span style="color:#ff79c6">==</span> <span style="color:#ff79c6">nil</span> {
+			<span style="color:#ff79c6">return</span>
+		}
+
+		<span style="color:#6272a4">// 2. 不是则输出 info
+</span><span style="color:#6272a4"></span>		fmt.<span style="color:#50fa7b">Printf</span>(<span style="color:#f1fa8c">&#34;prev排名: %d \t 姓名: %s \t 昵称: %s \n&#34;</span>, head.number, head.name, head.nickname)
+		fmt.<span style="color:#50fa7b">Printf</span>(<span style="color:#f1fa8c">&#34;curr排名: %d \t 姓名: %s \t 昵称: %s \n&#34;</span>, head.next.number, head.next.name, head.next.nickname)
+		<span style="color:#ff79c6">if</span> head.next.next <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nil</span> {
+			fmt.<span style="color:#50fa7b">Printf</span>(<span style="color:#f1fa8c">&#34;next排名: %d \t 姓名: %s \t 昵称: %s \n&#34;</span>, head.next.next.number, head.next.next.name, head.next.next.nickname)
+		}
+		fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;---------&#34;</span>)
+
+		<span style="color:#6272a4">// 3. 将当前node下的next传给head
+</span><span style="color:#6272a4"></span>		head = head.next
+	}
+
+}
+</code></pre></div><h3 id="main函数">main函数</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">main</span>() {
+	<span style="color:#6272a4">// 1. 先创建一个头节点，
+</span><span style="color:#6272a4"></span>	head <span style="color:#ff79c6">:=</span> <span style="color:#ff79c6">&amp;</span>heroNode{}
+
+	<span style="color:#6272a4">// 2. 创建一个新的heroNode
+</span><span style="color:#6272a4"></span>	hero1 <span style="color:#ff79c6">:=</span> <span style="color:#ff79c6">&amp;</span>heroNode{
+		number:   <span style="color:#bd93f9">1</span>,
+		name:     <span style="color:#f1fa8c">&#34;宋江&#34;</span>,
+		nickname: <span style="color:#f1fa8c">&#34;及时雨&#34;</span>,
+	}
+
+	hero2 <span style="color:#ff79c6">:=</span> <span style="color:#ff79c6">&amp;</span>heroNode{
+		number:   <span style="color:#bd93f9">2</span>,
+		name:     <span style="color:#f1fa8c">&#34;林冲&#34;</span>,
+		nickname: <span style="color:#f1fa8c">&#34;豹子头&#34;</span>,
+	}
+
+	hero3 <span style="color:#ff79c6">:=</span> <span style="color:#ff79c6">&amp;</span>heroNode{
+		number:   <span style="color:#bd93f9">3</span>,
+		name:     <span style="color:#f1fa8c">&#34;卢俊义&#34;</span>,
+		nickname: <span style="color:#f1fa8c">&#34;玉麒麟&#34;</span>,
+	}
+
+	hero4 <span style="color:#ff79c6">:=</span> <span style="color:#ff79c6">&amp;</span>heroNode{
+		number:   <span style="color:#bd93f9">4</span>,
+		name:     <span style="color:#f1fa8c">&#34;吴用&#34;</span>,
+		nickname: <span style="color:#f1fa8c">&#34;智多星&#34;</span>,
+	}
+
+	<span style="color:#6272a4">// 3. 在尾部新增节点
+</span><span style="color:#6272a4"></span>	<span style="color:#50fa7b">insert</span>(head, hero1)
+	<span style="color:#6272a4">// insert(head, hero2)
+</span><span style="color:#6272a4"></span>	<span style="color:#50fa7b">insert</span>(head, hero3)
+	<span style="color:#50fa7b">insert</span>(head, hero4)
+
+	<span style="color:#6272a4">// 3.1 指定位置新增节点
+</span><span style="color:#6272a4"></span>	<span style="color:#50fa7b">listHeroNode</span>(head)
+	<span style="color:#50fa7b">insertById</span>(head, hero2)
+
+	<span style="color:#6272a4">// 4. 查
+</span><span style="color:#6272a4"></span>	<span style="color:#50fa7b">listHeroNode</span>(head)
+
+	<span style="color:#6272a4">// 删
+</span><span style="color:#6272a4"></span>	fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;删除操作&#34;</span>)
+	<span style="color:#50fa7b">deleteById</span>(head, <span style="color:#bd93f9">3</span>)
+	<span style="color:#50fa7b">listHeroNode</span>(head)
+
+	<span style="color:#6272a4">// 改
+</span><span style="color:#6272a4"></span>	fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;更新操作&#34;</span>)
+	<span style="color:#6272a4">// 6. 改
+</span><span style="color:#6272a4"></span>	heroUpdate <span style="color:#ff79c6">:=</span> <span style="color:#ff79c6">&amp;</span>heroNode{
+		number:   <span style="color:#bd93f9">2</span>,
+		name:     <span style="color:#f1fa8c">&#34;林不冲&#34;</span>,
+		nickname: <span style="color:#f1fa8c">&#34;狮子头&#34;</span>,
+	}
+	<span style="color:#50fa7b">update</span>(head, heroUpdate)
+	<span style="color:#50fa7b">listHeroNode</span>(head)
+
+}
+
+</code></pre></div><h2 id="单向环形链表">单向环形链表</h2>
+<p>什么是环形链表</p>
+<h3 id="单向环形链表实现">单向环形链表实现</h3>
+<h3 id="给单向环形链表新增节点">给单向环形链表新增节点</h3>
+<h3 id="删除单向环形链表中指定节点">删除单向环形链表中指定节点</h3>
+<h3 id="更新单向环形链表中指定节点">更新单向环形链表中指定节点</h3>
+<h3 id="查询单向环形链表中所有节点信息">查询单向环形链表中所有节点信息</h3>
         </div>
 
         

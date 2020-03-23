@@ -18,10 +18,10 @@
       
       <guid>https://flygar.org/2020/03/21/golang-.html</guid>
       <description>&lt;ul&gt;
-&lt;li&gt;单链表实现&lt;/li&gt;
-&lt;li&gt;单链表增删改查&lt;/li&gt;
-&lt;li&gt;双向链表实现&lt;/li&gt;
-&lt;li&gt;双向链表增删改查&lt;/li&gt;
+&lt;li&gt;单链表实现及增删改查&lt;/li&gt;
+&lt;li&gt;双向链表实现及增删改查&lt;/li&gt;
+&lt;li&gt;单向环形链表实现及增删改查&lt;/li&gt;
+&lt;li&gt;双向环形链表实现及增删改查&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     
