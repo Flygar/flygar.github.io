@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 22 Mar 2020 01:11:02 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 26 Mar 2020 03:35:22 +0800</lastBuildDate>
     
 	<atom:link href="https://flygar.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tmux</title>
+      <link>https://flygar.org/tags/Tmux/</link>
+      <pubDate>Thu, 26 Mar 2020 03:35:22 +0800</pubDate>
+      
+      <guid>https://flygar.org/tags/Tmux/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Leetcode</title>

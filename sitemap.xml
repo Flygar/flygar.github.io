@@ -4,7 +4,32 @@
   
   <url>
     <loc>https://flygar.org/categories/</loc>
-    <lastmod>2020-03-22T01:11:02+08:00</lastmod>
+    <lastmod>2020-03-26T03:35:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/categories/Linux/</loc>
+    <lastmod>2020-03-26T03:35:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/post/</loc>
+    <lastmod>2020-03-26T03:35:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/tags/</loc>
+    <lastmod>2020-03-26T03:35:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/tags/Tmux/</loc>
+    <lastmod>2020-03-26T03:35:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/2020/03/26/tmux-Best-Practices.html</loc>
+    <lastmod>2020-03-26T03:35:22+08:00</lastmod>
   </url>
   
   <url>
@@ -19,16 +44,6 @@
   
   <url>
     <loc>https://flygar.org/2020/03/22/leetcode-1.html</loc>
-    <lastmod>2020-03-22T01:11:02+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/post/</loc>
-    <lastmod>2020-03-22T01:11:02+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/tags/</loc>
     <lastmod>2020-03-22T01:11:02+08:00</lastmod>
   </url>
   
@@ -85,11 +100,6 @@
   <url>
     <loc>https://flygar.org/comment/</loc>
     <lastmod>2020-03-05T21:42:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/categories/Linux/</loc>
-    <lastmod>2020-03-05T20:32:34+08:00</lastmod>
   </url>
   
   <url>
