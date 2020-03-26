@@ -97,22 +97,147 @@
 <p>打开item2并配置 <code>tmux a -t demo || tmux new -s demo</code> ，实现每次打开iterm2时尝试连接名为demo的session，如果没有则新建后连接。</p>
 <p><img src="https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-26-3-41-29.png" alt="2020-3-26-3-41-29.png"></p>
 <p>demo作为入口session，通过 <code>&lt;prefix&gt; C-c</code> 创建新session， <code>&lt;prefix&gt; $</code> 为session重命名，也可以修改配置文件 <code>tmux.conf.local</code>来实现每次 new session 时为 session 命名</p>
-<h2 id="快捷键">快捷键</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># Mouse mode allows you to set the active window, set the active pane, resize panes and automatically switches to copy-mode to select text</span>
+<h2 id="设置mouse-mode下每次滚轮的行数">设置mouse mode下每次滚轮的行数</h2>
+<p>设置为1行，默认5行不太平滑</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+<span style="color:#6272a4"># 更新配置</span>
+<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34; \
+</span><span style="color:#f1fa8c">\nbind -Tcopy-mode WheelUpPane send -N1 -X scroll-up \
+</span><span style="color:#f1fa8c">\nbind -Tcopy-mode WheelDownPane send -N1 -X scroll-down \
+</span><span style="color:#f1fa8c">&#34;</span> &gt;&gt; ~/.tmux.conf.local
+
+<span style="color:#6272a4"># 重载配置</span>
+&lt;prefix&gt; r
+</code></pre></div><h2 id="颜色问题">颜色问题</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34; \
+</span><span style="color:#f1fa8c">\nexport TERM=&#34;</span>xterm-256color<span style="color:#f1fa8c">&#34; \
+</span><span style="color:#f1fa8c">&#34;</span> &gt;&gt; ~/.zshrc
+</code></pre></div><h2 id="快捷键">快捷键</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 显示快捷键帮助文档</span>
+&lt;prefix&gt; ?
+
+<span style="color:#6272a4"># Mouse mode allows you to set the active window, set the active pane, resize panes and automatically switches to copy-mode to select text</span>
 &lt;prefix&gt; m
 
-<span style="color:#6272a4"># creates a new session</span>
-&lt;prefix&gt; C-c 
+<span style="color:#6272a4"># 查看粘贴缓冲区</span>
+&lt;prefix&gt; b 
+<span style="color:#6272a4"># 大P,选择要粘贴的内容</span>
+&lt;prefix&gt; P 
 
-<span style="color:#6272a4"># rename session</span>
+<span style="color:#6272a4"># 列出提示信息缓存</span>
+&lt;prefix&gt; ~
+</code></pre></div><h3 id="命令模式">命令模式</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 进入命令行模式；此时可输入支持的命令，例如kill-server所有tmux会话</span>
+&lt;prefix&gt; :  
+
+<span style="color:#6272a4"># 新建一个名称为demo的会话</span>
+tmux new -s demo 
+<span style="color:#6272a4"># 默认进入第一个会话,tmux attach-session -t session-name</span>
+tmux a 
+<span style="color:#6272a4"># 查看所有会话，提倡使用简写形式</span>
+tmux ls 
+<span style="color:#6272a4"># 进入到名称为demo的会话, tmux attach-session -t session-name</span>
+tmux a -t demo 
+<span style="color:#6272a4"># 关闭demo会话</span>
+tmux kill-session -t demo 
+<span style="color:#6272a4"># 关闭服务器，所有的会话都将关闭</span>
+tmux kill-server 
+<span style="color:#6272a4"># 关闭pane</span>
+tmux kill-pane
+<span style="color:#6272a4"># 关闭windows</span> 
+tmux kill-window
+<span style="color:#6272a4"># 列出所有可以的快捷键和其运行的 tmux 命令,</span> 
+tmux list-keys
+<span style="color:#6272a4"># 列出所有的 tmux 命令及其参数</span>
+tmux list-commands
+<span style="color:#6272a4"># 流出所有的 session, window, pane, 运行的进程号，等。</span>
+tmux info
+<span style="color:#6272a4"># 重新加载当前的 tmux 配置（基于一个默认的 tmux 配置）</span>
+tmux source-file ~/.tmux.conf
+</code></pre></div><h3 id="session-会话">session 会话</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 显示会话列表用于选择并切换, &lt;prefix&gt; w 更方便, x 关闭某个session或window</span>
+&lt;prefix&gt; s	
+<span style="color:#6272a4"># 断开当前会话，会话在后台运行. 快捷键组合</span>
+&lt;prefix&gt; d 
+<span style="color:#6272a4"># 选择要断开的会话</span>
+&lt;prefix&gt; D 
+<span style="color:#6272a4"># 挂起当前会话</span>
+&lt;prefix&gt; C-z	
+<span style="color:#6272a4"># 强制重载当前会话</span>
+&lt;prefix&gt; r	
+<span style="color:#6272a4"># 重命名session</span>
 &lt;prefix&gt; $
+</code></pre></div><h3 id="window-窗口">window 窗口</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 新建窗口</span>
+&lt;prefix&gt; c
+<span style="color:#6272a4"># 关闭当前的窗口</span>
+&lt;prefix&gt; &amp;
 
+<span style="color:#6272a4"># 切换窗口</span>
+<span style="color:#6272a4"># brings you to the last active window，代替默认的 &lt;prefix&gt; l</span>
+&lt;prefix&gt; Tab 
 <span style="color:#6272a4"># &lt;prefix&gt; C-h and &lt;prefix&gt; C-l let you navigate windows (default &lt;prefix&gt; n and &lt;prefix&gt; p are unbound)</span>
 &lt;prefix&gt; C-h
 &lt;prefix&gt; C-l
+<span style="color:#6272a4"># 切换到指定窗口</span>
+&lt;prefix&gt; <span style="color:#ff79c6">[</span>0-9<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 通过窗口列表切换窗口</span>
+&lt;prefix&gt; w
+<span style="color:#6272a4"># 前后窗口间互相切换</span>
+<span style="color:#6272a4"># &lt;prefix&gt; l</span>
+<span style="color:#6272a4"># 切换到上一个window</span>
+<span style="color:#6272a4"># &lt;prefix&gt; p</span>
+<span style="color:#6272a4"># 切换到下一个window</span>
+<span style="color:#6272a4"># &lt;prefix&gt; n</span>
 
-<span style="color:#6272a4"># brings you to the last active window</span>
-&lt;prefix&gt; Tab 
+<span style="color:#6272a4"># 重命名当前窗口</span>
+&lt;prefix&gt; ,
+<span style="color:#6272a4"># 修改当前窗口编号（用于排序）</span>
+&lt;prefix&gt; .
+<span style="color:#6272a4"># 快速定位到窗口（输入关键字匹配窗口名称）</span>
+&lt;prefix&gt; f
+</code></pre></div><h3 id="pane-面板">pane 面板</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 将面板一分为二，下侧新建面板</span>
+&lt;prefix&gt; 双引号
+<span style="color:#6272a4"># 将面板一分为二，右侧新建面板</span>
+&lt;prefix&gt; %
+
+<span style="color:#6272a4"># 关闭当前面板</span>
+&lt;prefix&gt; x
+<span style="color:#6272a4"># 最大化当前面板,再重复一次按键后恢复正常（v1.8版本新增）</span>
+&lt;prefix&gt; maximizes the current pane to a new window
+&lt;prefix&gt; z
+<span style="color:#6272a4"># 将当前面板移动到新的窗口打开（原窗口中存在两个及以上面板有效）</span>
+&lt;prefix&gt; ！
+
+<span style="color:#6272a4"># 切换到上一个面板</span>
+&lt;prefix&gt; ;
+<span style="color:#6272a4"># 切换到下一个面板</span>
+&lt;prefix&gt; o
+<span style="color:#6272a4"># 向前置换面板</span>
+&lt;prefix&gt; <span style="color:#ff79c6">{</span>
+<span style="color:#6272a4"># 向后置换面板</span>
+&lt;prefix&gt; <span style="color:#ff79c6">}</span>
+<span style="color:#6272a4"># 移动光标切换面板</span>
+&lt;prefix&gt; 方向键
+<span style="color:#6272a4"># 显示面板编号，在编号消失前输入对应的数字可切换到相应的面板</span> 
+&lt;prefix&gt; q
+
+<span style="color:#6272a4"># 顺时针旋转当前窗口中的所有面板</span>
+&lt;prefix&gt; Ctrl+o
+<span style="color:#6272a4"># 逆时针旋转当前窗口中的所有面板</span>
+&lt;prefix&gt; Ctrl+o
+
+<span style="color:#6272a4"># 可以在默认面板布局中切换，试试就知道了</span> 
+&lt;prefix&gt; 空格键
+
+<span style="color:#6272a4"># 以5个单元格为单位调整当前面板边缘 , &lt;prefix&gt; m 开启后可直接鼠标拖动</span>
+&lt;prefix&gt; Alt+方向键	
+<span style="color:#6272a4"># 以1个单元格为单位调整当前面板边缘（Mac下被系统快捷键覆盖）</span>
+&lt;prefix&gt; Ctrl+方向键	
+
+<span style="color:#6272a4"># 显示时钟</span>
+&lt;prefix&gt; t	
 </code></pre></div>
         </div>
 
