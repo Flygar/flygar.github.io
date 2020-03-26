@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tmux on Flygar&#39;s Blog</title>
+    <link>https://flygar.org/tags/Tmux/</link>
+    <description>Recent content in Tmux on Flygar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 26 Mar 2020 03:35:22 +0800</lastBuildDate>
+    
+	<atom:link href="https://flygar.org/tags/Tmux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tmux 最佳实践</title>
+      <link>https://flygar.org/2020/03/26/tmux-Best-Practices.html</link>
+      <pubDate>Thu, 26 Mar 2020 03:35:22 +0800</pubDate>
+      
+      <guid>https://flygar.org/2020/03/26/tmux-Best-Practices.html</guid>
+      <description>&lt;p&gt;iterm2上集成tmux，方便是方便，难用也是真难用，需要一种更快乐的方式来使用Tmux。&lt;/p&gt;
+&lt;p&gt;效果预览:
+&lt;img src=&#34;https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-26-4-21-45.png&#34; alt=&#34;2020-3-26-4-21-45.png&#34;&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-26-4-19-38.png&#34; alt=&#34;2020-3-26-4-19-38.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

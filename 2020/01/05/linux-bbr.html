@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ubuntu 16.04 下启用 TCP BBR 拥塞控制算法 | Flygar&#39;s Blog</title>
+    <meta property="og:title" content="Ubuntu 16.04 下启用 TCP BBR 拥塞控制算法 - Flygar&#39;s Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-01-05T20:32:34&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-01-05T20:32:34&#43;08:00'>
+        
+    <meta name="Keywords" content="flygar,golang,go语言,go,linux">
+    <meta name="description" content="Ubuntu 16.04 下启用 TCP BBR 拥塞控制算法">
+        
+    <meta name="author" content="zhutou">
+    <meta property="og:url" content="https://flygar.org/2020/01/05/linux-bbr.html">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://flygar.org/">
+                        Flygar&#39;s Blog
+                    </a>
+                
+                <p class="description">zhutou</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://flygar.org/">首页</a>
+                    
+                    <a  href="https://flygar.org/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://flygar.org/about/" title="关于">关于</a>
+                    
+                    <a  href="https://flygar.org/comment/" title="留言板">留言板</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">Ubuntu 16.04 下启用 TCP BBR 拥塞控制算法</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年1月5日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://flygar.org/categories/Linux'>Linux</a></span>
+            
+        </div>
+        
+        
+        
+        <div class="post-content">
+            <p>TCP BBR（Bottleneck Bandwidth and Round-trip propagation time）是由Google设计，于2016年发布的拥塞算法。以往大部分拥塞算法是基于丢包来作为降低传输速率的信号，而BBR则基于模型主动探测。该算法使用网络最近出站数据分组当时的最大带宽和往返时间来创建网络的显式模型。数据包传输的每个累积或选择性确认用于生成记录在数据包传输过程和确认返回期间的时间内所传送数据量的采样率。该算法认为随着网络接口控制器逐渐进入千兆速度时，分组丢失不应该被认为是识别拥塞的主要决定因素，所以基于模型的拥塞控制算法能有更高的吞吐量和更低的延迟，可以用BBR来替代其他流行的拥塞算法，例如CUBIC。Google在YouTube上应用该算法，将全球平均的YouTube网络吞吐量提高了4%，在一些国家超过了14%。</p>
+<p>BBR 只能配合 Linux Kernel 4.10 以上内核才能使用</p>
+<h2 id="为-ubuntu-1604-安装-410--新内核">为 Ubuntu 16.04 安装 4.10 + 新内核</h2>
+<p>推荐使用 HWE 版本的内核，它就在官方源里。<br>
+HWE，即: HareWare Enablement，是专门为在老的系统上支持新的硬件而推出的内核。<br>
+不推荐手动下载安装的新内核，无法保证后续能得到及时的安全更新。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 像安装其他软件包一样在 Ubuntu 16.04 里安装HWE</span>
+apt install --install-recommends linux-generic-hwe-16.04
+<span style="color:#6272a4"># 删除旧内核（可选）</span>
+sudo apt autoremove
+
+<span style="color:#6272a4"># sudo reboot 重启vps应用内核更新</span>
+uname -r
+</code></pre></div><h2 id="启用bbr">启用bbr</h2>
+<p>对于 Linux Kernel 4.10 以上内核 直接启用</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 装载bbr模块</span>
+modprobe tcp_bbr
+<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;tcp_bbr&#34;</span> | tee --append /etc/modules-load.d/modules.conf
+
+<span style="color:#6272a4"># 查看当前 Linux 内核可以使用的 TCP 拥堵控制算法 | 验证是否装载成功</span>
+sysctl net.ipv4.tcp_available_congestion_control
+
+<span style="color:#6272a4"># 正式启用bbr</span>
+<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;net.core.default_qdisc=fq&#34;</span> | tee --append /etc/sysctl.conf
+<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;net.ipv4.tcp_congestion_control=bbr&#34;</span> | tee --append /etc/sysctl.conf
+sysctl -p
+
+<span style="color:#6272a4"># 确认当前使用的控制算法为bbr</span>
+sysctl net.ipv4.tcp_congestion_control
+</code></pre></div>
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://flygar.org/">zhutou</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://flygar.org/2020/01/05/linux-bbr.html">https://flygar.org/2020/01/05/linux-bbr.html</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/2019/08/26/deploy-elasticsearch-offline.html">离线环境下利用 docker 部署 Elasticsearch 集群</a></li>
+        
+        <li><a href="/2019/06/17/go-proverbs.html">Go Proverbs</a></li>
+        
+        <li><a href="/about/">关于</a></li>
+        
+        <li><a href="/archives/">归档</a></li>
+        
+        <li><a href="/search/">搜索</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://flygar.org/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://flygar.org/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://flygar.org/2020/03/26/tmux-Best-Practices.html" title="Tmux 最佳实践">Tmux 最佳实践</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/22/leetcode-1.html" title="leetcode 1. Two Sum">leetcode 1. Two Sum</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/21/golang-.html" title="Go数据结构和算法-链表">Go数据结构和算法-链表</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/19/initiation.html" title="摘录 20200319">摘录 20200319</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/18/after-dark.html" title="天黑之后 20200318">天黑之后 20200318</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/18/initiation.html" title="摘录 20200318">摘录 20200318</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/12/tree_day.html" title="植树节">植树节</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps 安全指北">vps 安全指北</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/02/01/linux-tips.html" title="linux 命令">linux 命令</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/01/05/linux-bbr.html" title="Ubuntu 16.04 下启用 TCP BBR 拥塞控制算法">Ubuntu 16.04 下启用 TCP BBR 拥塞控制算法</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="https://clients.tripodcloud.com/aff.php?aff=528" title="TripodCloud Network" target="_blank" style="color:red">
+                
+                    <img src="https://i.loli.net/2020/03/05/ukL4SFbdYah12em.png">
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="https://flygar.org/categories/Golang/">Golang (3)</a></li>
+    
+    <li><a href="https://flygar.org/categories/Linux/">Linux (5)</a></li>
+    
+    <li><a href="https://flygar.org/categories/%E6%91%98%E5%BD%95/">摘录 (2)</a></li>
+    
+    <li><a href="https://flygar.org/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念 (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://flygar.org/tags/Docker/">Docker</a>
+    
+    <a href="https://flygar.org/tags/Elasticsearch/">Elasticsearch</a>
+    
+    <a href="https://flygar.org/tags/Leetcode/">Leetcode</a>
+    
+    <a href="https://flygar.org/tags/Proverbs/">Proverbs</a>
+    
+    <a href="https://flygar.org/tags/Tmux/">Tmux</a>
+    
+    <a href="https://flygar.org/tags/%E5%A4%A9%E9%BB%91%E4%B9%8B%E5%90%8E/">天黑之后</a>
+    
+    <a href="https://flygar.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://www.flysnow.org" title="飞雪无情的博客">flysnow</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://zuoridangnian.com" title="昨日当年">昨日当年</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://flygar.org/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://flygar.org/">Flygar&#39;s Blog By zhutou</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+</body>
+
+</html>

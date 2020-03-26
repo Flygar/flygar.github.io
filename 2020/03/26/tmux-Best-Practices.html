@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tmux 最佳实践 | Flygar&#39;s Blog</title>
+    <meta property="og:title" content="Tmux 最佳实践 - Flygar&#39;s Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-03-26T03:35:22&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-03-26T03:35:22&#43;08:00'>
+        
+    <meta name="Keywords" content="flygar,golang,go语言,go,linux">
+    <meta name="description" content="Tmux 最佳实践">
+        
+    <meta name="author" content="zhutou">
+    <meta property="og:url" content="https://flygar.org/2020/03/26/tmux-Best-Practices.html">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://flygar.org/">
+                        Flygar&#39;s Blog
+                    </a>
+                
+                <p class="description">zhutou</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://flygar.org/">首页</a>
+                    
+                    <a  href="https://flygar.org/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://flygar.org/about/" title="关于">关于</a>
+                    
+                    <a  href="https://flygar.org/comment/" title="留言板">留言板</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">Tmux 最佳实践</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年3月26日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://flygar.org/categories/Linux'>Linux</a></span>
+            
+        </div>
+        
+        
+        
+        <div class="post-content">
+            <p>iterm2上集成tmux，方便是方便，难用也是真难用，需要一种更快乐的方式来使用Tmux。</p>
+<p>效果预览:
+<img src="https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-26-4-21-45.png" alt="2020-3-26-4-21-45.png">
+<img src="https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-26-4-19-38.png" alt="2020-3-26-4-19-38.png"></p>
+<p>文档: <a href="https://github.com/gpakosz/.tmux">https://github.com/gpakosz/.tmux</a></p>
+<h2 id="实现每次打开iterm2自启动tmux">实现每次打开iterm2自启动tmux</h2>
+<p>打开item2并配置 <code>tmux a -t demo || tmux new -s demo</code> ，实现每次打开iterm2时尝试连接名为demo的session，如果没有则新建后连接。</p>
+<p><img src="https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-26-3-41-29.png" alt="2020-3-26-3-41-29.png"></p>
+<p>demo作为入口session，通过 <code>&lt;prefix&gt; C-c</code> 创建新session， <code>&lt;prefix&gt; $</code> 为session重命名，也可以修改配置文件 <code>tmux.conf.local</code>来实现每次 new session 时为 session 命名</p>
+<h2 id="快捷键">快捷键</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># Mouse mode allows you to set the active window, set the active pane, resize panes and automatically switches to copy-mode to select text</span>
+&lt;prefix&gt; m
+
+<span style="color:#6272a4"># creates a new session</span>
+&lt;prefix&gt; C-c 
+
+<span style="color:#6272a4"># rename session</span>
+&lt;prefix&gt; $
+
+<span style="color:#6272a4"># &lt;prefix&gt; C-h and &lt;prefix&gt; C-l let you navigate windows (default &lt;prefix&gt; n and &lt;prefix&gt; p are unbound)</span>
+&lt;prefix&gt; C-h
+&lt;prefix&gt; C-l
+
+<span style="color:#6272a4"># brings you to the last active window</span>
+&lt;prefix&gt; Tab 
+</code></pre></div>
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://flygar.org/">zhutou</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://flygar.org/2020/03/26/tmux-Best-Practices.html">https://flygar.org/2020/03/26/tmux-Best-Practices.html</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/2020/03/22/leetcode-1.html">leetcode 1. Two Sum</a></li>
+        
+        <li><a href="/2020/03/21/golang-.html">Go数据结构和算法-链表</a></li>
+        
+        <li><a href="/2020/03/19/initiation.html">摘录 20200319</a></li>
+        
+        <li><a href="/2020/03/18/after-dark.html">天黑之后 20200318</a></li>
+        
+        <li><a href="/2020/03/18/initiation.html">摘录 20200318</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='https://flygar.org/tags/Tmux'>Tmux</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://flygar.org/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://flygar.org/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://flygar.org/2020/03/26/tmux-Best-Practices.html" title="Tmux 最佳实践">Tmux 最佳实践</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/22/leetcode-1.html" title="leetcode 1. Two Sum">leetcode 1. Two Sum</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/21/golang-.html" title="Go数据结构和算法-链表">Go数据结构和算法-链表</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/19/initiation.html" title="摘录 20200319">摘录 20200319</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/18/after-dark.html" title="天黑之后 20200318">天黑之后 20200318</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/18/initiation.html" title="摘录 20200318">摘录 20200318</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/12/tree_day.html" title="植树节">植树节</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps 安全指北">vps 安全指北</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/02/01/linux-tips.html" title="linux 命令">linux 命令</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/01/05/linux-bbr.html" title="Ubuntu 16.04 下启用 TCP BBR 拥塞控制算法">Ubuntu 16.04 下启用 TCP BBR 拥塞控制算法</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="https://clients.tripodcloud.com/aff.php?aff=528" title="TripodCloud Network" target="_blank" style="color:red">
+                
+                    <img src="https://i.loli.net/2020/03/05/ukL4SFbdYah12em.png">
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="https://flygar.org/categories/Golang/">Golang (3)</a></li>
+    
+    <li><a href="https://flygar.org/categories/Linux/">Linux (5)</a></li>
+    
+    <li><a href="https://flygar.org/categories/%E6%91%98%E5%BD%95/">摘录 (2)</a></li>
+    
+    <li><a href="https://flygar.org/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念 (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://flygar.org/tags/Docker/">Docker</a>
+    
+    <a href="https://flygar.org/tags/Elasticsearch/">Elasticsearch</a>
+    
+    <a href="https://flygar.org/tags/Leetcode/">Leetcode</a>
+    
+    <a href="https://flygar.org/tags/Proverbs/">Proverbs</a>
+    
+    <a href="https://flygar.org/tags/Tmux/">Tmux</a>
+    
+    <a href="https://flygar.org/tags/%E5%A4%A9%E9%BB%91%E4%B9%8B%E5%90%8E/">天黑之后</a>
+    
+    <a href="https://flygar.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://www.flysnow.org" title="飞雪无情的博客">flysnow</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://zuoridangnian.com" title="昨日当年">昨日当年</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://flygar.org/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://flygar.org/">Flygar&#39;s Blog By zhutou</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+</body>
+
+</html>
