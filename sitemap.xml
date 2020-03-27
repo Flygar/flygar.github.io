@@ -93,6 +93,26 @@
   </url>
   
   <url>
+    <loc>https://flygar.org/tags/Docker/</loc>
+    <lastmod>2020-03-06T00:46:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/tags/Go/</loc>
+    <lastmod>2020-03-06T00:46:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/tags/Linux/</loc>
+    <lastmod>2020-03-06T00:46:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/2019/03/06/break-wall.html</loc>
+    <lastmod>2020-03-06T00:46:30+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://flygar.org/</loc>
     <lastmod>2020-03-05T21:42:26+08:00</lastmod>
   </url>
@@ -115,11 +135,6 @@
   <url>
     <loc>https://flygar.org/2020/01/05/linux-bbr.html</loc>
     <lastmod>2020-01-05T20:32:34+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/tags/Docker/</loc>
-    <lastmod>2019-08-26T10:18:11+08:00</lastmod>
   </url>
   
   <url>

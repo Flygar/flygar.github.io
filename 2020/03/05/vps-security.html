@@ -93,7 +93,11 @@
 <p><img src="https://i.loli.net/2020/03/03/lHyQ1Bxij74qPaL.png" alt="image.png"></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># update list of available packages</span> 
 <span style="color:#6272a4"># upgrade the system by installing/upgrading packages</span>
-apt update <span style="color:#ff79c6">&amp;&amp;</span> apt upgrade
+apt update
+
+<span style="color:#6272a4"># 可选升级</span>
+<span style="color:#6272a4"># apt upgrade</span>
+apt install vim
 
 <span style="color:#6272a4"># who 或者 w 查看当前登陆的用户</span>
 <span style="color:#6272a4"># 检查日志和登陆记录</span>
@@ -148,18 +152,19 @@ PermitRootLogin no
 <span style="color:#6272a4"># 应用配置</span>
 service sshd restart <span style="color:#6272a4"># sudo /etc/init.d/ssh restart</span>
 </code></pre></div><h3 id="设置只允许使用密钥登陆">设置只允许使用密钥登陆</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 在客户端生成密钥</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 在客户端生成密钥, 如果有就用原来的，不需要执行</span>
 ssh-keygen -b <span style="color:#bd93f9">4096</span> -t rsa
 <span style="color:#6272a4"># 将客户端的公钥发送给vps的自定义用户</span>
+<span style="color:#6272a4"># ssh-copy-id ${shortName}</span>
 ssh-copy-id -p <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">PORT</span><span style="color:#f1fa8c">}</span> <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">USERNAME</span><span style="color:#f1fa8c">}</span>@<span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">IP_address</span><span style="color:#f1fa8c">}</span>
 
 <span style="color:#6272a4"># vps端配置config</span>
 vim /etc/ssh/sshd_config
 
-RSAAuthentication yes  <span style="color:#6272a4">#默认已经允许 RSA 密钥</span>
-PubkeyAuthentication yes    <span style="color:#6272a4">#默认已经启用公告密钥配对认证方式</span> 
+RSAAuthentication yes  <span style="color:#6272a4">#默认已经允许 RSA 密钥, 不用动</span>
+PubkeyAuthentication yes    <span style="color:#6272a4">#默认已经启用公告密钥配对认证方式，不用动</span>
 AuthorizedKeysFile  %h/.ssh/authorized_keys    <span style="color:#6272a4">#默认就设定PublicKey文件路径，不用动</span>
-PasswordAuthentication no <span style="color:#6272a4">#禁止密码验证登录。如果启用(yes)的话,RSA认证登录就没有意义了</span>
+PasswordAuthentication no <span style="color:#6272a4">#禁止密码验证登录。如果启用(yes)的话,RSA认证登录就没有意义了，需要取消注释修改为 no</span>
 
 <span style="color:#6272a4"># 应用配置</span>
 service sshd restart <span style="color:#6272a4"># sudo /etc/init.d/ssh restart</span>
@@ -198,15 +203,19 @@ sed -i <span style="color:#f1fa8c">&#34;/</span><span style="color:#8be9fd;font-
 iptables -D INPUT -s <span style="color:#8be9fd;font-style:italic">$IP</span> -j DROP 
 <span style="color:#6272a4"># iptables -A INPUT -s $IP -j DROP , ban了某个IP的永久访问</span>
 
-<span style="color:#6272a4"># 还是不放心？还可以更无情的限制IP</span>
+<span style="color:#6272a4"># 还是不放心？还可以更无情的限制IP。 说明: 这只是一个面，其实规则会写入防火墙中</span>
 <span style="color:#6272a4"># 首先修改/etc/hosts.allow文件，将可访问服务器ssh服务的客户IP加入其中，格式如下</span>
-sshd: 192.168.1.0/255.255.255.0
-sshd: 202.114.23.45 <span style="color:#6272a4"># 只允许访问ssh服务</span>
-ALL: 211.67.67.89 <span style="color:#6272a4"># 允许访问所有服务</span>
+sshd: 192.168.1.0/255.255.255.0 <span style="color:#6272a4"># 允许这个ip段访问ssh服务</span>
+sshd: 202.114.23.45 <span style="color:#6272a4"># 只允许这个ip访问ssh服务</span>
+ALL: 211.67.67.89 <span style="color:#6272a4"># 允许这个ip访问所有服务</span>
+
 <span style="color:#6272a4"># 然后修改/etc/hosts.deny文件，加入禁用其它客户连接ssh服务</span>
 sshd: ALL
+<span style="color:#6272a4"># 或者禁用所有</span>
+ALL: ALL
 </code></pre></div><h3 id="开启安装防火墙">开启(安装)防火墙</h3>
-<p>关闭不必要的端口, 只开放所需端口。</p>
+<p>关闭不必要的端口, 只开放所需端口。<br>
+先过防火墙这关，再去检测是否符合<code>hosts.allow</code>及<code>hosts.deny</code>的条件，需要都符合才能通过。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 使用netstat查看目前开放的端口及链接情况</span>
 <span style="color:#6272a4"># -n: don&#39;t resolve names</span> 
 <span style="color:#6272a4"># -t: tcp</span> 
@@ -354,15 +363,15 @@ sudo ufw disable
     </li>
     
     <li>
+        <a href="https://flygar.org/2019/03/06/break-wall.html" title="上网">上网</a>
+    </li>
+    
+    <li>
         <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps 安全指北">vps 安全指北</a>
     </li>
     
     <li>
         <a href="https://flygar.org/2020/02/01/linux-tips.html" title="linux 命令">linux 命令</a>
-    </li>
-    
-    <li>
-        <a href="https://flygar.org/2020/01/05/linux-bbr.html" title="Ubuntu 16.04 下启用 TCP BBR 拥塞控制算法">Ubuntu 16.04 下启用 TCP BBR 拥塞控制算法</a>
     </li>
     
 </ul>
@@ -389,9 +398,9 @@ sudo ufw disable
         <h3 class="widget-title">分类</h3>
 <ul class="widget-list">
     
-    <li><a href="https://flygar.org/categories/Golang/">Golang (3)</a></li>
+    <li><a href="https://flygar.org/categories/Golang/">Golang (4)</a></li>
     
-    <li><a href="https://flygar.org/categories/Linux/">Linux (5)</a></li>
+    <li><a href="https://flygar.org/categories/Linux/">Linux (6)</a></li>
     
     <li><a href="https://flygar.org/categories/%E6%91%98%E5%BD%95/">摘录 (2)</a></li>
     
@@ -408,7 +417,11 @@ sudo ufw disable
     
     <a href="https://flygar.org/tags/Elasticsearch/">Elasticsearch</a>
     
+    <a href="https://flygar.org/tags/Go/">Go</a>
+    
     <a href="https://flygar.org/tags/Leetcode/">Leetcode</a>
+    
+    <a href="https://flygar.org/tags/Linux/">Linux</a>
     
     <a href="https://flygar.org/tags/Proverbs/">Proverbs</a>
     
