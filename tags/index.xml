@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 26 Mar 2020 03:35:22 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Mar 2020 22:24:51 +0800</lastBuildDate>
     
 	<atom:link href="https://flygar.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>gost</title>
+      <link>https://flygar.org/tags/gost/</link>
+      <pubDate>Mon, 30 Mar 2020 22:24:51 +0800</pubDate>
+      
+      <guid>https://flygar.org/tags/gost/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Tmux</title>
@@ -50,27 +59,9 @@
     <item>
       <title>Docker</title>
       <link>https://flygar.org/tags/Docker/</link>
-      <pubDate>Fri, 06 Mar 2020 00:46:30 +0800</pubDate>
+      <pubDate>Mon, 26 Aug 2019 10:18:11 +0800</pubDate>
       
       <guid>https://flygar.org/tags/Docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Go</title>
-      <link>https://flygar.org/tags/Go/</link>
-      <pubDate>Fri, 06 Mar 2020 00:46:30 +0800</pubDate>
-      
-      <guid>https://flygar.org/tags/Go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>https://flygar.org/tags/Linux/</link>
-      <pubDate>Fri, 06 Mar 2020 00:46:30 +0800</pubDate>
-      
-      <guid>https://flygar.org/tags/Linux/</guid>
       <description></description>
     </item>
     

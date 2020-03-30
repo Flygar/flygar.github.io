@@ -6,10 +6,19 @@
     <description>Recent content in Golang on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 22 Mar 2020 01:11:02 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Mar 2020 22:24:51 +0800</lastBuildDate>
     
 	<atom:link href="https://flygar.org/categories/Golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用 gost 伪装流量科学上网</title>
+      <link>https://flygar.org/2020/03/30/20200330.html</link>
+      <pubDate>Mon, 30 Mar 2020 22:24:51 +0800</pubDate>
+      
+      <guid>https://flygar.org/2020/03/30/20200330.html</guid>
+      <description>&lt;p&gt;使用 &lt;a href=&#34;https://github.com/ginuerzh/gost&#34;&gt;gost&lt;/a&gt; 或 &lt;a href=&#34;https://github.com/trojan-gfw&#34;&gt;trojan&lt;/a&gt; 伪装流量科学上网&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>leetcode 1. Two Sum</title>
@@ -40,15 +49,6 @@
 &lt;li&gt;单向环形链表实现及增删改查&lt;/li&gt;
 &lt;li&gt;双向环形链表实现及增删改查&lt;/li&gt;
 &lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>上网</title>
-      <link>https://flygar.org/2019/03/06/break-wall.html</link>
-      <pubDate>Fri, 06 Mar 2020 00:46:30 +0800</pubDate>
-      
-      <guid>https://flygar.org/2019/03/06/break-wall.html</guid>
-      <description>&lt;p&gt;正确的上网姿势&lt;/p&gt;</description>
     </item>
     
     <item>

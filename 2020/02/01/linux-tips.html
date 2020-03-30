@@ -89,7 +89,27 @@
         
         <div class="post-content">
             <p>linux 命令记录</p>
-<h2 id="端口传输测试">端口传输测试</h2>
+<h3 id="zsh">zsh</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 安装zsh</span>
+apt update <span style="color:#ff79c6">&amp;&amp;</span> apt upgrade <span style="color:#ff79c6">&amp;&amp;</span> apt install zsh git curl vim
+
+<span style="color:#6272a4"># 安装 oh-my-zsh</span> 
+sh -c <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
+
+<span style="color:#6272a4"># 安装插件</span>
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">ZSH_CUSTOM</span><span style="color:#ff79c6">:-</span>~/.oh-my-zsh/custom<span style="color:#f1fa8c">}</span>/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">ZSH_CUSTOM</span><span style="color:#ff79c6">:-</span>~/.oh-my-zsh/custom<span style="color:#f1fa8c">}</span>/plugins/zsh-autosuggestions
+git clone https://github.com/paulirish/git-open.git <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">ZSH_CUSTOM</span><span style="color:#ff79c6">:-</span>~/.oh-my-zsh/custom<span style="color:#f1fa8c">}</span>/plugins/git-open
+
+<span style="color:#6272a4"># config, 选择适合自已的插件</span>
+vim ~/.zshrc
+<span style="color:#6272a4"># HIST_STAMPS=&#34;yyyy-mm-dd&#34;</span>
+<span style="color:#6272a4"># plugins=(git git-open z history zsh-syntax-highlighting zsh-autosuggestions)</span>
+<span style="color:#6272a4"># export LANG=en_US.UTF-8</span>
+<span style="color:#6272a4"># export TERM=&#34;xterm-256color&#34;</span>
+
+<span style="color:#8be9fd;font-style:italic">source</span> ~/.zshrc
+</code></pre></div><h2 id="端口传输测试">端口传输测试</h2>
 <p>Netcat 号称 TCP/IP 的瑞士军刀</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># -v: verbose</span>
 <span style="color:#6272a4"># -n: Suppress name/port resolutions 不解析域名，避免解析域名浪费时间</span>
@@ -106,33 +126,6 @@ nc -l -k <span style="color:#bd93f9">8080</span>
 nc -vzw5 104.168.94.186 <span style="color:#bd93f9">8080</span>
 <span style="color:#6272a4"># 两次 -v 是让它报告更详细的内容(结束时会统计接收和发送多少字节), 设置超时时间3s, 探测端口范围 8080-8083</span>
 nc -v -v -w3 -z 104.168.94.186 8080-8083
-</code></pre></div><h3 id="zsh">zsh</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 安装zsh</span>
-apt update <span style="color:#ff79c6">&amp;&amp;</span> apt upgrade <span style="color:#ff79c6">&amp;&amp;</span> apt install zsh
-<span style="color:#6272a4"># 变更shell</span>
-chsh -s <span style="color:#ff79c6">$(</span>which zsh<span style="color:#ff79c6">)</span>
-<span style="color:#6272a4"># 查看当前shell</span>
-<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#8be9fd;font-style:italic">$SHELL</span>
-
-<span style="color:#6272a4"># 安装 oh-my-zsh</span> 
-<span style="color:#6272a4"># git</span>
-apt install git
-<span style="color:#6272a4"># oh-my-zsh</span>
-sh -c <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
-
-<span style="color:#6272a4"># 安装插件</span>
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">ZSH_CUSTOM</span><span style="color:#ff79c6">:-</span>~/.oh-my-zsh/custom<span style="color:#f1fa8c">}</span>/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">ZSH_CUSTOM</span><span style="color:#ff79c6">:-</span>~/.oh-my-zsh/custom<span style="color:#f1fa8c">}</span>/plugins/zsh-autosuggestions
-git clone https://github.com/paulirish/git-open.git <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">ZSH_CUSTOM</span><span style="color:#ff79c6">:-</span>~/.oh-my-zsh/custom<span style="color:#f1fa8c">}</span>/plugins/git-open
-
-<span style="color:#6272a4"># config, 选择适合自已的插件</span>
-vim ~/.zshrc
-<span style="color:#6272a4"># HIST_STAMPS=&#34;yyyy-mm-dd&#34;</span>
-<span style="color:#6272a4"># plugins=(git git-open z history zsh-syntax-highlighting zsh-autosuggestions)</span>
-<span style="color:#6272a4"># export LANG=en_US.UTF-8</span>
-<span style="color:#6272a4"># export TERM=&#34;xterm-256color&#34;</span>
-
-<span style="color:#8be9fd;font-style:italic">source</span> ~/.zshrc
 </code></pre></div><h2 id="命令大全">命令大全</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 测速</span> 
 <span style="color:#6272a4"># macOS</span>
@@ -148,6 +141,9 @@ bash &lt;<span style="color:#ff79c6">(</span>curl -Lso- https://git.io/superspee
 <span style="color:#6272a4"># 4647) China Mobile Group Zhejiang Co.,Ltd (Hangzhou, China)</span> 
 <span style="color:#6272a4"># 7509) China Telecom ZheJiang Branch (Hangzhou, China)</span>
 
+<span style="color:#6272a4"># https://teddysun.com/444.html</span>
+wget -qO- bench.sh | bash <span style="color:#6272a4"># curl -Lso- bench.sh | bash</span>
+
 <span style="color:#6272a4"># docker</span>
 <span style="color:#6272a4"># 官方docker一键部署脚本</span>
 wget -qO- get.docker.com | bash <span style="color:#6272a4"># curl -fsSL https://get.docker.com -o get-docker.sh &amp;&amp; sh get-docker.sh</span>
@@ -159,6 +155,9 @@ service docker status
 <span style="color:#6272a4"># dig</span>
 dig WWW.EXAMPLE.COM +nostats +nocomments +nocmd
 dig EXAMPLE.COM +noall +answer
+
+<span style="color:#6272a4"># nginx</span>
+
 </code></pre></div>
         </div>
 
@@ -220,6 +219,10 @@ dig EXAMPLE.COM +noall +answer
 <ul class="widget-list">
     
     <li>
+        <a href="https://flygar.org/2020/03/30/20200330.html" title="使用 gost 伪装流量科学上网">使用 gost 伪装流量科学上网</a>
+    </li>
+    
+    <li>
         <a href="https://flygar.org/2020/03/26/tmux-Best-Practices.html" title="Tmux 最佳实践">Tmux 最佳实践</a>
     </li>
     
@@ -245,10 +248,6 @@ dig EXAMPLE.COM +noall +answer
     
     <li>
         <a href="https://flygar.org/2020/03/12/tree_day.html" title="植树节">植树节</a>
-    </li>
-    
-    <li>
-        <a href="https://flygar.org/2019/03/06/break-wall.html" title="上网">上网</a>
     </li>
     
     <li>
@@ -285,7 +284,7 @@ dig EXAMPLE.COM +noall +answer
     
     <li><a href="https://flygar.org/categories/Golang/">Golang (4)</a></li>
     
-    <li><a href="https://flygar.org/categories/Linux/">Linux (6)</a></li>
+    <li><a href="https://flygar.org/categories/Linux/">Linux (5)</a></li>
     
     <li><a href="https://flygar.org/categories/%E6%91%98%E5%BD%95/">摘录 (2)</a></li>
     
@@ -302,15 +301,13 @@ dig EXAMPLE.COM +noall +answer
     
     <a href="https://flygar.org/tags/Elasticsearch/">Elasticsearch</a>
     
-    <a href="https://flygar.org/tags/Go/">Go</a>
-    
     <a href="https://flygar.org/tags/Leetcode/">Leetcode</a>
-    
-    <a href="https://flygar.org/tags/Linux/">Linux</a>
     
     <a href="https://flygar.org/tags/Proverbs/">Proverbs</a>
     
     <a href="https://flygar.org/tags/Tmux/">Tmux</a>
+    
+    <a href="https://flygar.org/tags/gost/">gost</a>
     
     <a href="https://flygar.org/tags/%E5%A4%A9%E9%BB%91%E4%B9%8B%E5%90%8E/">天黑之后</a>
     
