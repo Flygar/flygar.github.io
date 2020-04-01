@@ -12,6 +12,18 @@
     
     
     <item>
+      <title>远程控制家用设备</title>
+      <link>https://flygar.org/2020/04/01/nas.html</link>
+      <pubDate>Wed, 01 Apr 2020 14:33:29 +0800</pubDate>
+      
+      <guid>https://flygar.org/2020/04/01/nas.html</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;利用 DDNS 动态域名解析&lt;/li&gt;
+&lt;li&gt;利用 &lt;a href=&#34;#%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7&#34;&gt;内网穿透&lt;/a&gt; 工具(不推荐)&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
       <title>使用 gost 伪装流量科学上网</title>
       <link>https://flygar.org/2020/03/30/20200330.html</link>
       <pubDate>Mon, 30 Mar 2020 22:24:51 +0800</pubDate>
@@ -166,7 +178,8 @@
       <pubDate>Mon, 17 Jun 2019 22:52:07 +0800</pubDate>
       
       <guid>https://flygar.org/about/</guid>
-      <description> 挣扎于浮世中的韭菜  </description>
+      <description> 挣扎于浮世中的韭菜  2020计划
+ go语言原本 tcp/ip gost k8s权威指南 linux 鸟哥私房菜  </description>
     </item>
     
     <item>

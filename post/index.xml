@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 30 Mar 2020 22:24:51 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2020 14:33:29 +0800</lastBuildDate>
     
 	<atom:link href="https://flygar.org/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>远程控制家用设备</title>
+      <link>https://flygar.org/2020/04/01/nas.html</link>
+      <pubDate>Wed, 01 Apr 2020 14:33:29 +0800</pubDate>
+      
+      <guid>https://flygar.org/2020/04/01/nas.html</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;利用 DDNS 动态域名解析&lt;/li&gt;
+&lt;li&gt;利用 &lt;a href=&#34;#%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7&#34;&gt;内网穿透&lt;/a&gt; 工具(不推荐)&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
     
     <item>
       <title>使用 gost 伪装流量科学上网</title>

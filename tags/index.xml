@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 30 Mar 2020 22:24:51 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2020 14:33:29 +0800</lastBuildDate>
     
 	<atom:link href="https://flygar.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>NAS</title>
+      <link>https://flygar.org/tags/NAS/</link>
+      <pubDate>Wed, 01 Apr 2020 14:33:29 +0800</pubDate>
+      
+      <guid>https://flygar.org/tags/NAS/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>gost</title>
