@@ -4,21 +4,26 @@
   
   <url>
     <loc>https://flygar.org/categories/</loc>
-    <lastmod>2020-04-01T14:33:29+08:00</lastmod>
+    <lastmod>2020-04-01T16:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://flygar.org/categories/Linux/</loc>
-    <lastmod>2020-04-01T14:33:29+08:00</lastmod>
+    <lastmod>2020-04-01T16:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://flygar.org/tags/NAS/</loc>
-    <lastmod>2020-04-01T14:33:29+08:00</lastmod>
+    <loc>https://flygar.org/2020/02/01/linux-tips.html</loc>
+    <lastmod>2020-04-01T16:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://flygar.org/post/</loc>
+    <lastmod>2020-04-01T16:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://flygar.org/tags/NAS/</loc>
     <lastmod>2020-04-01T14:33:29+08:00</lastmod>
   </url>
   
@@ -125,11 +130,6 @@
   <url>
     <loc>https://flygar.org/2020/03/05/vps-security.html</loc>
     <lastmod>2020-03-05T20:32:34+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/2020/02/01/linux-tips.html</loc>
-    <lastmod>2020-02-01T20:32:34+08:00</lastmod>
   </url>
   
   <url>
