@@ -6,20 +6,10 @@
     <description>Recent content in Posts on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 01 Apr 2020 16:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2020 14:33:29 +0800</lastBuildDate>
     
 	<atom:link href="https://flygar.org/post/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>linux 命令</title>
-      <link>https://flygar.org/2020/02/01/linux-tips.html</link>
-      <pubDate>Wed, 01 Apr 2020 16:00:00 +0800</pubDate>
-      
-      <guid>https://flygar.org/2020/02/01/linux-tips.html</guid>
-      <description>&lt;p&gt;date: 2020-02-01&lt;br&gt;
-update: 2020-04-01&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>远程控制家用设备</title>
@@ -135,6 +125,15 @@ update: 2020-04-01&lt;/p&gt;</description>
       <guid>https://flygar.org/2020/03/05/vps-security.html</guid>
       <description>&lt;p&gt;以ubuntu系统为例,提升vps安全。&lt;br&gt;
 保护小鸡,从我做起。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux 命令</title>
+      <link>https://flygar.org/2020/02/01/linux-tips.html</link>
+      <pubDate>Sat, 01 Feb 2020 16:00:00 +0800</pubDate>
+      
+      <guid>https://flygar.org/2020/02/01/linux-tips.html</guid>
+      <description>&lt;p&gt;update: 2020-04-01&lt;/p&gt;</description>
     </item>
     
     <item>
