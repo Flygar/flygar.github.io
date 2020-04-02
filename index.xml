@@ -12,6 +12,22 @@
     
     
     <item>
+      <title>Go defer</title>
+      <link>https://flygar.org/post/Golang/20200402_defer/</link>
+      <pubDate>Thu, 02 Apr 2020 13:06:45 +0800</pubDate>
+      
+      <guid>https://flygar.org/post/Golang/20200402_defer/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;defer 的执行顺序&lt;/li&gt;
+&lt;li&gt;defer 与 return&lt;/li&gt;
+&lt;li&gt;defer 与 函数返回值&lt;/li&gt;
+&lt;li&gt;defer 与 panic&lt;/li&gt;
+&lt;li&gt;defer 中包含 panic&lt;/li&gt;
+&lt;li&gt;defer 下的函数参数包含子函数&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>远程控制家用设备</title>
       <link>https://flygar.org/2020/04/01/nas.html</link>
       <pubDate>Wed, 01 Apr 2020 14:33:29 +0800</pubDate>
