@@ -83,10 +83,9 @@
       
       <guid>https://flygar.org/2020/03/21/golang-.html</guid>
       <description>&lt;ul&gt;
-&lt;li&gt;单链表实现及增删改查&lt;/li&gt;
+&lt;li&gt;单向链表实现及增删改查&lt;/li&gt;
 &lt;li&gt;双向链表实现及增删改查&lt;/li&gt;
-&lt;li&gt;单向环形链表实现及增删改查&lt;/li&gt;
-&lt;li&gt;双向环形链表实现及增删改查&lt;/li&gt;
+&lt;li&gt;循环链表实现及增删改查&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     
@@ -103,15 +102,6 @@
     </item>
     
     <item>
-      <title>天黑之后 20200318</title>
-      <link>https://flygar.org/2020/03/18/after-dark.html</link>
-      <pubDate>Wed, 18 Mar 2020 00:58:02 +0800</pubDate>
-      
-      <guid>https://flygar.org/2020/03/18/after-dark.html</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>摘录 20200318</title>
       <link>https://flygar.org/2020/03/18/initiation.html</link>
       <pubDate>Wed, 18 Mar 2020 00:31:57 +0800</pubDate>
@@ -119,8 +109,6 @@
       <guid>https://flygar.org/2020/03/18/initiation.html</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;允许自已虚度时光&lt;/li&gt;
-&lt;li&gt;为什么而读书&lt;/li&gt;
-&lt;li&gt;什么是责任感&lt;/li&gt;
 &lt;/ol&gt;</description>
     </item>
     
@@ -195,7 +183,7 @@
       
       <guid>https://flygar.org/about/</guid>
       <description> 挣扎于浮世中的韭菜  2020计划
- go语言原本 tcp/ip gost k8s权威指南 linux 鸟哥私房菜  </description>
+ go语言原本 tcp/ip  图解TCP/IP (4.4 230/312) 图解HTTP （0）   k8s权威指南 linux 鸟哥私房菜  </description>
     </item>
     
     <item>
