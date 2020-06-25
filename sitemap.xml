@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://flygar.org/</loc>
+    <lastmod>2020-04-02T13:06:45+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://flygar.org/post/Golang/20200402_defer/</loc>
     <lastmod>2020-04-02T13:06:45+08:00</lastmod>
   </url>
@@ -105,11 +110,6 @@
   <url>
     <loc>https://flygar.org/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</loc>
     <lastmod>2020-03-12T12:14:35+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/</loc>
-    <lastmod>2020-03-05T21:42:26+08:00</lastmod>
   </url>
   
   <url>

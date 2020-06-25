@@ -44,7 +44,7 @@
                         Flygar&#39;s Blog
                     </a>
                 
-                <p class="description">zhutou</p>
+                <p class="description">图床在github上,翻墙浏览体验更加</p>
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
@@ -334,28 +334,28 @@ install_gost<span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{<
     <span style="color:#8be9fd;font-style:italic">read</span> -p <span style="color:#f1fa8c">&#34;请输入你设置的gost的密码:&#34;</span> PASS
     <span style="color:#8be9fd;font-style:italic">read</span> -p <span style="color:#f1fa8c">&#34;请输入你设置的HTTP/2需要侦听的端口号(443)：&#34;</span> PORT
 
-    <span style="color:#8be9fd;font-style:italic">read</span> -p <span style="color:#f1fa8c">&#34;请输入准备设置的ShadowSocks的密码:&#34;</span> PASS_SS
-    <span style="color:#8be9fd;font-style:italic">read</span> -p <span style="color:#f1fa8c">&#34;请输入ss端口(32098)：&#34;</span> LOCAL_PORT_SS
-    <span style="color:#8be9fd;font-style:italic">read</span> -p <span style="color:#f1fa8c">&#34;请输入ss需要使用的加密协议(aes-256-gcm)：&#34;</span> METHON
-
-
     <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[[</span> -z <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">PORT</span>// <span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">]]</span> <span style="color:#ff79c6">||</span> ! <span style="color:#ff79c6">[[</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">PORT</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">=</span>~ ^<span style="color:#ff79c6">[</span>0-9<span style="color:#ff79c6">]</span>+$ <span style="color:#ff79c6">]]</span> <span style="color:#ff79c6">||</span> ! <span style="color:#ff79c6">[</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$PORT</span><span style="color:#f1fa8c">&#34;</span> -ge <span style="color:#bd93f9">1</span> -a <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$PORT</span><span style="color:#f1fa8c">&#34;</span> -le <span style="color:#bd93f9">65535</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
         <span style="color:#8be9fd;font-style:italic">echo</span> -e <span style="color:#f1fa8c">&#34;非法端口,使用默认端口 443 !&#34;</span>
         <span style="color:#8be9fd;font-style:italic">PORT</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">443</span>
     <span style="color:#ff79c6">fi</span>
+
+    <span style="color:#8be9fd;font-style:italic">read</span> -p <span style="color:#f1fa8c">&#34;请输入准备设置的ShadowSocks的密码:&#34;</span> PASS_SS
+    <span style="color:#8be9fd;font-style:italic">read</span> -p <span style="color:#f1fa8c">&#34;请输入ss端口(32098)：&#34;</span> LOCAL_PORT_SS
 
     <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[[</span> -z <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">LOCAL_PORT_SS</span>// <span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">]]</span> <span style="color:#ff79c6">||</span> ! <span style="color:#ff79c6">[[</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">LOCAL_PORT_SS</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">=</span>~ ^<span style="color:#ff79c6">[</span>0-9<span style="color:#ff79c6">]</span>+$ <span style="color:#ff79c6">]]</span> <span style="color:#ff79c6">||</span> ! <span style="color:#ff79c6">[</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$LOCAL_PORT_SS</span><span style="color:#f1fa8c">&#34;</span> -ge <span style="color:#bd93f9">1</span> -a <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$LOCAL_PORT_SS</span><span style="color:#f1fa8c">&#34;</span> -le <span style="color:#bd93f9">65535</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
         <span style="color:#8be9fd;font-style:italic">echo</span> -e <span style="color:#f1fa8c">&#34;非法端口,使用默认端口 32098 !&#34;</span>
         <span style="color:#8be9fd;font-style:italic">LOCAL_PORT_SS</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">32098</span>
     <span style="color:#ff79c6">fi</span>
 
+    <span style="color:#8be9fd;font-style:italic">read</span> -p <span style="color:#f1fa8c">&#34;请输入ss需要使用的加密协议(aes-256-gcm)：&#34;</span> METHON
+    
     <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[[</span> -z <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">METHON</span>// <span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">]]</span>; <span style="color:#ff79c6">then</span>
         <span style="color:#8be9fd;font-style:italic">echo</span> -e <span style="color:#f1fa8c">&#34;使用默认加密协议 aes-256-gcm !&#34;</span>
         <span style="color:#8be9fd;font-style:italic">METHON</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;aes-256-gcm&#34;</span>
     <span style="color:#ff79c6">fi</span> 
 
-    <span style="color:#6272a4"># 监听并转发</span>
-    docker run -d --name gost-hostdare <span style="color:#f1fa8c">\
+    <span style="color:#6272a4"># 监听并转发; docker自动重启 --restart=always</span>
+    docker run -d --restart<span style="color:#ff79c6">=</span>always --name gost-hostdare <span style="color:#f1fa8c">\
 </span><span style="color:#f1fa8c"></span>        -p <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">LOCAL_PORT_SS</span><span style="color:#f1fa8c">}</span>:<span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">LOCAL_PORT_SS</span><span style="color:#f1fa8c">}</span> <span style="color:#f1fa8c">\
 </span><span style="color:#f1fa8c"></span>        ginuerzh/gost <span style="color:#f1fa8c">\
 </span><span style="color:#f1fa8c"></span>        -L <span style="color:#f1fa8c">&#34;ss://</span><span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">METHON</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">:</span><span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">PASS_SS</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">@:</span><span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">LOCAL_PORT_SS</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#f1fa8c">\
