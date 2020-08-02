@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>计算机网络自顶向下方法(原书第7版) 课后作业答案 | Flygar&#39;s Blog</title>
+    <meta property="og:title" content="计算机网络自顶向下方法(原书第7版) 课后作业答案 - Flygar&#39;s Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-08-02T11:52:48&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-08-02T11:52:48&#43;08:00'>
+        
+    <meta name="Keywords" content="flygar,golang,go语言,go,linux">
+    <meta name="description" content="计算机网络自顶向下方法(原书第7版) 课后作业答案">
+        
+    <meta name="author" content="zhutou">
+    <meta property="og:url" content="https://flygar.org/2020/08/02/computer-networking.html">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://flygar.org/">
+                        Flygar&#39;s Blog
+                    </a>
+                
+                <p class="description">图床在github上,翻墙浏览体验更加</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://flygar.org/">首页</a>
+                    
+                    <a  href="https://flygar.org/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://flygar.org/about/" title="关于">关于</a>
+                    
+                    <a  href="https://flygar.org/comment/" title="留言板">留言板</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#第1章-计算机网络和因特网">第1章 计算机网络和因特网</a></li>
+    <li><a href="#第2章-应用层">第2章 应用层</a></li>
+    <li><a href="#第3章-运输层">第3章 运输层</a></li>
+    <li><a href="#第4章-网络层-数据平面">第4章 网络层: 数据平面</a></li>
+    <li><a href="#第5章-网络层-控制平面">第5章 网络层: 控制平面</a></li>
+    <li><a href="#第6章-链路层和局域网">第6章 链路层和局域网</a></li>
+    <li><a href="#第7章-无线网络和移动网络">第7章 无线网络和移动网络</a></li>
+    <li><a href="#第8章-计算机网络中的安全">第8章 计算机网络中的安全</a></li>
+    <li><a href="#第9章-多媒体网络">第9章 多媒体网络</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">计算机网络自顶向下方法(原书第7版) 课后作业答案</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年8月2日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://flygar.org/categories/Computer'>Computer</a></span>
+            
+        </div>
+        
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <p>Computer Network A Top-Down Approach Practice Answer</p>
+<ul>
+<li>课后习题和问题答案</li>
+<li>编程作业和答案</li>
+<li>Wireshark实验和答案</li>
+</ul>
+<h2 id="第1章-计算机网络和因特网">第1章 计算机网络和因特网</h2>
+<p><strong>复习题</strong></p>
+<ul>
+<li>
+<p><strong>R1. “主机”和“端系统”之间有什么不同？列举几种不同类型的端系统。Web服务器是一种端系统吗？</strong><br>
+主机和端系统没有不同,主机和端系统可以互换。<br>
+端系统包括 PC，工作站，WEB 服务器，邮件服务器，网络连接的 PDA， 网络电视等等。<br>
+是。</p>
+</li>
+<li>
+<p><strong>R2. “协议”一词常被用于描述外交关系。维基百科是怎样描述外交协议的？</strong><br>
+外交协议常用于描述一系列国家来往规则。这些构建完备和经过时间检验的规则可以使国家和人民生活和工作更简单。协议规则以人民准则为基础，其中的一部分已经作为现在等级地位的声明。</p>
+</li>
+<li>
+<p><strong>R3. 标准对于协议为什么重要？</strong><br>
+标准对于协议来说，可以让人们创建可以相互操作的网络系统和产品。</p>
+</li>
+<li>
+<p><strong>R4. 列出6种接入技术。将它们分类为住宅接入、公司接入或广域无线接入。</strong><br>
+通过电话线的拨号调制解调器：家庭<br>
+通过电话线的DSL（Digital Subscriber Line，数字用户线）：家庭或小办公室<br>
+混合光纤同轴电缆：家庭<br>
+100M交换以太网：企业<br>
+无线网：家庭或企业<br>
+3G和4G：广域无线网</p>
+</li>
+<li>
+<p><strong>R5. HFC宽带是专用的，还是用户间共享的？在下行HFC信道中，有可能发生碰撞吗？为什么？</strong><br>
+HFC带宽是用户间共享的。
+下行HFC信道中不会发生碰撞。因为分组是由一个源发出，由不同的端系统接受，因此不存在冲突。</p>
+</li>
+<li>
+<p><strong>R6. 列出你所在城市中的可供使用的住宅接入技术。对于每种类型的接入方式，给出所宣称的下行速率、上行速率和每月的价格。</strong><br>
+光纤到户。下行速率: 200Mbps。上行速率: 60Mbps。100¥/月</p>
+</li>
+<li>
+<p><strong>R7. 以太LAN的传输速率是多少？</strong><br>
+10M、100M、1G、10G</p>
+</li>
+<li>
+<p><strong>R8. 能够运行以太网的一些物理媒体是什么？</strong><br>
+双绞铜线，同轴电缆，光纤等等。</p>
+</li>
+<li>
+<p><strong>R9. 拨号调制解调器、HFC、DSL和FTTH都用于住宅接入。对于这些技术中的每一种，给出传输速率的范围。并讨论有关宽带是共享的还是专用的。</strong><br>
+拨号调制解调器：最高56K，带宽专用<br>
+HFC：下行最高42.8M，上行最高30.7M，带宽共享<br>
+ADSL：下行最高24M，上行最高2.5M，带宽专用<br>
+FTTH：上行2-10M，下行10-20M，带宽不共享</p>
+</li>
+<li>
+<p><strong>R10. 描述今天最流行的无线因特网接入技术。对它们进行比较和对照。</strong><br>
+WiFi。用于无线局域网，无线用户从辐射范围为几十米的基站（例如无线接入点）传输数据包。基站连接无线网络，并为无线用户提供无线网服务。<br>
+3G和4G。大范围无线网，此系统通过电信服务商提供的基站，由蜂窝电话通过同一个无线设备传输数据。可以提供基站几十千米范围内的无线网络。</p>
+</li>
+<li>
+<p><strong>R11. 假定在发送主机和接收主机间只有一台分组交换机。发送主机和交换机间以及交换机和接收主机间的传输速率分别是R1和R2。假设该交换机使用存储转发分组交换方式，发送一个长度为L的分组的端到端总时延是什么？（忽略排队时延、传播时延和处理时延）</strong><br>
+总时延=L/R1+L/R2</p>
+</li>
+<li>
+<p><strong>R12. 与分组交换网络相比，电路交换网络有哪些优点？在电路交换网络中，TDM比FDM有哪些优点？</strong><br>
+电路交换网络适合实时服务。交付质量高。<br>
+TDM比FDM的优点如下：（来源于网络）<br>
+1.当发生拥塞等网络问题时，TDM中的数据丢失可能只会是一部分，而FDM中就可能是大部分或全部。<br>
+2.TDM适合数字信号传输，而FDM适合模拟信号传输，因为现在通信网络多是传输数字信号，所以TDM比FDM好。<br>
+3.因为频分复用连接建立后，当中途没有数据传输时，他所占有的频段带宽不能被其他连接使用，故可能存在空置，而在时分复用的统计时分模式下，连接建立后，当某个连接暂时不用传输数据时可以少分时间片或者不分，即其时隙的分配时“按需分配”，这样就让出了相应的传输时间给其他连接。</p>
+</li>
+<li>
+<p><strong>R13. 假定用户共享一条2Mbps链路。同时假定当每个用户传输时连续以1Mbps传输，但每个用户仅传输20%的时间。<br>
+a. 当使用电路交换时，能够支持多少用户？<br>
+b. 作为该题的遗留问题，假定使用分组交换。为什么如果两个或更少的用户同时传输的话，在链路前面基本没有排队时延？为什么如果3个用户同时传输的话，将会有排队时延？<br>
+c. 求出某指定用户正在传输的概率。<br>
+d. 假定现在有3个用户。求出在任何给定时间，所有3个用户在同时传输的概率。求出队列增长的时间比率。</strong><br>
+a.使用电路交换时，能够支持2个用户。<br>
+b.如果两个或更少的用户在传输，即使它们同时传输，也仅仅完全占用了2Mbps链路，不会造成排队。如果有3个用户同时传输，需要3Mbps，而此时链路只有2Mbps，因此将会有排队时延。<br>
+c.指定用户正在传输的概率为20%。<br>
+d.在任何给定的时间，所有三个用户同时传输的概率为0.2*0.2*0.2=0.008。因为只有三个用户时，队列才会增长，所以队列增长的时间比率为0.008。</p>
+</li>
+<li>
+<p><strong>R14. 为什么在等级结构相同级别的两个ISP通常互相对等？某IXP是如何挣钱的？</strong><br>
+如果两个ISP不对等，那么当他们给对方发送流量时他们需要通过一个付费流量ISP提供商（中间商）来发送数据。通过直接对等传输，两个ISP可以减少给其他ISP提供商的费用。多个ISP可以通过网络交换点（IXP）（通常由它自己的交换机单独构建）作为汇合点来直接对等传输。ISP通过对连接至IXP的每一个ISP收取少量费用来盈利，当然利润取决于IXP发送或接收的流量数。</p>
+</li>
+<li>
+<p><strong>R15. 某些内容提供商构建了自己的网络。描述谷歌的网络。内容提供商构建这些网络的动机是什么？</strong><br>
+谷歌的私有网络连接了它大大小小的所有的数据中心。谷歌数据中心的流量通过它的私有网络而不是公共网络来传输。大多数的数据中心位于或靠近低级的ISP。因此，当谷歌向用户分发数据时，可以跳过高级的ISP。是什么推动着这些内容提供商创建这些网络？首先，如果内容提供商使用更少的中间的ISP，它可以更容易控制用户体验。其次，通过减少至提供商的网络流量来节省成本。第三，如果ISP向利润率高的内容提供商收取高费用（在网络中立状态不适用的国家或地区），内容提供商可以避免额外成本。</p>
+</li>
+<li>
+<p><strong>R16. 考虑从某源主机跨越一条固定路由向某目的主机发送一分组。列出端到端时延组成部分。这些时延中的哪些是固定的，哪些是变化的？</strong><br>
+端到端时延组成部分有：节点处理时延，排队时延，传输时延，传播时延。<br>
+时延中固定的部分有：节点处理时延 传输时延 传播时延<br>
+时延中变化的部分有：排队时延</p>
+</li>
+<li>
+<p><strong>R17. 访问在配套Web网站上有关传输时延与传播时延的Java小程序。在可用速率、传播时延和可用的分组长度之中找出一种组合，使得该分组的第一个比特到达接收方之前发送方结束了传输。找出另一种组合，使得发送方完成传输之前，该分组的第一个比特到达了接收方。</strong><br>
+a）1000km, 1Mpbs, 100bytes<br>
+b）100km, 1Mpbs, 100bytes</p>
+</li>
+<li>
+<p><strong>R18. 一个长度为1000字节的分组经距离2500km的链路传播，传播速率为2.5x10^8m/s并且传输速率为2Mbps，它需要多长时间？更为一般地，一个长度为L的分组经距离为d的链路传播，传输速率为s并且传播速率为Rbps，它需要用多长时间？该时延与传输速率相关吗？</strong><br>
+(1)<br>
+Tips: 1Byte=8bit =&gt; 1B=8b<br>
+1KB=1024B=1024*8b<br>
+传输时延=1000B/2Mbps=8000b/[(2x1024x1024)b/s]=0.004s=4ms<br>
+传播时延=2500km/(2.5x10^8m/s)=0.01s=10ms<br>
+总时延=传输时延+传播时延=4ms+10ms=14ms<br>
+(2)<br>
+传输时延：L/R<br>
+传播时延：d/s<br>
+需要的时间为: L/R + d/s<br>
+时延与传输速率有关。</p>
+</li>
+<li>
+<p><strong>R19. 假定主机A要向主机B发送一个大文件。从主机A到主机B的路径上有3段链路，其速率分别为R1 = 500kbps，R2 = 2Mbps，R3 = 1Mbps。<br>
+a. 假定该网络中没有其他流量，该文件传送的吞吐量是多少？<br>
+b. 假定该文件为4MB。传输该文件到主机B大致需要多长时间？<br>
+c. 重复(a)和(b)，只是这时R2减小到100kbps.</strong></p>
+</li>
+<li>
+<p><strong>R20. 假定端系统A要向端系统B发送一个大文件。在一个非常高的层次上，描述端系统怎样从该文件生成分组。当这些分组之一到达某分组交换机时，该交换机使用分组中的什么信息来决定将该分组转发到哪一条路上？因特网中的分组交换为什么可以与驱车从一个城市到另一个城市并沿途询问方向相类比？</strong><br>
+端系统A将大文件拆分为块。A通过添加文件头信息至每一个块来从文件生成多个数据包。数据包的头信息包含目标（端系统B）IP地址。<br>
+此时的分组交换机应该指的是路由器。路由器使用分组中的IP地址来决定将该分组转发到哪一条路。<br>
+每个路由器都有一个转发表，当某分组到达一台路由器时，路由器检查IP地址，并用这个地址搜索转发表，以发现适当的输出链路。这种方式与沿途询问方向类似。</p>
+</li>
+<li>
+<p><strong>R21. 访问配套Web站点的排队和丢包Java小程序。最大发送速率和最小的传输速率是什么？对于这些速率，流量强度是多少？用这些速率运行该Java小程序并确定出现丢包要花费多长时间？然后第二次重复该实验，再次确定出现丢包花费多长时间。这些值有什么不同？为什么会有这种现象？</strong><br>
+最大发送速率为500包/s，最大传输速率是350包/s。相对应的话务量强度是500/350=1.43&gt;1。每次实验最终都会发生数据丢失；由于传输的随机性，每一次实验的数据丢失发生的时间都是不同的。</p>
+</li>
+<li>
+<p><strong>R22. 列出一个层次能执行的5个任务。这些任务中的一个（或两个）可能由两个（或更多）层次执行吗？</strong><br>
+比如运输层，TCP的任务有划分为短报文，拥塞控制，流量控制，可靠性等等。它的任务不是由两个（或更多）层次执行的。但是，很多层次的任务是互相重复的。</p>
+</li>
+<li>
+<p><strong>R23. 因特网协议栈中的5个层次有哪些？在这些层次中，每层的主要任务是什么？</strong><br>
+应用层：提供了一些网络应用程序和应用层协议。<br>
+运输层：在应用程序端点之间传输运输层报文。主要有TCP和UDP两种协议。<br>
+网络层：负责将分组从一台主机移动到另一台主机。<br>
+链路层：沿着路经将数据报传递给下一层结点。<br>
+物理层：将整个帧从一个网络元素移动到邻近的网络元素。</p>
+</li>
+<li>
+<p><strong>R24. 什么是应用层报文？什么是运输层报文段？什么是网络层数据报？什么是链路层帧？</strong><br>
+应用层报文：应用程序想发送和通过传输层的数据；<br>
+传输层段：由传输层生成并且封装有传输层头信息的应用层报文；<br>
+网络层数据段：封装有网络层头信息的传输层段；<br>
+链路层帧：封装有链路层头信息的网络层数据段；</p>
+</li>
+<li>
+<p><strong>R25. 路由器处理因特网协议栈中的哪些层次？链路层交换机处理的是哪些层次？主机处理的是哪些层次？</strong><br>
+路由器处理的层次：物理层 链路层 网络层<br>
+交换机处理的层次：物理层 链路层<br>
+主机处理的层次：物理层 链路层 网络层 运输层 应用层</p>
+</li>
+<li>
+<p><strong>R26. 病毒和蠕虫之间有什么不同？</strong><br>
+病毒：需要用户交互才能感染设备，比如邮件病毒。<br>
+蠕虫：不许用户交互就能感染设备，受感染主机中的蠕虫会扫描IP地址和端口号来查找可感染的进程。</p>
+</li>
+<li>
+<p><strong>R27. 描述如何产生一个僵尸网络，以及僵尸网络是怎样被用于DDoS攻击的。</strong><br>
+恶意软件控制了很多网络设备，统称为僵尸网络。<br>
+利用恶意软件，僵尸网络中的网络设备向目标主机发送大量的分组，或者创建大量连接等等，使目标主机陷入困境。这就是僵尸网络被用于DDoS攻击的效果。</p>
+</li>
+<li>
+<p><strong>R28. 假定Alice和Bob经计算机网络相互发送分组。假定Trudy将自己安置在网络中，使得她能够俘获由Alice发送的所有分组，并发送她希望给Bob的东西；她也能俘获Bob发送的所有分组，并发送她希望给Alice的东西。列出在这种情况下Trudy能够做的某些恶意的事情。</strong><br>
+Trudy可以进行分组嗅探，得到传输分组的副本;还可以进行IP哄骗，冒充另一个用户。</p>
+</li>
+</ul>
+<p><strong>习题</strong></p>
+<ul>
+<li><strong>dsfds</strong></li>
+</ul>
+<p><strong>Wireshark 实验</strong></p>
+<ul>
+<li>无</li>
+</ul>
+<h2 id="第2章-应用层">第2章 应用层</h2>
+<p><strong>复习题</strong></p>
+<ul>
+<li>
+<p><strong>R1. 列出5种非专用的因特网应用及他们所使用的应用层协议</strong><br>
+浏览网页 HTTP协议<br>
+文件传输 FTP协议<br>
+P2P下载 P2P协议<br>
+发送邮件 SMTP协议<br>
+DNS服务 DNS协议</p>
+</li>
+<li>
+<p><strong>R2. 网络体系结构与应用程序体系结构之间有什么区别？</strong></p>
+</li>
+<li>
+<p><strong>R3. 对两进程之间的通话而言，哪个进程是客户，哪个进程是服务器？</strong></p>
+</li>
+<li>
+<p><strong>R4. 对一个P2P文件共享应用，你同意“一个通信会话不存在客户端与服务器端的概念”的说法吗？为什么？</strong></p>
+</li>
+<li>
+<hr>
+</li>
+<li>
+<hr>
+</li>
+<li>
+<hr>
+</li>
+<li>
+<hr>
+</li>
+<li>
+<hr>
+</li>
+<li>
+<hr>
+</li>
+<li>
+<hr>
+</li>
+<li>
+<hr>
+</li>
+<li>
+<hr>
+</li>
+<li>
+<hr>
+</li>
+<li>
+<hr>
+</li>
+</ul>
+<h2 id="第3章-运输层">第3章 运输层</h2>
+<h2 id="第4章-网络层-数据平面">第4章 网络层: 数据平面</h2>
+<h2 id="第5章-网络层-控制平面">第5章 网络层: 控制平面</h2>
+<h2 id="第6章-链路层和局域网">第6章 链路层和局域网</h2>
+<h2 id="第7章-无线网络和移动网络">第7章 无线网络和移动网络</h2>
+<h2 id="第8章-计算机网络中的安全">第8章 计算机网络中的安全</h2>
+<h2 id="第9章-多媒体网络">第9章 多媒体网络</h2>
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://flygar.org/">zhutou</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://flygar.org/2020/08/02/computer-networking.html">https://flygar.org/2020/08/02/computer-networking.html</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/Golang/20200402_defer/">Go defer</a></li>
+        
+        <li><a href="/2020/04/01/nas.html">远程控制家用设备</a></li>
+        
+        <li><a href="/2020/03/30/20200330.html">使用 gost 伪装流量科学上网</a></li>
+        
+        <li><a href="/2020/03/26/tmux-Best-Practices.html">Tmux 最佳实践</a></li>
+        
+        <li><a href="/2020/03/22/leetcode-1.html">leetcode 1. Two Sum</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='https://flygar.org/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C'>计算机网络</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://flygar.org/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://flygar.org/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://flygar.org/2020/08/02/computer-networking.html" title="计算机网络自顶向下方法(原书第7版) 课后作业答案">计算机网络自顶向下方法(原书第7版) 课后作业答案</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/post/Golang/20200402_defer/" title="Go defer">Go defer</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/04/01/nas.html" title="远程控制家用设备">远程控制家用设备</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/30/20200330.html" title="使用 gost 伪装流量科学上网">使用 gost 伪装流量科学上网</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/26/tmux-Best-Practices.html" title="Tmux 最佳实践">Tmux 最佳实践</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/22/leetcode-1.html" title="leetcode 1. Two Sum">leetcode 1. Two Sum</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/21/golang-.html" title="Go数据结构和算法-链表">Go数据结构和算法-链表</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/19/initiation.html" title="摘录 20200319">摘录 20200319</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/18/initiation.html" title="摘录 20200318">摘录 20200318</a>
+    </li>
+    
+    <li>
+        <a href="https://flygar.org/2020/03/12/tree_day.html" title="植树节">植树节</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="https://www.cubecloud.net/aff.php?aff=1764" title="Cubecloud" target="_blank" style="color:red">
+                
+                    <img src="https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-03-30-23-31-06.png">
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="https://flygar.org/categories/Computer/">Computer (1)</a></li>
+    
+    <li><a href="https://flygar.org/categories/Golang/">Golang (5)</a></li>
+    
+    <li><a href="https://flygar.org/categories/Linux/">Linux (6)</a></li>
+    
+    <li><a href="https://flygar.org/categories/%E6%91%98%E5%BD%95/">摘录 (2)</a></li>
+    
+    <li><a href="https://flygar.org/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念 (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://flygar.org/tags/Docker/">Docker</a>
+    
+    <a href="https://flygar.org/tags/Elasticsearch/">Elasticsearch</a>
+    
+    <a href="https://flygar.org/tags/Leetcode/">Leetcode</a>
+    
+    <a href="https://flygar.org/tags/NAS/">NAS</a>
+    
+    <a href="https://flygar.org/tags/Proverbs/">Proverbs</a>
+    
+    <a href="https://flygar.org/tags/Tmux/">Tmux</a>
+    
+    <a href="https://flygar.org/tags/gost/">gost</a>
+    
+    <a href="https://flygar.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
+    
+    <a href="https://flygar.org/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://www.flysnow.org" title="飞雪无情的博客">flysnow</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://ngzhio.github.io/" title="ngzhio">ngzhio</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://flygar.org/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://flygar.org/">Flygar&#39;s Blog By zhutou</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+</body>
+
+</html>

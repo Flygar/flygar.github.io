@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computer on Flygar&#39;s Blog</title>
+    <link>https://flygar.org/categories/Computer/</link>
+    <description>Recent content in Computer on Flygar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 02 Aug 2020 11:52:48 +0800</lastBuildDate>
+    
+	<atom:link href="https://flygar.org/categories/Computer/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>计算机网络自顶向下方法(原书第7版) 课后作业答案</title>
+      <link>https://flygar.org/2020/08/02/computer-networking.html</link>
+      <pubDate>Sun, 02 Aug 2020 11:52:48 +0800</pubDate>
+      
+      <guid>https://flygar.org/2020/08/02/computer-networking.html</guid>
+      <description>&lt;p&gt;Computer Network A Top-Down Approach Practice Answer&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;课后习题和问题答案&lt;/li&gt;
+&lt;li&gt;编程作业和答案&lt;/li&gt;
+&lt;li&gt;Wireshark实验和答案&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
