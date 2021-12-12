@@ -6,11 +6,7 @@
     <description>Recent content in Tags on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 02 Aug 2020 11:52:48 +0800</lastBuildDate>
-    
-	<atom:link href="https://flygar.org/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 02 Aug 2020 11:52:48 +0800</lastBuildDate><atom:link href="https://flygar.org/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>计算机网络</title>
       <link>https://flygar.org/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
@@ -26,15 +22,6 @@
       <pubDate>Wed, 01 Apr 2020 14:33:29 +0800</pubDate>
       
       <guid>https://flygar.org/tags/NAS/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>gost</title>
-      <link>https://flygar.org/tags/gost/</link>
-      <pubDate>Mon, 30 Mar 2020 22:24:51 +0800</pubDate>
-      
-      <guid>https://flygar.org/tags/gost/</guid>
       <description></description>
     </item>
     

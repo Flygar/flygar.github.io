@@ -1,189 +1,109 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://flygar.org/categories/</loc>
     <lastmod>2020-08-02T11:52:48+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/categories/Computer/</loc>
     <lastmod>2020-08-02T11:52:48+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/</loc>
     <lastmod>2020-08-02T11:52:48+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/post/</loc>
     <lastmod>2020-08-02T11:52:48+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/tags/</loc>
     <lastmod>2020-08-02T11:52:48+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2020-08-02T11:52:48+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/2020/08/02/computer-networking.html</loc>
     <lastmod>2020-08-02T11:52:48+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/post/Golang/20200402_defer/</loc>
     <lastmod>2020-04-02T13:06:45+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/categories/Golang/</loc>
     <lastmod>2020-04-02T13:06:45+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/categories/Linux/</loc>
     <lastmod>2020-04-01T14:33:29+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/tags/NAS/</loc>
     <lastmod>2020-04-01T14:33:29+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/2020/04/01/nas.html</loc>
     <lastmod>2020-04-01T14:33:29+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/tags/gost/</loc>
-    <lastmod>2020-03-30T22:24:51+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://flygar.org/2020/03/30/20200330.html</loc>
-    <lastmod>2020-03-30T22:24:51+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/tags/Tmux/</loc>
     <lastmod>2020-03-26T03:35:22+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/2020/03/26/tmux-Best-Practices.html</loc>
     <lastmod>2020-03-26T03:35:22+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/tags/Leetcode/</loc>
     <lastmod>2020-03-22T01:11:02+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/2020/03/22/leetcode-1.html</loc>
     <lastmod>2020-03-22T01:11:02+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/2020/03/21/golang-.html</loc>
     <lastmod>2020-03-21T19:21:26+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2020-03-21T19:21:26+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/categories/%E6%91%98%E5%BD%95/</loc>
     <lastmod>2020-03-19T00:31:57+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/2020/03/19/initiation.html</loc>
     <lastmod>2020-03-19T00:31:57+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/2020/03/18/initiation.html</loc>
     <lastmod>2020-03-18T00:31:57+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/2020/03/12/tree_day.html</loc>
     <lastmod>2020-03-12T12:14:35+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</loc>
     <lastmod>2020-03-12T12:14:35+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/comment/</loc>
     <lastmod>2020-03-05T21:42:26+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/2020/03/05/vps-security.html</loc>
     <lastmod>2020-03-05T20:32:34+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/2020/02/01/linux-tips.html</loc>
     <lastmod>2020-02-01T16:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/2020/01/05/linux-bbr.html</loc>
     <lastmod>2020-01-05T20:32:34+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/tags/Docker/</loc>
     <lastmod>2019-08-26T10:18:11+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/tags/Elasticsearch/</loc>
     <lastmod>2019-08-26T10:18:11+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/2019/08/26/deploy-elasticsearch-offline.html</loc>
     <lastmod>2019-08-26T10:18:11+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/2019/06/17/go-proverbs.html</loc>
     <lastmod>2019-06-17T23:06:41+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/tags/Proverbs/</loc>
     <lastmod>2019-06-17T23:06:41+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/about/</loc>
     <lastmod>2019-06-17T22:52:07+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/archives/</loc>
     <lastmod>2019-01-01T22:17:47+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://flygar.org/search/</loc>
   </url>
-  
 </urlset>

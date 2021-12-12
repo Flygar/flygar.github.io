@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 
     <title>linux 命令 | Flygar&#39;s Blog</title>
     <meta property="og:title" content="linux 命令 - Flygar&#39;s Blog">
@@ -20,15 +21,16 @@
         
     <meta name="author" content="zhutou">
     <meta property="og:url" content="https://flygar.org/2020/02/01/linux-tips.html">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
     <link rel="stylesheet" href='/css/style.css'>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
-
-
+    
+    
+    
     
     
 </head>
@@ -81,7 +83,7 @@
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://flygar.org/categories/Linux'>Linux</a></span>
+            <span class="meta-category"><a href='/categories/Linux'>Linux</a></span>
             
         </div>
         
@@ -112,7 +114,7 @@ ssh -p <span style="color:#bd93f9">1219</span> localhost
 <span style="color:#6272a4"># 远程转发: A 不能连 C，但 C 可以连 A。 A 和 B 不通，B 和 C 可以互连</span>
 <span style="color:#6272a4"># 在远程主机C上执行: ssh -R &lt;远程主机端口&gt;:&lt;目标主机&gt;:&lt;目标主机端口&gt; &lt;远程主机&gt;</span>
 ssh -NTf -R 1219:B:2003 A
-<span style="color:#6272a4"># 在本地主机A上执行</span>	
+<span style="color:#6272a4"># 在本地主机A上执行	</span>
 isql -p <span style="color:#bd93f9">1219</span> -h localhost
 
 <span style="color:#6272a4"># 动态转发实现科学上网，不用在 VPS 上搭建 shadowsocks 服务</span>
@@ -138,7 +140,7 @@ docker logs -f bilibili
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 安装常用软件（glances 或 htop代替 top） (ag 代替 grep) （axel 多线程下载工具）</span>
 apt update <span style="color:#ff79c6">&amp;&amp;</span> apt upgrade <span style="color:#ff79c6">&amp;&amp;</span> apt install zsh git curl vim htop axel
 
-<span style="color:#6272a4"># 安装 oh-my-zsh</span> 
+<span style="color:#6272a4"># 安装 oh-my-zsh </span>
 sh -c <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
 
 <span style="color:#6272a4"># 安装插件</span>
@@ -172,18 +174,18 @@ nc -vzw5 104.168.94.186 <span style="color:#bd93f9">8080</span>
 <span style="color:#6272a4"># 两次 -v 是让它报告更详细的内容(结束时会统计接收和发送多少字节), 设置超时时间3s, 探测端口范围 8080-8083</span>
 nc -v -v -w3 -z 104.168.94.186 8080-8083
 </code></pre></div><h2 id="测速脚本">测速脚本</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 测速</span> 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 测速 </span>
 <span style="color:#6272a4"># macOS</span>
 brew install speedtest 
 <span style="color:#6272a4"># linux</span>
 bash &lt;<span style="color:#ff79c6">(</span>curl -Lso- https://git.io/superspeed<span style="color:#ff79c6">)</span> <span style="color:#6272a4"># github: https://github.com/ernisn/superspeed</span>
 <span style="color:#6272a4"># 常用 server 列表</span>
-<span style="color:#6272a4"># 26352) China Telecom JiangSu 5G (Nanjing, China)</span> 
+<span style="color:#6272a4"># 26352) China Telecom JiangSu 5G (Nanjing, China) </span>
 <span style="color:#6272a4"># 27249) China Mobile jiangsu 5G (Nanjing, China) [</span>
 <span style="color:#6272a4"># 17320) China Mobile JiangSu 5G (ZhenJiang, China) [</span>
-<span style="color:#6272a4"># 21005) China Unicom (Shanghai, China)</span> 
-<span style="color:#6272a4"># 13704) China Unicom (Nanjing, China)</span> 
-<span style="color:#6272a4"># 4647) China Mobile Group Zhejiang Co.,Ltd (Hangzhou, China)</span> 
+<span style="color:#6272a4"># 21005) China Unicom (Shanghai, China) </span>
+<span style="color:#6272a4"># 13704) China Unicom (Nanjing, China) </span>
+<span style="color:#6272a4"># 4647) China Mobile Group Zhejiang Co.,Ltd (Hangzhou, China) </span>
 <span style="color:#6272a4"># 7509) China Telecom ZheJiang Branch (Hangzhou, China)</span>
 
 <span style="color:#6272a4"># https://teddysun.com/444.html</span>
@@ -241,6 +243,45 @@ dig EXAMPLE.COM +noall +answer
     
 </div>
 
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://flygar.org/">Flygar&#39;s Blog By zhutou</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
                 </div>
 
                 <div id="secondary">
@@ -270,10 +311,6 @@ dig EXAMPLE.COM +noall +answer
     </li>
     
     <li>
-        <a href="https://flygar.org/2020/03/30/20200330.html" title="使用 gost 伪装流量科学上网">使用 gost 伪装流量科学上网</a>
-    </li>
-    
-    <li>
         <a href="https://flygar.org/2020/03/26/tmux-Best-Practices.html" title="Tmux 最佳实践">Tmux 最佳实践</a>
     </li>
     
@@ -297,6 +334,10 @@ dig EXAMPLE.COM +noall +answer
         <a href="https://flygar.org/2020/03/12/tree_day.html" title="植树节">植树节</a>
     </li>
     
+    <li>
+        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps 安全指北">vps 安全指北</a>
+    </li>
+    
 </ul>
     </section>
 
@@ -318,12 +359,12 @@ dig EXAMPLE.COM +noall +answer
 
 
     <section class="widget">
-        <h3 class="widget-title">分类</h3>
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
 <ul class="widget-list">
     
     <li><a href="https://flygar.org/categories/Computer/">Computer (1)</a></li>
     
-    <li><a href="https://flygar.org/categories/Golang/">Golang (5)</a></li>
+    <li><a href="https://flygar.org/categories/Golang/">Golang (4)</a></li>
     
     <li><a href="https://flygar.org/categories/Linux/">Linux (6)</a></li>
     
@@ -335,7 +376,7 @@ dig EXAMPLE.COM +noall +answer
     </section>
 
     <section class="widget">
-        <h3 class="widget-title">标签</h3>
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
 <div class="tagcloud">
     
     <a href="https://flygar.org/tags/Docker/">Docker</a>
@@ -349,8 +390,6 @@ dig EXAMPLE.COM +noall +answer
     <a href="https://flygar.org/tags/Proverbs/">Proverbs</a>
     
     <a href="https://flygar.org/tags/Tmux/">Tmux</a>
-    
-    <a href="https://flygar.org/tags/gost/">gost</a>
     
     <a href="https://flygar.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
     
@@ -386,36 +425,6 @@ dig EXAMPLE.COM +noall +answer
             </div>
         </div>
     </div>
-    <footer id="footer">
-    <div class="container">
-        &copy; 2020 <a href="https://flygar.org/">Flygar&#39;s Blog By zhutou</a>.
-        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
-        
-    </div>
-</footer>
-
-
-    
-    <script type="text/javascript">
-        window.MathJax = {
-            tex2jax: {
-                inlineMath: [['$', '$']],
-                processEscapes: true
-                }
-            };
-    </script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
-
-
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
-
-
-
-
-
-
 </body>
 
 </html>

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 
     <title>离线环境下利用 docker 部署 Elasticsearch 集群 | Flygar&#39;s Blog</title>
     <meta property="og:title" content="离线环境下利用 docker 部署 Elasticsearch 集群 - Flygar&#39;s Blog">
@@ -20,15 +21,16 @@
         
     <meta name="author" content="zhutou">
     <meta property="og:url" content="https://flygar.org/2019/08/26/deploy-elasticsearch-offline.html">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
     <link rel="stylesheet" href='/css/style.css'>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
-
-
+    
+    
+    
     
     
 </head>
@@ -81,7 +83,7 @@
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://flygar.org/categories/Linux'>Linux</a></span>
+            <span class="meta-category"><a href='/categories/Linux'>Linux</a></span>
             
         </div>
         
@@ -94,7 +96,9 @@
 <li>在每台CentOS上通过 <code>docker-compose</code> 拉起ES官方镜像及 <code>kibana</code> 的Container</li>
 </ul>
 <p>最终效果
-<img src="https://i.loli.net/2019/08/26/yW3KPqBtos412Ve.png" alt="image.png"></p>
+
+        <img class="mx-auto" alt="image.png" src="https://i.loli.net/2019/08/26/yW3KPqBtos412Ve.png" />   
+    </p>
 <h2 id="1-离线安装docker">1. 离线安装docker</h2>
 <h3 id="11-制作docker本地安装源">1.1 制作docker本地安装源</h3>
 <blockquote>
@@ -144,7 +148,7 @@ tar -zcvf docker-local.tar.gz *
 
 </code></pre></div><h3 id="12-安装并验证">1.2 安装并验证</h3>
 <p>每台离线机器上执行</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># 创建目录上传 docker-local.tar.gz 并解压</span> 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># 创建目录上传 docker-local.tar.gz 并解压 </span>
 mkdir -p /home/docker/local
 tar -zxvf docker-local.tar.gz -C /home/docker/local
 <span style="color:#8be9fd;font-style:italic">cd</span> /home/docker/local
@@ -236,7 +240,7 @@ docker-compose --version
 <p>到每台离线机器上创建指定目录下的 <code>es.yaml</code> , 并修改 <code>network.publish_host</code> 和 <code>discovery.zen.ping.unicast.hosts</code> 的值为设置了 <code>node.master: true</code> node 的IP:9300端口。</p>
 <h4 id="311-离线机器node-01">3.1.1 离线机器node-01</h4>
 <p>node1 机器上执行 <code>vim /home/soft/elasticsearch/config/elasticsearch.yml</code>, 修改IP</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># node1</span> 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># node1 </span>
 cluster.name: elasticsearch-cluster
 node.name: es-node-01
 network.bind_host: 0.0.0.0
@@ -411,7 +415,7 @@ curl localhost:9200/_cat/nodes
 <span style="color:#6272a4"># 健康: green</span>
 curl localhost:9200/_cat/health
 
-<span style="color:#6272a4"># 查看存储</span> 
+<span style="color:#6272a4"># 查看存储 </span>
 curl localhost:9200/_cat/allocation?v
 
 <span style="color:#6272a4"># node-01机器上执行, 返回 302 found 正常</span>
@@ -429,7 +433,9 @@ mv /home/soft/elasticsearch/plugins/analysis-ik/config/ /home/soft/elasticsearch
 <span style="color:#6272a4"># 新增映射</span>
 vim /home/soft/docker-compose/docker-compose.yml
 <span style="color:#6272a4"># /home/soft/elasticsearch/config/plugins-config/analysis-ik:/usr/share/elasticsearch/config/analysis-ik</span>
-</code></pre></div><p><img src="https://i.loli.net/2019/08/28/gmtLnsiAkTMyUfZ.png" alt="image.png"></p>
+</code></pre></div><p>
+        <img class="mx-auto" alt="image.png" src="https://i.loli.net/2019/08/28/gmtLnsiAkTMyUfZ.png" />   
+    </p>
 <p>重建container</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># 重启docker</span>
 docker restart <span style="color:#ff79c6">$(</span>docker ps -qa<span style="color:#ff79c6">)</span>
@@ -439,7 +445,9 @@ docker-compose up -d
 
 <span style="color:#6272a4"># 验证这个节点插件是否安装</span>
 curl localhost:9200/_cat/plugins
-</code></pre></div><p><img src="https://i.loli.net/2019/08/28/g8Z3xKiMhoqjHNW.png" alt="image.png"></p>
+</code></pre></div><p>
+        <img class="mx-auto" alt="image.png" src="https://i.loli.net/2019/08/28/g8Z3xKiMhoqjHNW.png" />   
+    </p>
 <p>参考连接：</p>
 <p><a href="https://docs.docker.com/install/linux/docker-ce/centos/">https://docs.docker.com/install/linux/docker-ce/centos/</a></p>
 <p><a href="https://blog.csdn.net/hello_junz/article/details/79882602">https://blog.csdn.net/hello_junz/article/details/79882602</a></p>
@@ -479,9 +487,9 @@ curl localhost:9200/_cat/plugins
             
             <ul class="clearfix">
                 
-                <li><a href='https://flygar.org/tags/Elasticsearch'>Elasticsearch</a></li>
+                <li><a href='/tags/Elasticsearch'>Elasticsearch</a></li>
                 
-                <li><a href='https://flygar.org/tags/Docker'>Docker</a></li>
+                <li><a href='/tags/Docker'>Docker</a></li>
                 
             </ul>
             
@@ -489,6 +497,45 @@ curl localhost:9200/_cat/plugins
     </article>
     
 </div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://flygar.org/">Flygar&#39;s Blog By zhutou</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
 
                 </div>
 
@@ -519,10 +566,6 @@ curl localhost:9200/_cat/plugins
     </li>
     
     <li>
-        <a href="https://flygar.org/2020/03/30/20200330.html" title="使用 gost 伪装流量科学上网">使用 gost 伪装流量科学上网</a>
-    </li>
-    
-    <li>
         <a href="https://flygar.org/2020/03/26/tmux-Best-Practices.html" title="Tmux 最佳实践">Tmux 最佳实践</a>
     </li>
     
@@ -546,6 +589,10 @@ curl localhost:9200/_cat/plugins
         <a href="https://flygar.org/2020/03/12/tree_day.html" title="植树节">植树节</a>
     </li>
     
+    <li>
+        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps 安全指北">vps 安全指北</a>
+    </li>
+    
 </ul>
     </section>
 
@@ -567,12 +614,12 @@ curl localhost:9200/_cat/plugins
 
 
     <section class="widget">
-        <h3 class="widget-title">分类</h3>
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
 <ul class="widget-list">
     
     <li><a href="https://flygar.org/categories/Computer/">Computer (1)</a></li>
     
-    <li><a href="https://flygar.org/categories/Golang/">Golang (5)</a></li>
+    <li><a href="https://flygar.org/categories/Golang/">Golang (4)</a></li>
     
     <li><a href="https://flygar.org/categories/Linux/">Linux (6)</a></li>
     
@@ -584,7 +631,7 @@ curl localhost:9200/_cat/plugins
     </section>
 
     <section class="widget">
-        <h3 class="widget-title">标签</h3>
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
 <div class="tagcloud">
     
     <a href="https://flygar.org/tags/Docker/">Docker</a>
@@ -598,8 +645,6 @@ curl localhost:9200/_cat/plugins
     <a href="https://flygar.org/tags/Proverbs/">Proverbs</a>
     
     <a href="https://flygar.org/tags/Tmux/">Tmux</a>
-    
-    <a href="https://flygar.org/tags/gost/">gost</a>
     
     <a href="https://flygar.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
     
@@ -635,36 +680,6 @@ curl localhost:9200/_cat/plugins
             </div>
         </div>
     </div>
-    <footer id="footer">
-    <div class="container">
-        &copy; 2020 <a href="https://flygar.org/">Flygar&#39;s Blog By zhutou</a>.
-        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
-        
-    </div>
-</footer>
-
-
-    
-    <script type="text/javascript">
-        window.MathJax = {
-            tex2jax: {
-                inlineMath: [['$', '$']],
-                processEscapes: true
-                }
-            };
-    </script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
-
-
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
-
-
-
-
-
-
 </body>
 
 </html>

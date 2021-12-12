@@ -6,11 +6,7 @@
     <description>Recent content in Posts on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 02 Aug 2020 11:52:48 +0800</lastBuildDate>
-    
-	<atom:link href="https://flygar.org/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 02 Aug 2020 11:52:48 +0800</lastBuildDate><atom:link href="https://flygar.org/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>计算机网络自顶向下方法(原书第7版) 课后作业答案</title>
       <link>https://flygar.org/2020/08/02/computer-networking.html</link>
@@ -54,15 +50,6 @@
     </item>
     
     <item>
-      <title>使用 gost 伪装流量科学上网</title>
-      <link>https://flygar.org/2020/03/30/20200330.html</link>
-      <pubDate>Mon, 30 Mar 2020 22:24:51 +0800</pubDate>
-      
-      <guid>https://flygar.org/2020/03/30/20200330.html</guid>
-      <description>&lt;p&gt;使用 &lt;a href=&#34;https://github.com/ginuerzh/gost&#34;&gt;gost&lt;/a&gt; 或 &lt;a href=&#34;https://github.com/trojan-gfw&#34;&gt;trojan&lt;/a&gt; 伪装流量科学上网&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Tmux 最佳实践</title>
       <link>https://flygar.org/2020/03/26/tmux-Best-Practices.html</link>
       <pubDate>Thu, 26 Mar 2020 03:35:22 +0800</pubDate>
@@ -70,7 +57,9 @@
       <guid>https://flygar.org/2020/03/26/tmux-Best-Practices.html</guid>
       <description>&lt;p&gt;iterm2上集成tmux，方便是方便，难用也是真难用，需要一种更快乐的方式来使用Tmux。&lt;/p&gt;
 &lt;p&gt;效果预览:
-&lt;img src=&#34;https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-26-4-21-45.png&#34; alt=&#34;2020-3-26-4-21-45.png&#34;&gt;&lt;/p&gt;</description>
+
+        &lt;img class=&#34;mx-auto&#34; alt=&#34;2020-3-26-4-21-45.png&#34; src=&#34;https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-26-4-21-45.png&#34; /&gt;   
+    &lt;/p&gt;</description>
     </item>
     
     <item>

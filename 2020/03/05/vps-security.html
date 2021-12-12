@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 
     <title>vps 安全指北 | Flygar&#39;s Blog</title>
     <meta property="og:title" content="vps 安全指北 - Flygar&#39;s Blog">
@@ -20,15 +21,16 @@
         
     <meta name="author" content="zhutou">
     <meta property="og:url" content="https://flygar.org/2020/03/05/vps-security.html">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
     <link rel="stylesheet" href='/css/style.css'>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
-
-
+    
+    
+    
     
     
 </head>
@@ -81,7 +83,7 @@
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://flygar.org/categories/Linux'>Linux</a></span>
+            <span class="meta-category"><a href='/categories/Linux'>Linux</a></span>
             
         </div>
         
@@ -90,14 +92,21 @@
         <div class="post-content">
             <p>以ubuntu系统为例,提升vps安全。<br>
 保护小鸡,从我做起。</p>
-<p><img src="https://i.loli.net/2020/03/03/lHyQ1Bxij74qPaL.png" alt="image.png"></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># update list of available packages</span> 
-<span style="color:#6272a4"># upgrade the system by installing/upgrading packages</span>
+<p>
+        <img class="mx-auto" alt="image.png" src="https://i.loli.net/2020/03/03/lHyQ1Bxij74qPaL.png" />   
+    </p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 查看操作系统相关信息</span>
+hostnamectl
+
+<span style="color:#6272a4"># update list of available packages </span>
 apt update
 
-<span style="color:#6272a4"># 可选升级</span>
-<span style="color:#6272a4"># apt upgrade</span>
-apt install vim
+<span style="color:#6272a4"># 升级和安装</span>
+<span style="color:#6272a4"># apt full-upgrade -y </span>
+apt install vim zsh git nmap ufw curl -y
+
+<span style="color:#6272a4"># 删除不需要的包和依赖</span>
+apt autoremove
 
 <span style="color:#6272a4"># who 或者 w 查看当前登陆的用户</span>
 <span style="color:#6272a4"># 检查日志和登陆记录</span>
@@ -117,32 +126,51 @@ who /var/log/wtmp
 <ul>
 <li>推荐使用软件生成如下这种没有规律的密码: .ZHu87Yi$R</li>
 </ul>
-<h2 id="变更ssh端口为非22">变更ssh端口为非22</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># vim /etc/ssh/sshd_config</span>
-<span style="color:#6272a4"># 改为你想要的端口,最好在1-1024之间，防止与用户进程端口冲突</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 使用sudo命令或者切换到root用户来更新密码</span>
+<span style="color:#6272a4"># sudo passwd root</span>
+<span style="color:#6272a4"># su -</span>
+passwd root
+</code></pre></div><h2 id="变更ssh端口为非22">变更ssh端口为非22</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">vim /etc/ssh/sshd_config
+<span style="color:#6272a4"># 改为你想要的端口,最好在1-1024之间，防止与用户进程端口冲突(可以使用相应命令查下在用的端口)</span>
 Port <span style="color:#bd93f9">998</span>
 
-<span style="color:#6272a4"># 应用配置</span>
+<span style="color:#6272a4"># 应用配置 sudo systemctl restart sshd.service</span>
+<span style="color:#6272a4"># sshd,ssh都一样，默认做了alias</span>
 service sshd restart <span style="color:#6272a4"># sudo /etc/init.d/ssh restart</span>
+
+<span style="color:#6272a4"># 查看日志 确认更改生效</span>
+less /var/log/auth.log
 </code></pre></div><h2 id="禁止root用户登陆">禁止root用户登陆</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 在vps端创建其他用户flygar，最好不要用会被扫描命中的名字，例如：admin,test,testuser1, foobar</span>
-adduser flygar <span style="color:#6272a4"># adduser 比 useradd 命令更加友好，推荐使用</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 在vps端创建其他用户law，最好不要用会被扫描命中的名字，例如：admin,test,testuser1, foobar</span>
+adduser law <span style="color:#6272a4"># adduser 比 useradd 命令更加友好，推荐使用</span>
 
-<span style="color:#6272a4"># 修改用户权限, 为了使用sudo切回root，毕竟谁会不喜欢用root用户呢</span>
-chmod +w /etc/sudoers
-vim /etc/sudoers
-<span style="color:#6272a4"># 添加下图的配置语句，并且保存修改</span>
-<span style="color:#6272a4"># flygar	ALL=(ALL:ALL) ALL</span>
-chmod -w /etc/sudoers
+<span style="color:#6272a4"># 修改用户权限, 为了使用sudo切回root权限，毕竟谁会不喜欢用root用户呢</span>
+<span style="color:#6272a4"># 在root用户下安装sudo命令</span>
+apt install sudo -y
 
-<span style="color:#6272a4"># 查看用户属性并验证是否创建成功</span>
-<span style="color:#6272a4"># 用户名:口令:用户标识号:组标识号:注释性描述:用户主目录:命令解释程序</span>
-cat /etc/passwd
-su flygar
+<span style="color:#6272a4"># 使用命令将新用户law添加到sudoers文件列表中. </span>
+<span style="color:#6272a4"># 这一步其实可以不做，因为后面用到visudo命令为law用户设置执行sudo命令免密。</span>
+usermod -a -G sudo law
+<span style="color:#6272a4"># 将用户移出组</span>
+<span style="color:#6272a4"># gpasswd -d law sudo</span>
+<span style="color:#6272a4"># 使用id命令查看用户组别信息</span>
+id law
+<span style="color:#6272a4"># usermod命令也可以改变用户的shell</span>
+<span style="color:#6272a4"># usermod -s /usr/bin/zsh law</span>
+
+<span style="color:#6272a4"># 更改编辑器为vim</span>
+sudo update-alternatives --config editor
+
+<span style="color:#6272a4"># 设置用户law免密使用sudo命令. </span>
+<span style="color:#6272a4"># 特别注意：需要使用visudo命令追加到文件中的最后一行。因为变量读取是从上往下，避免被sudo组的权限覆盖。</span>
+visudo
+<span style="color:#6272a4"># law	ALL=(ALL:ALL) NOPASSWD:ALL</span>
 
 <span style="color:#6272a4"># 删除用户</span>
-deluser flygar
-vim /etc/sudoers <span style="color:#6272a4"># 删除用户权限</span>
+<span style="color:#6272a4"># deluser law</span>
+<span style="color:#6272a4"># 删除用户权限</span>
+<span style="color:#6272a4"># visudo </span>
 
 <span style="color:#6272a4">#----------------------------------------------------</span>
 <span style="color:#6272a4"># vim /etc/ssh/sshd_config</span>
@@ -152,11 +180,12 @@ PermitRootLogin no
 <span style="color:#6272a4"># 应用配置</span>
 service sshd restart <span style="color:#6272a4"># sudo /etc/init.d/ssh restart</span>
 </code></pre></div><h2 id="设置只允许使用密钥登陆">设置只允许使用密钥登陆</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 在客户端生成密钥, 如果有就用原来的，不需要执行</span>
-ssh-keygen -b <span style="color:#bd93f9">4096</span> -t rsa
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 在客户端生成密钥, 如果有就用原来的，不需要执行,这个邮箱无所谓。</span>
+ssh-keygen -t rsa -b <span style="color:#bd93f9">4096</span> -C <span style="color:#f1fa8c">&#34;your_email@example.com&#34;</span> -f ~/.ssh/ww_rsa
+
 <span style="color:#6272a4"># 将客户端的公钥发送给vps的自定义用户</span>
-<span style="color:#6272a4"># ssh-copy-id ${shortName}</span>
-ssh-copy-id -p <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">PORT</span><span style="color:#f1fa8c">}</span> <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">USERNAME</span><span style="color:#f1fa8c">}</span>@<span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">IP_address</span><span style="color:#f1fa8c">}</span>
+<span style="color:#6272a4"># ssh-copy-id ${shortName} -i 指定私钥文件对应的公钥信息，注意传参事rsa，不是rsa.pub</span>
+ssh-copy-id -p <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">PORT</span><span style="color:#f1fa8c">}</span> -i <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">law_rsa</span><span style="color:#f1fa8c">}</span> <span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">USERNAME</span><span style="color:#f1fa8c">}</span>@<span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">IP_address</span><span style="color:#f1fa8c">}</span>
 
 <span style="color:#6272a4"># vps端配置config</span>
 vim /etc/ssh/sshd_config
@@ -168,9 +197,11 @@ PasswordAuthentication no <span style="color:#6272a4">#禁止密码验证登录�
 
 <span style="color:#6272a4"># 应用配置</span>
 service sshd restart <span style="color:#6272a4"># sudo /etc/init.d/ssh restart</span>
-<span style="color:#6272a4"># 如果哪天你本地的密钥丢了或重置了，那只能进入vps官网使用 VNC 的方式进入服务器上传你的公钥了</span>
+<span style="color:#6272a4"># 如果哪天你本地的密钥丢了或重置了，那只能进入vps官网使用 VNC 的方式进入服务器上传你的公钥到服务器的authorized_keys文件了。</span>
 </code></pre></div><p>换了端口和认证方式，降低了被扫描、探测密码的请求
-<img src="https://i.loli.net/2020/03/02/dxKW2rAg9CHynmf.png" alt="image.png"></p>
+
+        <img class="mx-auto" alt="image.png" src="https://i.loli.net/2020/03/02/dxKW2rAg9CHynmf.png" />   
+    </p>
 <p>其实还不够安全，vps上可能还暴露了3306,9200这种端口,需要利用deyhosts实现自动屏蔽疯狂尝试请求的IP。</p>
 <h2 id="屏蔽扫描ip拒绝成为肉鸡">屏蔽扫描IP,拒绝成为肉鸡</h2>
 <p>保护小鸡从我做起。</p>
@@ -217,21 +248,21 @@ ALL: ALL
 <p>关闭不必要的端口, 只开放所需端口。<br>
 先过防火墙这关，再去检测是否符合<code>hosts.allow</code>及<code>hosts.deny</code>的条件，需要都符合才能通过。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 使用netstat查看目前开放的端口及链接情况</span>
-<span style="color:#6272a4"># -n: don&#39;t resolve names</span> 
-<span style="color:#6272a4"># -t: tcp</span> 
-<span style="color:#6272a4"># -u: udp</span> 
+<span style="color:#6272a4"># -n: don&#39;t resolve names </span>
+<span style="color:#6272a4"># -t: tcp </span>
+<span style="color:#6272a4"># -u: udp </span>
 <span style="color:#6272a4"># -p: display PID/Program name for sockets</span>
 <span style="color:#6272a4"># -l: display listening server sockets</span>
 <span style="color:#6272a4"># -a: display all sockets</span>
 
-<span style="color:#6272a4"># display (default: connected)</span> 
+<span style="color:#6272a4"># display (default: connected) </span>
 <span style="color:#6272a4"># sudo lsof -i -P -n | grep ESTABLISHED</span>
 netstat -ntup 
 
 <span style="color:#6272a4"># sudo lsof -i -P -n | grep LISTEN</span>
 netstat -ntupl  
 
-<span style="color:#6272a4"># sudo lsof -i -P -n</span> 
+<span style="color:#6272a4"># sudo lsof -i -P -n </span>
 netstat -ntupa
 
 <span style="color:#6272a4"># 端口扫描工具nmap或者netcat</span>
@@ -239,12 +270,12 @@ apt install nmap
 <span style="color:#6272a4"># 扫描本地端口,禁止扫描他人vps，行为不友好导致banIP。</span>
 nmap localhost
 
-<span style="color:#6272a4"># 查看端口进程</span> 
+<span style="color:#6272a4"># 查看端口进程 </span>
 <span style="color:#6272a4"># netstat -ntupa | grep ${port}</span>
 lsof -i:<span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">port</span><span style="color:#f1fa8c">}</span>
 
 
-<span style="color:#6272a4"># apt update &amp;&amp; apt install ufw</span> 
+<span style="color:#6272a4"># apt update &amp;&amp; apt install ufw </span>
 <span style="color:#6272a4"># 启用ufw(简化iptables命令)</span>
 ufw status
 ufw <span style="color:#8be9fd;font-style:italic">enable</span> <span style="color:#6272a4"># 开启后默认关了所有端口</span>
@@ -259,6 +290,9 @@ ufw allow from 192.168.0.104 <span style="color:#6272a4"># 基于IP地址的规�
 ufw allow form 192.168.0.0/24 <span style="color:#6272a4"># 也可以使用子网掩码来扩宽范围</span>
 ufw allow from 192.168.0.104 to any port <span style="color:#bd93f9">998</span> <span style="color:#6272a4"># 来自 192.168.0.104 的 IP 只能访问998端口</span>
 ufw allow from 192.168.0.104 proto tcp to any port <span style="color:#bd93f9">22</span> <span style="color:#6272a4"># 限制来自 192.168.0.104 的 IP 只能使用 tcp 协议和通过 22端口 来访问</span>
+
+<span style="color:#6272a4"># nmap检查本地正在监听的端口</span>
+nmap -p- 127.0.0.1
 
 <span style="color:#6272a4"># update配置(将开放的端口禁用，例如禁用ftp)</span>
 ufw deny ftp
@@ -275,12 +309,37 @@ ufw allow <span style="color:#f1fa8c">&#39;Nginx Full&#39;</span> <span style="c
 <span style="color:#6272a4"># 关闭ufw功能</span>
 ufw disable
 
-<span style="color:#6272a4"># ufw相当于简化了iptables命令.</span> 
+<span style="color:#6272a4"># ufw相当于简化了iptables命令. </span>
 <span style="color:#6272a4"># 查看vps防火墙全部规则: iptables --list 为准</span>
-</code></pre></div><p><img src="https://i.loli.net/2020/03/03/X1SBETgFPnc2bUd.png" alt="image.png">
+</code></pre></div><p>
+        <img class="mx-auto" alt="image.png" src="https://i.loli.net/2020/03/03/X1SBETgFPnc2bUd.png" />   
+    
 先过ufw规则，再过hosts.allow规则, 需要都通过<br>
 实现: 只允许IP: 49.xxx.xxx.xxx 访问vps的服务(端口)<br>
 至此,心里终于舒坦了很多。</p>
+<h2 id="其他">其他</h2>
+<h3 id="docker">docker</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#6272a4"># 安装docker</span>
+参考官网相应操作系统的安装方式: https://docs.docker.com/engine/install/debian/
+脚本安装: https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script
+
+<span style="color:#6272a4"># 授权非root用户使用docker</span>
+参考: https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user
+
+<span style="color:#6272a4"># 跟随系统启动 debian系统不用动，已经设置好了</span>
+参考: https://docs.docker.com/engine/install/linux-postinstall/#configure-docker-to-start-on-boot
+
+<span style="color:#6272a4"># 查看系统启动服务 </span>
+systemctl list-units --type<span style="color:#ff79c6">=</span>service --state<span style="color:#ff79c6">=</span>running
+systemctl list-unit-files --type<span style="color:#ff79c6">=</span>service --state<span style="color:#ff79c6">=</span>enabled
+systemctl list-unit-files --type<span style="color:#ff79c6">=</span>service --state<span style="color:#ff79c6">=</span>disabled
+
+</code></pre></div><h3 id="zsh">zsh</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh -c <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
+
+<span style="color:#6272a4"># 自定义配置</span>
+~/.zshrc
+</code></pre></div>
         </div>
 
         
@@ -324,6 +383,45 @@ ufw disable
     
 </div>
 
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://flygar.org/">Flygar&#39;s Blog By zhutou</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
                 </div>
 
                 <div id="secondary">
@@ -353,10 +451,6 @@ ufw disable
     </li>
     
     <li>
-        <a href="https://flygar.org/2020/03/30/20200330.html" title="使用 gost 伪装流量科学上网">使用 gost 伪装流量科学上网</a>
-    </li>
-    
-    <li>
         <a href="https://flygar.org/2020/03/26/tmux-Best-Practices.html" title="Tmux 最佳实践">Tmux 最佳实践</a>
     </li>
     
@@ -380,6 +474,10 @@ ufw disable
         <a href="https://flygar.org/2020/03/12/tree_day.html" title="植树节">植树节</a>
     </li>
     
+    <li>
+        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps 安全指北">vps 安全指北</a>
+    </li>
+    
 </ul>
     </section>
 
@@ -401,12 +499,12 @@ ufw disable
 
 
     <section class="widget">
-        <h3 class="widget-title">分类</h3>
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
 <ul class="widget-list">
     
     <li><a href="https://flygar.org/categories/Computer/">Computer (1)</a></li>
     
-    <li><a href="https://flygar.org/categories/Golang/">Golang (5)</a></li>
+    <li><a href="https://flygar.org/categories/Golang/">Golang (4)</a></li>
     
     <li><a href="https://flygar.org/categories/Linux/">Linux (6)</a></li>
     
@@ -418,7 +516,7 @@ ufw disable
     </section>
 
     <section class="widget">
-        <h3 class="widget-title">标签</h3>
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
 <div class="tagcloud">
     
     <a href="https://flygar.org/tags/Docker/">Docker</a>
@@ -432,8 +530,6 @@ ufw disable
     <a href="https://flygar.org/tags/Proverbs/">Proverbs</a>
     
     <a href="https://flygar.org/tags/Tmux/">Tmux</a>
-    
-    <a href="https://flygar.org/tags/gost/">gost</a>
     
     <a href="https://flygar.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
     
@@ -469,36 +565,6 @@ ufw disable
             </div>
         </div>
     </div>
-    <footer id="footer">
-    <div class="container">
-        &copy; 2020 <a href="https://flygar.org/">Flygar&#39;s Blog By zhutou</a>.
-        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
-        
-    </div>
-</footer>
-
-
-    
-    <script type="text/javascript">
-        window.MathJax = {
-            tex2jax: {
-                inlineMath: [['$', '$']],
-                processEscapes: true
-                }
-            };
-    </script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
-
-
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
-
-
-
-
-
-
 </body>
 
 </html>

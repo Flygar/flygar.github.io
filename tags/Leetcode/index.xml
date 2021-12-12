@@ -6,11 +6,7 @@
     <description>Recent content in Leetcode on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 22 Mar 2020 01:11:02 +0800</lastBuildDate>
-    
-	<atom:link href="https://flygar.org/tags/Leetcode/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 22 Mar 2020 01:11:02 +0800</lastBuildDate><atom:link href="https://flygar.org/tags/Leetcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>leetcode 1. Two Sum</title>
       <link>https://flygar.org/2020/03/22/leetcode-1.html</link>

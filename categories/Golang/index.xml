@@ -6,11 +6,7 @@
     <description>Recent content in Golang on Flygar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 02 Apr 2020 13:06:45 +0800</lastBuildDate>
-    
-	<atom:link href="https://flygar.org/categories/Golang/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 02 Apr 2020 13:06:45 +0800</lastBuildDate><atom:link href="https://flygar.org/categories/Golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go defer</title>
       <link>https://flygar.org/post/Golang/20200402_defer/</link>
@@ -25,15 +21,6 @@
 &lt;li&gt;defer 中包含 panic&lt;/li&gt;
 &lt;li&gt;defer 下的函数参数包含子函数&lt;/li&gt;
 &lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>使用 gost 伪装流量科学上网</title>
-      <link>https://flygar.org/2020/03/30/20200330.html</link>
-      <pubDate>Mon, 30 Mar 2020 22:24:51 +0800</pubDate>
-      
-      <guid>https://flygar.org/2020/03/30/20200330.html</guid>
-      <description>&lt;p&gt;使用 &lt;a href=&#34;https://github.com/ginuerzh/gost&#34;&gt;gost&lt;/a&gt; 或 &lt;a href=&#34;https://github.com/trojan-gfw&#34;&gt;trojan&lt;/a&gt; 伪装流量科学上网&lt;/p&gt;</description>
     </item>
     
     <item>

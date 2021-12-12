@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 
     <title>Tmux 最佳实践 | Flygar&#39;s Blog</title>
     <meta property="og:title" content="Tmux 最佳实践 - Flygar&#39;s Blog">
@@ -20,15 +21,16 @@
         
     <meta name="author" content="zhutou">
     <meta property="og:url" content="https://flygar.org/2020/03/26/tmux-Best-Practices.html">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
     <link rel="stylesheet" href='/css/style.css'>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
-
-
+    
+    
+    
     
     
 </head>
@@ -81,7 +83,7 @@
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://flygar.org/categories/Linux'>Linux</a></span>
+            <span class="meta-category"><a href='/categories/Linux'>Linux</a></span>
             
         </div>
         
@@ -90,12 +92,18 @@
         <div class="post-content">
             <p>iterm2上集成tmux，方便是方便，难用也是真难用，需要一种更快乐的方式来使用Tmux。</p>
 <p>效果预览:
-<img src="https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-26-4-21-45.png" alt="2020-3-26-4-21-45.png"></p>
-<p><img src="https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-26-4-19-38.png" alt="2020-3-26-4-19-38.png"></p>
+
+        <img class="mx-auto" alt="2020-3-26-4-21-45.png" src="https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-26-4-21-45.png" />   
+    </p>
+<p>
+        <img class="mx-auto" alt="2020-3-26-4-19-38.png" src="https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-26-4-19-38.png" />   
+    </p>
 <p>文档: <a href="https://github.com/gpakosz/.tmux">https://github.com/gpakosz/.tmux</a></p>
 <h2 id="实现每次打开iterm2自启动tmux">实现每次打开iterm2自启动tmux</h2>
 <p>打开item2并配置 <code>tmux a -t demo || tmux new -s demo</code> ，实现每次打开iterm2时尝试连接名为demo的session，如果没有则新建后连接。</p>
-<p><img src="https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-26-3-41-29.png" alt="2020-3-26-3-41-29.png"></p>
+<p>
+        <img class="mx-auto" alt="2020-3-26-3-41-29.png" src="https://raw.githubusercontent.com/Flygar/blogPics/dev/img/2020-3-26-3-41-29.png" />   
+    </p>
 <p>demo作为入口session，通过 <code>&lt;prefix&gt; C-c</code> 创建新session， <code>&lt;prefix&gt; $</code> 为session重命名，也可以修改配置文件 <code>tmux.conf.local</code>来实现每次 new session 时为 session 命名</p>
 <h2 id="设置mouse-mode下每次滚轮的行数">设置mouse mode下每次滚轮的行数</h2>
 <p>设置为1行，默认5行不太平滑</p>
@@ -144,9 +152,9 @@ tmux kill-session -t demo
 tmux kill-server 
 <span style="color:#6272a4"># 关闭pane</span>
 tmux kill-pane
-<span style="color:#6272a4"># 关闭windows</span> 
+<span style="color:#6272a4"># 关闭windows </span>
 tmux kill-window
-<span style="color:#6272a4"># 列出所有可以的快捷键和其运行的 tmux 命令,</span> 
+<span style="color:#6272a4"># 列出所有可以的快捷键和其运行的 tmux 命令, </span>
 tmux list-keys
 <span style="color:#6272a4"># 列出所有的 tmux 命令及其参数</span>
 tmux list-commands
@@ -220,7 +228,7 @@ tmux source-file ~/.tmux.conf
 &lt;prefix&gt; <span style="color:#ff79c6">}</span>
 <span style="color:#6272a4"># 移动光标切换面板</span>
 &lt;prefix&gt; 方向键
-<span style="color:#6272a4"># 显示面板编号，在编号消失前输入对应的数字可切换到相应的面板</span> 
+<span style="color:#6272a4"># 显示面板编号，在编号消失前输入对应的数字可切换到相应的面板 </span>
 &lt;prefix&gt; q
 
 <span style="color:#6272a4"># 顺时针旋转当前窗口中的所有面板</span>
@@ -228,7 +236,7 @@ tmux source-file ~/.tmux.conf
 <span style="color:#6272a4"># 逆时针旋转当前窗口中的所有面板</span>
 &lt;prefix&gt; Ctrl+o
 
-<span style="color:#6272a4"># 可以在默认面板布局中切换，试试就知道了</span> 
+<span style="color:#6272a4"># 可以在默认面板布局中切换，试试就知道了 </span>
 &lt;prefix&gt; 空格键
 
 <span style="color:#6272a4"># 以5个单元格为单位调整当前面板边缘 , &lt;prefix&gt; m 开启后可直接鼠标拖动</span>
@@ -277,7 +285,7 @@ tmux source-file ~/.tmux.conf
             
             <ul class="clearfix">
                 
-                <li><a href='https://flygar.org/tags/Tmux'>Tmux</a></li>
+                <li><a href='/tags/Tmux'>Tmux</a></li>
                 
             </ul>
             
@@ -285,6 +293,45 @@ tmux source-file ~/.tmux.conf
     </article>
     
 </div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://flygar.org/">Flygar&#39;s Blog By zhutou</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
 
                 </div>
 
@@ -315,10 +362,6 @@ tmux source-file ~/.tmux.conf
     </li>
     
     <li>
-        <a href="https://flygar.org/2020/03/30/20200330.html" title="使用 gost 伪装流量科学上网">使用 gost 伪装流量科学上网</a>
-    </li>
-    
-    <li>
         <a href="https://flygar.org/2020/03/26/tmux-Best-Practices.html" title="Tmux 最佳实践">Tmux 最佳实践</a>
     </li>
     
@@ -342,6 +385,10 @@ tmux source-file ~/.tmux.conf
         <a href="https://flygar.org/2020/03/12/tree_day.html" title="植树节">植树节</a>
     </li>
     
+    <li>
+        <a href="https://flygar.org/2020/03/05/vps-security.html" title="vps 安全指北">vps 安全指北</a>
+    </li>
+    
 </ul>
     </section>
 
@@ -363,12 +410,12 @@ tmux source-file ~/.tmux.conf
 
 
     <section class="widget">
-        <h3 class="widget-title">分类</h3>
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
 <ul class="widget-list">
     
     <li><a href="https://flygar.org/categories/Computer/">Computer (1)</a></li>
     
-    <li><a href="https://flygar.org/categories/Golang/">Golang (5)</a></li>
+    <li><a href="https://flygar.org/categories/Golang/">Golang (4)</a></li>
     
     <li><a href="https://flygar.org/categories/Linux/">Linux (6)</a></li>
     
@@ -380,7 +427,7 @@ tmux source-file ~/.tmux.conf
     </section>
 
     <section class="widget">
-        <h3 class="widget-title">标签</h3>
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
 <div class="tagcloud">
     
     <a href="https://flygar.org/tags/Docker/">Docker</a>
@@ -394,8 +441,6 @@ tmux source-file ~/.tmux.conf
     <a href="https://flygar.org/tags/Proverbs/">Proverbs</a>
     
     <a href="https://flygar.org/tags/Tmux/">Tmux</a>
-    
-    <a href="https://flygar.org/tags/gost/">gost</a>
     
     <a href="https://flygar.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
     
@@ -431,36 +476,6 @@ tmux source-file ~/.tmux.conf
             </div>
         </div>
     </div>
-    <footer id="footer">
-    <div class="container">
-        &copy; 2020 <a href="https://flygar.org/">Flygar&#39;s Blog By zhutou</a>.
-        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
-        
-    </div>
-</footer>
-
-
-    
-    <script type="text/javascript">
-        window.MathJax = {
-            tex2jax: {
-                inlineMath: [['$', '$']],
-                processEscapes: true
-                }
-            };
-    </script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
-
-
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
-
-
-
-
-
-
 </body>
 
 </html>
